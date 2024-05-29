@@ -3,9 +3,9 @@ package org.openapitools.codegen.validations.oas;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.openapitools.codegen.validation.Invalid;
 import org.openapitools.codegen.validation.ValidationResult;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +28,7 @@ public class OpenApiSecuritySchemeValidationsTest {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(warnings);
-        Assert.assertEquals(warnings.size(), 0, "Expected recommendations to be disabled completely.");
+        assertEquals(warnings.size(), 0, "Expected recommendations to be disabled completely.");
     }
 
     @Test(dataProvider = "apacheNginxRecommendationExpectations", description = "disable apache nginx via turning off rule")
@@ -47,7 +47,7 @@ public class OpenApiSecuritySchemeValidationsTest {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(warnings);
-        Assert.assertEquals(warnings.size(), 0, "Expected rule to be disabled.");
+        assertEquals(warnings.size(), 0, "Expected rule to be disabled.");
     }
 
     @Test(dataProvider = "apacheNginxRecommendationExpectations", description = "default apache nginx recommendation")
@@ -67,9 +67,9 @@ public class OpenApiSecuritySchemeValidationsTest {
 
         Assert.assertNotNull(warnings);
         if (matches) {
-            Assert.assertEquals(warnings.size(), 1, "Expected " + key + " to match recommendation.");
+            assertEquals(warnings.size(), 1, "Expected " + key + " to match recommendation.");
         } else {
-            Assert.assertEquals(warnings.size(), 0, "Expected " + key + " not to match recommendation.");
+            assertEquals(warnings.size(), 0, "Expected " + key + " not to match recommendation.");
         }
     }
 

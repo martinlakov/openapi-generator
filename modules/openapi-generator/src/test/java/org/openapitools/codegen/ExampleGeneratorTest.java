@@ -2,12 +2,11 @@ package org.openapitools.codegen;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import org.openapitools.codegen.examples.ExampleGenerator;
-import org.testng.annotations.Test;
 
 import java.util.*;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNull;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ExampleGeneratorTest {
     @Test

@@ -6,8 +6,8 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 import org.openapitools.codegen.languages.features.DocumentationProviderFeatures.AnnotationLibrary;
 import org.openapitools.codegen.languages.features.DocumentationProviderFeatures.DocumentationProvider;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 // Tests are not final, methods currently just generate documentation as MD tables.
 public class DocumentationProviderFeaturesTest {
@@ -29,7 +29,7 @@ public class DocumentationProviderFeaturesTest {
             .collect(Collectors.joining(", "))
     )));
     sb.append("\n");
-    Assert.assertTrue(sb.toString().contains("none"));
+    assertTrue(sb.toString().contains("none"));
   }
 
   @Test(priority = 1)
@@ -44,7 +44,7 @@ public class DocumentationProviderFeaturesTest {
         dp.getDescription(),
         dp.getPropertyName()
     )));
-    Assert.assertTrue(sb.toString().contains("none"));
+    assertTrue(sb.toString().contains("none"));
     sb.append("\n");
   }
 }

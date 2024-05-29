@@ -21,8 +21,8 @@ import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.languages.AbstractFSharpCodegen;
 import org.openapitools.codegen.languages.FsharpGiraffeServerCodegen;
 import org.openapitools.codegen.model.ModelsMap;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -67,11 +67,11 @@ public class FSharpServerCodegenTest {
 
         Object[] keys = sorted.keySet().toArray();
 
-        Assert.assertEquals(keys[0], "wheel");
-        Assert.assertTrue("bike".equals(keys[1]) || "car".equals(keys[1]));
-        Assert.assertTrue("bike".equals(keys[2]) || "car".equals(keys[2]));
-        Assert.assertEquals(keys[3], "parent");
-        Assert.assertEquals(keys[4], "child");
+        assertEquals(keys[0], "wheel");
+        assertTrue("bike".equals(keys[1]) || "car".equals(keys[1]));
+        assertTrue("bike".equals(keys[2]) || "car".equals(keys[2]));
+        assertEquals(keys[3], "parent");
+        assertEquals(keys[4], "child");
 
     }
 
@@ -81,7 +81,7 @@ public class FSharpServerCodegenTest {
           codegen.setPackageName("MyNamespace");
           codegen.setModelPackage("Model");
           String modified = codegen.toModelImport("Foo");
-          Assert.assertEquals(modified, "MyNamespace.Model.Foo");
+          assertEquals(modified, "MyNamespace.Model.Foo");
     }
 
     private static class P_AbstractFSharpCodegen extends AbstractFSharpCodegen {

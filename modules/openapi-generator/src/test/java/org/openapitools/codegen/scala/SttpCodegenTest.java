@@ -8,8 +8,8 @@ import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.languages.ScalaSttpClientCodegen;
 import org.openapitools.codegen.languages.features.CXFServerFeatures;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.io.IOException;
@@ -28,11 +28,11 @@ public class SttpCodegenTest {
 
     @Test
     public void encodePath() {
-        Assert.assertEquals(codegen.encodePath("{user_name}"), "${userName}");
-        Assert.assertEquals(codegen.encodePath("{userName}"), "${userName}");
-        Assert.assertEquals(codegen.encodePath("{UserName}"), "${userName}");
-        Assert.assertEquals(codegen.encodePath("user_name"), "user_name");
-        Assert.assertEquals(codegen.encodePath("before/{UserName}/after"), "before/${userName}/after");
+        assertEquals(codegen.encodePath("{user_name}"), "${userName}");
+        assertEquals(codegen.encodePath("{userName}"), "${userName}");
+        assertEquals(codegen.encodePath("{UserName}"), "${userName}");
+        assertEquals(codegen.encodePath("user_name"), "user_name");
+        assertEquals(codegen.encodePath("before/{UserName}/after"), "before/${userName}/after");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class SttpCodegenTest {
       schema.setType("string");
       schema.setFormat("byte");
       String type = codegen.getTypeDeclaration(schema);
-      Assert.assertEquals(type, "Array[Byte]");
+      assertEquals(type, "Array[Byte]");
     }
 
     @Test

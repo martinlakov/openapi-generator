@@ -16,8 +16,8 @@ import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.AsciidocDocumentationCodegen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import io.swagger.v3.oas.models.OpenAPI;
 
@@ -33,7 +33,7 @@ public class AsciidocGeneratorTest {
         AsciidocDocumentationCodegen codeGen = new AsciidocDocumentationCodegen();
         codeGen.preprocessOpenAPI(openAPI);
 
-        Assert.assertEquals(openAPI.getInfo().getTitle(), "ping test");
+        assertEquals(openAPI.getInfo().getTitle(), "ping test");
     }
 
     @Test
@@ -72,13 +72,13 @@ public class AsciidocGeneratorTest {
                 markupFileGenerated = true;
                 String markupContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
                 // check on some basic asciidoc markup content
-                Assert.assertTrue(markupContent.contains("= ping test"),
+                assertTrue(markupContent.contains("= ping test"),
                         "expected = header in: " + markupContent.substring(0, 50));
-                Assert.assertTrue(markupContent.contains(":toc: "),
+                assertTrue(markupContent.contains(":toc: "),
                         "expected = :toc: " + markupContent.substring(0, 50));
             }
         }
-        Assert.assertTrue(markupFileGenerated, "Default api file is not generated!");
+        assertTrue(markupFileGenerated, "Default api file is not generated!");
     }
 
     @Test
@@ -102,13 +102,13 @@ public class AsciidocGeneratorTest {
             if (file.getName().equals("index.adoc")) {
                 markupFileGenerated = true;
                 String markupContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
-                Assert.assertTrue(markupContent.contains(":specDir: SPEC-DIR"),
+                assertTrue(markupContent.contains(":specDir: SPEC-DIR"),
                         "expected :specDir: in: " + markupContent.substring(0, 250));
-                Assert.assertTrue(markupContent.contains(":snippetDir: MY/SNIPPET/DIR"),
+                assertTrue(markupContent.contains(":snippetDir: MY/SNIPPET/DIR"),
                         "expected :snippetDir: in: " + markupContent.substring(0, 250));
             }
         }
-        Assert.assertTrue(markupFileGenerated, "index.adoc is not generated!");
+        assertTrue(markupFileGenerated, "index.adoc is not generated!");
 
     }
 
@@ -145,7 +145,7 @@ public class AsciidocGeneratorTest {
                         "not expected :toc: in: " + markupContent.substring(0, 250));               // typical attributes not found in markup.
             }
         }
-        Assert.assertTrue(markupFileGenerated, "index.adoc is not generated!");
+        assertTrue(markupFileGenerated, "index.adoc is not generated!");
     }
 
 }

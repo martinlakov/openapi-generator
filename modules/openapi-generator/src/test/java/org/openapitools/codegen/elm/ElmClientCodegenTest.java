@@ -29,9 +29,9 @@ import org.openapitools.codegen.CodegenOperation;
 import org.openapitools.codegen.languages.ElmClientCodegen;
 import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 @SuppressWarnings("static-method")
 public class ElmClientCodegenTest {
@@ -58,7 +58,7 @@ public class ElmClientCodegenTest {
 
         OperationsMap postProcessed = codegen.postProcessOperationsWithModels(operationsMap, Collections.emptyList());
 
-        Assert.assertEquals(postProcessed.get("includeUuid"), true);
+        assertEquals(postProcessed.get("includeUuid"), true);
     }
 
     @DataProvider(name = "recursive-lists-of-datetime")
@@ -84,7 +84,7 @@ public class ElmClientCodegenTest {
 
         OperationsMap postProcessed = codegen.postProcessOperationsWithModels(operationsMap, Collections.emptyList());
 
-        Assert.assertEquals(postProcessed.get("includeTime"), true);
+        assertEquals(postProcessed.get("includeTime"), true);
     }
 
     // HELPERS

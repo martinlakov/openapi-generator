@@ -22,8 +22,8 @@ import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.JavaClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.io.IOException;
@@ -56,7 +56,7 @@ public class ApacheHttpClientCodegenTest {
         DefaultGenerator generator = new DefaultGenerator();
         List<File> files = generator.opts(clientOptInput).generate();
 
-        Assert.assertEquals(files.size(), 42);
+        assertEquals(files.size(), 42);
         validateJavaSourceFiles(files);
 
         TestUtils.assertFileContains(Paths.get(output + "/src/main/java/xyz/abcdef/api/DefaultApi.java"),

@@ -25,10 +25,12 @@ import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.ProtobufSchemaCodegen;
 import org.openapitools.codegen.meta.FeatureSet;
 import org.openapitools.codegen.meta.features.WireFormatFeature;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,8 +47,8 @@ public class ProtobufSchemaCodegenTest {
         final ProtobufSchemaCodegen codegen = new ProtobufSchemaCodegen();
         FeatureSet featureSet = codegen.getGeneratorMetadata().getFeatureSet();
 
-        Assert.assertTrue(featureSet.getWireFormatFeatures().contains(WireFormatFeature.PROTOBUF));
-        Assert.assertEquals(featureSet.getWireFormatFeatures().size(), 1);
+        assertTrue(featureSet.getWireFormatFeatures().contains(WireFormatFeature.PROTOBUF));
+        assertEquals(featureSet.getWireFormatFeatures().size(), 1);
     }
 
     @Test
@@ -89,8 +91,8 @@ public class ProtobufSchemaCodegenTest {
 
         codegen.setOpenAPI(openAPI);
         final CodegenModel simpleName = codegen.fromModel("$DollarModel$", openAPI.getComponents().getSchemas().get("$DollarModel$"));
-        Assert.assertEquals(simpleName.name, "$DollarModel$");
-        Assert.assertEquals(simpleName.classname, "DollarModel");
-        Assert.assertEquals(simpleName.classVarName, "$DollarModel$");
+        assertEquals(simpleName.name, "$DollarModel$");
+        assertEquals(simpleName.classname, "DollarModel");
+        assertEquals(simpleName.classVarName, "$DollarModel$");
     }
 }

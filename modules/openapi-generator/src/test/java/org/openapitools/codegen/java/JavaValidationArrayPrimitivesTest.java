@@ -25,7 +25,7 @@ import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.java.assertions.JavaFileAssert;
 import org.openapitools.codegen.languages.*;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;

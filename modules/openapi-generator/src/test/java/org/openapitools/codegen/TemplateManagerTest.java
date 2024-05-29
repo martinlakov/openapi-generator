@@ -4,7 +4,7 @@ import org.openapitools.codegen.api.TemplatePathLocator;
 import org.openapitools.codegen.templating.HandlebarsEngineAdapter;
 import org.openapitools.codegen.templating.MustacheEngineAdapter;
 import org.openapitools.codegen.templating.TemplateManagerOptions;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +17,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class TemplateManagerTest {

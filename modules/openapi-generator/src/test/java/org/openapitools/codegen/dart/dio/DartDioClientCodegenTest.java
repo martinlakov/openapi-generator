@@ -23,8 +23,8 @@ import org.openapitools.codegen.Generator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.DartDioClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -46,8 +46,8 @@ public class DartDioClientCodegenTest {
         final DartDioClientCodegen codegen = new DartDioClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertTrue(codegen.isHideGenerationTimestamp());
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertTrue(codegen.isHideGenerationTimestamp());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class DartDioClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
     }
 
@@ -75,7 +75,7 @@ public class DartDioClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.HIDE_GENERATION_TIMESTAMP, false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
     }
 
@@ -93,11 +93,11 @@ public class DartDioClientCodegenTest {
             Assert.fail(errorString, e);
         }
 
-        Assert.assertTrue(reservedWordsList.size() > 20);
-        Assert.assertEquals(codegen.reservedWords().size(), reservedWordsList.size());
+        assertTrue(reservedWordsList.size() > 20);
+        assertEquals(codegen.reservedWords().size(), reservedWordsList.size());
         for(String keyword : reservedWordsList) {
             // reserved words are stored in lowercase
-            Assert.assertTrue(codegen.reservedWords().contains(keyword.toLowerCase(Locale.ROOT)), String.format(Locale.ROOT, "%s, part of %s, was not found in %s", keyword, reservedWordsList, codegen.reservedWords().toString()));
+            assertTrue(codegen.reservedWords().contains(keyword.toLowerCase(Locale.ROOT)), String.format(Locale.ROOT, "%s, part of %s, was not found in %s", keyword, reservedWordsList, codegen.reservedWords().toString()));
         }
     }
 

@@ -21,7 +21,7 @@ import org.openapitools.codegen.CodegenConfig;
 import org.openapitools.codegen.languages.TypeScriptNestjsClientCodegen;
 import org.openapitools.codegen.options.TypeScriptNestjsClientOptionsProvider;
 import org.openapitools.codegen.typescript.TypeScriptGroups;
-import org.testng.annotations.Test;
+
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

@@ -8,7 +8,7 @@ import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.languages.AbstractKotlinCodegen;
 import org.openapitools.codegen.languages.KotlinClientCodegen;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;

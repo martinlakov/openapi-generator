@@ -46,9 +46,9 @@ import org.openapitools.codegen.templating.mustache.*;
 import org.openapitools.codegen.utils.ModelUtils;
 import org.openapitools.codegen.utils.SemVer;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
+
 import org.testng.annotations.Ignore;
-import org.testng.annotations.Test;
+
 import org.junit.jupiter.api.Assertions;
 
 
@@ -59,7 +59,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DefaultCodegenTest {
 

@@ -17,8 +17,8 @@
 package org.openapitools.codegen;
 
 import org.openapitools.codegen.config.CodegenConfigurator;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class AllGeneratorsTest {
 
             // Main intention of this test is to check that nothing crashes. Besides, we check here that
             // at least 1 file is generated, besides the common ".openapi-generator-ignore", "FILES" and "VERSION" files.
-            Assert.assertTrue(files.size() >= 4);
+            assertTrue(files.size() >= 4);
         }
     }
 

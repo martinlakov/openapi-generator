@@ -7,6 +7,8 @@ import io.swagger.v3.oas.models.media.MapSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.parser.core.models.ParseOptions;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.openapitools.codegen.ClientOptInput;
 import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.CodegenOperation;
@@ -16,12 +18,9 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.java.assertions.JavaFileAssert;
 import org.openapitools.codegen.languages.JavaResteasyServerCodegen;
 import org.openapitools.codegen.languages.features.CXFServerFeatures;
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import org.junit.jupiter.api.BeforeAll;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -33,12 +32,13 @@ import com.google.common.collect.ImmutableMap;
 
 public class JavaJaxrsResteasyServerCodegenModelTest extends JavaJaxrsBaseTest {
 
-    @BeforeMethod
-    public void beforeMethod() {
+    @BeforeAll
+    static public void beforeMethod() {
         codegen = new JavaResteasyServerCodegen();
     }
 
-    @Test(description = "convert a simple java model with java8 types")
+    @Test
+    @DisplayName("convert a simple java model with java8 types")
     public void mapModelTest() {
         final Schema model = new Schema()
                 .description("A model with a map")
@@ -52,7 +52,8 @@ public class JavaJaxrsResteasyServerCodegenModelTest extends JavaJaxrsBaseTest {
         assertTrue(cm.imports.contains("HashMap"));
     }
 
-    @Test(description = "remove suffix for int64, float and double types")
+    @Test
+    @DisplayName("remove suffix for int64, float and double types")
     public void testDefaultValuesFixed() {
         // we had an issue where int64, float, and double values were having single character string suffixes
         // included in their defaultValues
@@ -71,9 +72,9 @@ public class JavaJaxrsResteasyServerCodegenModelTest extends JavaJaxrsBaseTest {
         CodegenParameter int64Param = co.queryParams.get(0);
         CodegenParameter floatParam = co.queryParams.get(1);
         CodegenParameter doubleParam = co.queryParams.get(2);
-        Assert.assertEquals(int64Param.defaultValue, int64Val);
-        Assert.assertEquals(floatParam.defaultValue, floatVal);
-        Assert.assertEquals(doubleParam.defaultValue, doubleVal);
+        assertEquals(int64Param.defaultValue, int64Val);
+        assertEquals(floatParam.defaultValue, floatVal);
+        assertEquals(doubleParam.defaultValue, doubleVal);
     }
 
     @Test

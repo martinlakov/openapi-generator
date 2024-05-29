@@ -19,8 +19,8 @@ package org.openapitools.codegen.objc;
 
 import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.languages.ObjcClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class ObjcClientCodegenTest {
 
@@ -29,8 +29,8 @@ public class ObjcClientCodegenTest {
         final ObjcClientCodegen codegen = new ObjcClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
     }
 
     @Test
@@ -39,8 +39,8 @@ public class ObjcClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test
@@ -49,8 +49,8 @@ public class ObjcClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.HIDE_GENERATION_TIMESTAMP, false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
 }

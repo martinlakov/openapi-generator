@@ -19,8 +19,8 @@ package org.openapitools.codegen.eiffel;
 
 import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.languages.EiffelClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class EiffelClientCodegenTest {
 
@@ -29,8 +29,8 @@ public class EiffelClientCodegenTest {
         final EiffelClientCodegen codegen = new EiffelClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertTrue(codegen.isHideGenerationTimestamp());
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertTrue(codegen.isHideGenerationTimestamp());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class EiffelClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
     }
 
@@ -49,7 +49,7 @@ public class EiffelClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.HIDE_GENERATION_TIMESTAMP, false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
     }
 

@@ -32,8 +32,8 @@ import org.openapitools.codegen.languages.features.LoggingTestFeatures;
 import org.openapitools.codegen.languages.features.UseGenericResponseFeatures;
 import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.io.IOException;
@@ -71,18 +71,18 @@ public class JavaCXFClientCodegenTest {
         objs.setImports(Collections.emptyList());
         codegen.postProcessOperationsWithModels(objs, Collections.emptyList());
 
-        Assert.assertEquals(co.responses.size(), 2);
+        assertEquals(co.responses.size(), 2);
         CodegenResponse cr1 = co.responses.get(0);
-        Assert.assertEquals(cr1.code, "200");
-        Assert.assertEquals(cr1.baseType, "Pet");
-        Assert.assertEquals(cr1.dataType, "List<Pet>");
+        assertEquals(cr1.code, "200");
+        assertEquals(cr1.baseType, "Pet");
+        assertEquals(cr1.dataType, "List<Pet>");
         Assert.assertFalse(cr1.vendorExtensions.containsKey("x-java-is-response-void"));
 
         CodegenResponse cr2 = co.responses.get(1);
-        Assert.assertEquals(cr2.code, "400");
-        Assert.assertEquals(cr2.baseType, "Void");
-        Assert.assertEquals(cr2.dataType, "void");
-        Assert.assertEquals(cr2.vendorExtensions.get("x-java-is-response-void"), Boolean.TRUE);
+        assertEquals(cr2.code, "400");
+        assertEquals(cr2.baseType, "Void");
+        assertEquals(cr2.dataType, "void");
+        assertEquals(cr2.vendorExtensions.get("x-java-is-response-void"), Boolean.TRUE);
     }
 
     @Test
@@ -90,15 +90,15 @@ public class JavaCXFClientCodegenTest {
         final JavaCXFClientCodegen codegen = new JavaCXFClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
 
-        Assert.assertEquals(codegen.modelPackage(), "org.openapitools.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
-        Assert.assertEquals(codegen.apiPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.modelPackage(), "org.openapitools.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
+        assertEquals(codegen.apiPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.getInvokerPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.api");
     }
 
     @Test
@@ -108,14 +108,14 @@ public class JavaCXFClientCodegenTest {
         codegen.setInvokerPackage("org.openapitools.client.xyz.invoker");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertTrue(codegen.isHideGenerationTimestamp());
-        Assert.assertEquals(codegen.modelPackage(), "org.openapitools.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
-        Assert.assertEquals(codegen.apiPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "org.openapitools.client.xyz.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.client.xyz.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertTrue(codegen.isHideGenerationTimestamp());
+        assertEquals(codegen.modelPackage(), "org.openapitools.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
+        assertEquals(codegen.apiPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.getInvokerPackage(), "org.openapitools.client.xyz.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.client.xyz.invoker");
     }
 
     @Test
@@ -125,14 +125,14 @@ public class JavaCXFClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.INVOKER_PACKAGE,"org.openapitools.client.xyz.invoker");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
-        Assert.assertEquals(codegen.modelPackage(), "org.openapitools.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
-        Assert.assertEquals(codegen.apiPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "org.openapitools.client.xyz.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.client.xyz.invoker");
+        assertEquals(codegen.modelPackage(), "org.openapitools.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
+        assertEquals(codegen.apiPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.getInvokerPackage(), "org.openapitools.client.xyz.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.client.xyz.invoker");
     }
 
     @Test
@@ -145,8 +145,8 @@ public class JavaCXFClientCodegenTest {
 
         codegen.additionalProperties().put(BeanValidationFeatures.USE_BEANVALIDATION, true);
         codegen.processOpts();
-        Assert.assertEquals(codegen.additionalProperties().get(BeanValidationFeatures.USE_BEANVALIDATION), Boolean.TRUE);
-        Assert.assertTrue(codegen.isUseBeanValidation());
+        assertEquals(codegen.additionalProperties().get(BeanValidationFeatures.USE_BEANVALIDATION), Boolean.TRUE);
+        assertTrue(codegen.isUseBeanValidation());
     }
 
     @Test
@@ -159,8 +159,8 @@ public class JavaCXFClientCodegenTest {
 
         codegen.additionalProperties().put(UseGenericResponseFeatures.USE_GENERIC_RESPONSE, true);
         codegen.processOpts();
-        Assert.assertEquals(codegen.additionalProperties().get(UseGenericResponseFeatures.USE_GENERIC_RESPONSE), Boolean.TRUE);
-        Assert.assertTrue(codegen.isUseGenericResponse());
+        assertEquals(codegen.additionalProperties().get(UseGenericResponseFeatures.USE_GENERIC_RESPONSE), Boolean.TRUE);
+        assertTrue(codegen.isUseGenericResponse());
     }
 
     @Test
@@ -173,8 +173,8 @@ public class JavaCXFClientCodegenTest {
 
         codegen.additionalProperties().put(LoggingTestFeatures.USE_LOGGING_FEATURE_FOR_TESTS, true);
         codegen.processOpts();
-        Assert.assertEquals(codegen.additionalProperties().get(LoggingTestFeatures.USE_LOGGING_FEATURE_FOR_TESTS), Boolean.TRUE);
-        Assert.assertTrue(codegen.isUseLoggingFeatureForTests());
+        assertEquals(codegen.additionalProperties().get(LoggingTestFeatures.USE_LOGGING_FEATURE_FOR_TESTS), Boolean.TRUE);
+        assertTrue(codegen.isUseLoggingFeatureForTests());
     }
 
     @Test
@@ -187,8 +187,8 @@ public class JavaCXFClientCodegenTest {
 
         codegen.additionalProperties().put(GzipTestFeatures.USE_GZIP_FEATURE_FOR_TESTS, true);
         codegen.processOpts();
-        Assert.assertEquals(codegen.additionalProperties().get(GzipTestFeatures.USE_GZIP_FEATURE_FOR_TESTS), Boolean.TRUE);
-        Assert.assertTrue(codegen.isUseGzipFeatureForTests());
+        assertEquals(codegen.additionalProperties().get(GzipTestFeatures.USE_GZIP_FEATURE_FOR_TESTS), Boolean.TRUE);
+        assertTrue(codegen.isUseGzipFeatureForTests());
     }
 
     @Test
@@ -197,11 +197,11 @@ public class JavaCXFClientCodegenTest {
 
         codegen.processOpts();
         Assert.assertNotNull(codegen.additionalProperties().get(AbstractJavaCodegen.OPENAPI_NULLABLE));
-        Assert.assertTrue(codegen.isOpenApiNullable());
+        assertTrue(codegen.isOpenApiNullable());
 
         codegen.additionalProperties().put(AbstractJavaCodegen.OPENAPI_NULLABLE, false);
         codegen.processOpts();
-        Assert.assertEquals(codegen.additionalProperties().get(AbstractJavaCodegen.OPENAPI_NULLABLE), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(AbstractJavaCodegen.OPENAPI_NULLABLE), Boolean.FALSE);
         Assert.assertFalse(codegen.isOpenApiNullable());
     }
 
@@ -218,9 +218,9 @@ public class JavaCXFClientCodegenTest {
         codegenProperty.isNullable = true;
 
         codegen.postProcessModelProperty(codegenModel, codegenProperty);
-        Assert.assertTrue(codegenModel.imports.contains("JsonNullable"));
-        Assert.assertTrue(codegenModel.imports.contains("JsonIgnore"));
-        Assert.assertEquals(codegenProperty.getVendorExtensions().get("x-is-jackson-optional-nullable"), Boolean.TRUE);
+        assertTrue(codegenModel.imports.contains("JsonNullable"));
+        assertTrue(codegenModel.imports.contains("JsonIgnore"));
+        assertEquals(codegenProperty.getVendorExtensions().get("x-is-jackson-optional-nullable"), Boolean.TRUE);
     }
 
     @Test
@@ -290,7 +290,7 @@ public class JavaCXFClientCodegenTest {
         codegenProperty.isNullable = true;
 
         codegen.postProcessModelProperty(codegenModel, codegenProperty);
-        Assert.assertTrue(codegenModel.imports.contains("JsonNullable"));
+        assertTrue(codegenModel.imports.contains("JsonNullable"));
         Assert.assertFalse(codegenModel.imports.contains("JsonIgnore"));
         Assert.assertNull(codegenProperty.getVendorExtensions().get("x-is-jackson-optional-nullable"));
     }
@@ -305,8 +305,8 @@ public class JavaCXFClientCodegenTest {
 
         codegen.additionalProperties().put(AbstractJavaCodegen.JACKSON, true);
         codegen.processOpts();
-        Assert.assertEquals(codegen.additionalProperties().get(AbstractJavaCodegen.JACKSON), Boolean.TRUE);
-        Assert.assertTrue(codegen.isUseJackson());
+        assertEquals(codegen.additionalProperties().get(AbstractJavaCodegen.JACKSON), Boolean.TRUE);
+        assertTrue(codegen.isUseJackson());
     }
 
     @Test

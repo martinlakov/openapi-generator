@@ -20,8 +20,8 @@ package org.openapitools.codegen.rust;
 import io.swagger.v3.oas.models.media.IntegerSchema;
 import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.languages.RustClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.math.BigDecimal;
 
@@ -32,13 +32,13 @@ public class RustClientCodegenTest {
         final RustClientCodegen codegen = new RustClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertTrue(codegen.isHideGenerationTimestamp());
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertTrue(codegen.isHideGenerationTimestamp());
 
-        Assert.assertEquals(codegen.additionalProperties().get(RustClientCodegen.PREFER_UNSIGNED_INT), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(RustClientCodegen.PREFER_UNSIGNED_INT), Boolean.FALSE);
         Assert.assertFalse(codegen.getPreferUnsignedInt());
 
-        Assert.assertEquals(codegen.additionalProperties().get(RustClientCodegen.BEST_FIT_INT), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(RustClientCodegen.BEST_FIT_INT), Boolean.FALSE);
         Assert.assertFalse(codegen.getBestFitInt());
     }
 
@@ -51,17 +51,17 @@ public class RustClientCodegenTest {
         codegen.setAvoidBoxedModels(true);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
 
-        Assert.assertEquals(codegen.additionalProperties().get(RustClientCodegen.PREFER_UNSIGNED_INT), Boolean.TRUE);
-        Assert.assertTrue(codegen.getPreferUnsignedInt());
+        assertEquals(codegen.additionalProperties().get(RustClientCodegen.PREFER_UNSIGNED_INT), Boolean.TRUE);
+        assertTrue(codegen.getPreferUnsignedInt());
 
-        Assert.assertEquals(codegen.additionalProperties().get(RustClientCodegen.BEST_FIT_INT), Boolean.TRUE);
-        Assert.assertTrue(codegen.getBestFitInt());
+        assertEquals(codegen.additionalProperties().get(RustClientCodegen.BEST_FIT_INT), Boolean.TRUE);
+        assertTrue(codegen.getBestFitInt());
 
-        Assert.assertEquals(codegen.additionalProperties().get(RustClientCodegen.AVOID_BOXED_MODELS), Boolean.TRUE);
-        Assert.assertTrue(codegen.getAvoidBoxedModels());
+        assertEquals(codegen.additionalProperties().get(RustClientCodegen.AVOID_BOXED_MODELS), Boolean.TRUE);
+        assertTrue(codegen.getAvoidBoxedModels());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class RustClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.HIDE_GENERATION_TIMESTAMP, false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
     }
 
@@ -78,7 +78,7 @@ public class RustClientCodegenTest {
     public void testLowercaseParameterName() throws Exception {
         final RustClientCodegen codegen = new RustClientCodegen();
 
-        Assert.assertEquals(codegen.toParamName("TESTING"), "testing");
+        assertEquals(codegen.toParamName("TESTING"), "testing");
     }
 
     @Test
@@ -93,25 +93,25 @@ public class RustClientCodegenTest {
         s.setMaximum(BigDecimal.valueOf(1));
 
         s.setFormat("int32");
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setFormat("int64");
-        Assert.assertEquals(codegen.getSchemaType(s), "i64");
+        assertEquals(codegen.getSchemaType(s), "i64");
 
         // Clear format - should use default of i32
         s.setFormat(null);
 
         s.setMaximum(BigDecimal.valueOf(Byte.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setMaximum(BigDecimal.valueOf(Short.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setMaximum(BigDecimal.valueOf(Integer.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setMaximum(BigDecimal.valueOf(Long.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
     }
 
     @Test
@@ -123,7 +123,7 @@ public class RustClientCodegenTest {
         codegen.processOpts();
 
         // No bounds
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         // Set Bounds
         s.setMinimum(BigDecimal.valueOf(0));
@@ -131,26 +131,26 @@ public class RustClientCodegenTest {
 
         // Should respect hardcoded format
         s.setFormat("int32");
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         // Should respect hardcoded format
         s.setFormat("int64");
-        Assert.assertEquals(codegen.getSchemaType(s), "i64");
+        assertEquals(codegen.getSchemaType(s), "i64");
 
         // No format - use best fitting
         s.setFormat(null);
 
         s.setMaximum(BigDecimal.valueOf(Byte.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i8");
+        assertEquals(codegen.getSchemaType(s), "i8");
 
         s.setMaximum(BigDecimal.valueOf(Short.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i16");
+        assertEquals(codegen.getSchemaType(s), "i16");
 
         s.setMaximum(BigDecimal.valueOf(Integer.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setMaximum(BigDecimal.valueOf(Long.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i64");
+        assertEquals(codegen.getSchemaType(s), "i64");
     }
 
     @Test
@@ -166,30 +166,30 @@ public class RustClientCodegenTest {
 
         // No integer fitting, but prefer unsigned
         s.setMaximum(BigDecimal.valueOf(Byte.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "u32");
+        assertEquals(codegen.getSchemaType(s), "u32");
 
         s.setMaximum(BigDecimal.valueOf(Long.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "u32");
+        assertEquals(codegen.getSchemaType(s), "u32");
 
         // Should respect hardcoded 32-bits, but prefer unsigned
         s.setFormat("int32");
-        Assert.assertEquals(codegen.getSchemaType(s), "u32");
+        assertEquals(codegen.getSchemaType(s), "u32");
 
         // Should respect hardcoded 64-bits, but prefer unsigned
         s.setFormat("int64");
-        Assert.assertEquals(codegen.getSchemaType(s), "u64");
+        assertEquals(codegen.getSchemaType(s), "u64");
 
         // Unknown minimum - should not use unsigned
         s.setMinimum(null);
 
         s.setFormat(null);
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setFormat("int32");
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setFormat("int64");
-        Assert.assertEquals(codegen.getSchemaType(s), "i64");
+        assertEquals(codegen.getSchemaType(s), "i64");
     }
 
     @Test
@@ -206,41 +206,41 @@ public class RustClientCodegenTest {
 
         // Should respect hardcoded 32-bits, but prefer unsigned
         s.setFormat("int32");
-        Assert.assertEquals(codegen.getSchemaType(s), "u32");
+        assertEquals(codegen.getSchemaType(s), "u32");
 
         // Should respect hardcoded 64-bits, but prefer unsigned
         s.setFormat("int64");
-        Assert.assertEquals(codegen.getSchemaType(s), "u64");
+        assertEquals(codegen.getSchemaType(s), "u64");
 
         // No format - use best fitting
         s.setFormat(null);
 
         s.setMaximum(BigDecimal.valueOf(Byte.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "u8");
+        assertEquals(codegen.getSchemaType(s), "u8");
 
         s.setMaximum(BigDecimal.valueOf(Short.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "u16");
+        assertEquals(codegen.getSchemaType(s), "u16");
 
         s.setMaximum(BigDecimal.valueOf(Integer.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "u32");
+        assertEquals(codegen.getSchemaType(s), "u32");
 
         s.setMaximum(BigDecimal.valueOf(Long.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "u64");
+        assertEquals(codegen.getSchemaType(s), "u64");
 
         // Unknown minimum - unable to use unsigned
         s.setMinimum(null);
 
         s.setMaximum(BigDecimal.valueOf(Integer.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setMaximum(BigDecimal.valueOf(Long.MAX_VALUE));
-        Assert.assertEquals(codegen.getSchemaType(s), "i64");
+        assertEquals(codegen.getSchemaType(s), "i64");
 
         s.setFormat("int32");
-        Assert.assertEquals(codegen.getSchemaType(s), "i32");
+        assertEquals(codegen.getSchemaType(s), "i32");
 
         s.setFormat("int64");
-        Assert.assertEquals(codegen.getSchemaType(s), "i64");
+        assertEquals(codegen.getSchemaType(s), "i64");
     }
 
 }

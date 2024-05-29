@@ -22,7 +22,7 @@ import org.openapitools.codegen.CodegenConfig;
 import org.openapitools.codegen.languages.TypeScriptAureliaClientCodegen;
 import org.openapitools.codegen.options.TypeScriptAureliaClientOptionsProvider;
 import org.openapitools.codegen.typescript.TypeScriptGroups;
-import org.testng.annotations.Test;
+
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

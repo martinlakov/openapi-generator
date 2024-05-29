@@ -25,9 +25,11 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.AbstractCSharpCodegen;
 import org.openapitools.codegen.languages.AspNetServerCodegen;
 import org.openapitools.codegen.languages.CSharpClientCodegen;
-import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CSharpOperationTest {
 

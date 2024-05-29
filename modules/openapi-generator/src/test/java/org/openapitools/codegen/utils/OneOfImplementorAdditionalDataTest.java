@@ -3,8 +3,8 @@ package org.openapitools.codegen.utils;
 import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.languages.GoClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,8 +51,8 @@ public class OneOfImplementorAdditionalDataTest {
         o.addToImplementor(cc, implModel, implModelImports, false);
 
         // make sure all the additions were done correctly
-        Assert.assertEquals(implModel.getVendorExtensions().get("x-implements"), new ArrayList<String>(){{add(oneOfModel.classname);}});
-        Assert.assertEquals(implModelImports, interfaceModelImports);
-        Assert.assertEquals(implModel.vars, new ArrayList<CodegenProperty>(){{add(cp3); add(cp1);}});
+        assertEquals(implModel.getVendorExtensions().get("x-implements"), new ArrayList<String>(){{add(oneOfModel.classname);}});
+        assertEquals(implModelImports, interfaceModelImports);
+        assertEquals(implModel.vars, new ArrayList<CodegenProperty>(){{add(cp3); add(cp1);}});
     }
 }

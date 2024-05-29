@@ -21,15 +21,15 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.apache.commons.io.FileUtils;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.CrystalClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.assertTrue;
 import static org.testng.Assert.fail;
 
 /**
@@ -70,13 +70,13 @@ public class CrystalClientCodegenTest {
         final CrystalClientCodegen codegen = new CrystalClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP),
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP),
                 Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
-        Assert.assertEquals(codegen.modelPackage(), "models");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), null);
-        Assert.assertEquals(codegen.apiPackage(), "api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), null);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.modelPackage(), "models");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), null);
+        assertEquals(codegen.apiPackage(), "api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), null);
     }
 
     @Test
@@ -85,9 +85,9 @@ public class CrystalClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP),
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP),
                 Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test
@@ -98,11 +98,11 @@ public class CrystalClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.API_PACKAGE, "crystal-api");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP),
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP),
                 Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "crystal-models");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "crystal-api");
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "crystal-models");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "crystal-api");
     }
 
     @Test
@@ -139,8 +139,8 @@ public class CrystalClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.sanitizeModelName("JSON::Any"), "JSON::Any");
+        assertEquals(codegen.sanitizeModelName("JSON::Any"), "JSON::Any");
         // Disallows single colons
-        Assert.assertEquals(codegen.sanitizeModelName("JSON:Any"), "JSONAny");
+        assertEquals(codegen.sanitizeModelName("JSON:Any"), "JSONAny");
     }
 }

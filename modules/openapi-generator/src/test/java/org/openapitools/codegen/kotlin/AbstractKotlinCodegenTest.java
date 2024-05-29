@@ -12,8 +12,8 @@ import org.openapitools.codegen.CodegenType;
 import org.openapitools.codegen.DefaultCodegen;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.AbstractKotlinCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,7 +25,9 @@ import java.util.stream.Collectors;
 
 import static org.openapitools.codegen.CodegenConstants.ENUM_PROPERTY_NAMING_TYPE.*;
 import static org.openapitools.codegen.TestUtils.createCodegenModelWrapper;
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AbstractKotlinCodegenTest {
 
@@ -170,7 +172,7 @@ public class AbstractKotlinCodegenTest {
         codegen.setOutputDir("/User/open/api/tools");
         codegen.setSourceFolder("src/folder");
         codegen.setApiPackage("org.openapitools.codegen.api");
-        Assert.assertEquals(codegen.apiFileFolder(), "/User/open/api/tools/src/folder/org/openapitools/codegen/api".replace('/', File.separatorChar));
+        assertEquals(codegen.apiFileFolder(), "/User/open/api/tools/src/folder/org/openapitools/codegen/api".replace('/', File.separatorChar));
     }
 
     @Test
@@ -178,21 +180,21 @@ public class AbstractKotlinCodegenTest {
         codegen.setOutputDir("/User/open/api/tools");
         codegen.setTestFolder("test/folder");
         codegen.setApiPackage("org.openapitools.codegen.api");
-        Assert.assertEquals(codegen.apiTestFileFolder(), "/User/open/api/tools/test/folder/org/openapitools/codegen/api".replace('/', File.separatorChar));
+        assertEquals(codegen.apiTestFileFolder(), "/User/open/api/tools/test/folder/org/openapitools/codegen/api".replace('/', File.separatorChar));
     }
 
     @Test
     public void processOptsBooleanTrueFromString() {
         codegen.additionalProperties().put(CodegenConstants.SERIALIZABLE_MODEL, "true");
         codegen.processOpts();
-        Assert.assertTrue((boolean) codegen.additionalProperties().get(CodegenConstants.SERIALIZABLE_MODEL));
+        assertTrue((boolean) codegen.additionalProperties().get(CodegenConstants.SERIALIZABLE_MODEL));
     }
 
     @Test
     public void processOptsBooleanTrueFromBoolean() {
         codegen.additionalProperties().put(CodegenConstants.SERIALIZABLE_MODEL, true);
         codegen.processOpts();
-        Assert.assertTrue((boolean) codegen.additionalProperties().get(CodegenConstants.SERIALIZABLE_MODEL));
+        assertTrue((boolean) codegen.additionalProperties().get(CodegenConstants.SERIALIZABLE_MODEL));
     }
 
     @Test
@@ -249,16 +251,16 @@ public class AbstractKotlinCodegenTest {
         Map<String, CodegenProperty> allVarsMap = pm.allVars.stream()
                 .collect(Collectors.toMap(CodegenProperty::getBaseName, Function.identity()));
         for (CodegenProperty p : pm.requiredVars) {
-            Assert.assertEquals(allVarsMap.get(p.baseName).isInherited, p.isInherited);
+            assertEquals(allVarsMap.get(p.baseName).isInherited, p.isInherited);
         }
-        Assert.assertEqualsNoOrder(
+        assertEqualsNoOrder(
             pm.requiredVars.stream().map(CodegenProperty::getBaseName).toArray(),
             new String[] {"a", "c"}
         );
         for (CodegenProperty p : pm.optionalVars) {
-            Assert.assertEquals(allVarsMap.get(p.baseName).isInherited, p.isInherited);
+            assertEquals(allVarsMap.get(p.baseName).isInherited, p.isInherited);
         }
-        Assert.assertEqualsNoOrder(
+        assertEqualsNoOrder(
             pm.optionalVars.stream().map(CodegenProperty::getBaseName).toArray(),
             new String[] {"b", "d"}
         );
@@ -274,16 +276,16 @@ public class AbstractKotlinCodegenTest {
         CodegenModel cm1 = codegen.fromModel("ModelWithEnumPropertyHavingDefault", test1);
 
         // Make sure we got the container object.
-        Assert.assertEquals(cm1.getDataType(), "kotlin.Any");
-        Assert.assertEquals(codegen.getTypeDeclaration("MyResponse"), "MyResponse");
+        assertEquals(cm1.getDataType(), "kotlin.Any");
+        assertEquals(codegen.getTypeDeclaration("MyResponse"), "MyResponse");
 
         // We need to postProcess the model for enums to be processed
         codegen.postProcessModels(createCodegenModelWrapper(cm1));
 
         // Assert the enum default value is properly generated
         CodegenProperty cp1 = cm1.vars.get(0);
-        Assert.assertEquals(cp1.getEnumName(), "PropertyName");
-        Assert.assertEquals(cp1.getDefaultValue(), "PropertyName.VALUE");
+        assertEquals(cp1.getEnumName(), "PropertyName");
+        assertEquals(cp1.getDefaultValue(), "PropertyName.VALUE");
     }
 
     @Test(description = "Issue #3804")
@@ -299,14 +301,14 @@ public class AbstractKotlinCodegenTest {
 
         // Assert the enums are generated without changing capitalization
         CodegenProperty cp0 = cm1.vars.get(0);
-        Assert.assertEquals(cp0.getEnumName(), "PropertyName");
-        Assert.assertEquals(((HashMap)((ArrayList) cp0.getAllowableValues().get("enumVars")).get(0)).get("name"), "VALUE");
+        assertEquals(cp0.getEnumName(), "PropertyName");
+        assertEquals(((HashMap)((ArrayList) cp0.getAllowableValues().get("enumVars")).get(0)).get("name"), "VALUE");
         CodegenProperty cp1 = cm1.vars.get(1);
-        Assert.assertEquals(cp1.getEnumName(), "PropertyName2");
-        Assert.assertEquals(((HashMap)((ArrayList) cp1.getAllowableValues().get("enumVars")).get(0)).get("name"), "Value");
+        assertEquals(cp1.getEnumName(), "PropertyName2");
+        assertEquals(((HashMap)((ArrayList) cp1.getAllowableValues().get("enumVars")).get(0)).get("name"), "Value");
         CodegenProperty cp2 = cm1.vars.get(2);
-        Assert.assertEquals(cp2.getEnumName(), "PropertyName3");
-        Assert.assertEquals(((HashMap)((ArrayList) cp2.getAllowableValues().get("enumVars")).get(0)).get("name"), "nonkeywordvalue");
+        assertEquals(cp2.getEnumName(), "PropertyName3");
+        assertEquals(((HashMap)((ArrayList) cp2.getAllowableValues().get("enumVars")).get(0)).get("name"), "nonkeywordvalue");
     }
 
     @Test(description = "Issue #3804")
@@ -322,11 +324,11 @@ public class AbstractKotlinCodegenTest {
 
         // Assert the enum default value is properly generated
         CodegenProperty cp0 = cm1.vars.get(0);
-        Assert.assertEquals(cp0.getDefaultValue(), "PropertyName.VALUE");
+        assertEquals(cp0.getDefaultValue(), "PropertyName.VALUE");
         CodegenProperty cp1 = cm1.vars.get(1);
-        Assert.assertEquals(cp1.getDefaultValue(), "PropertyName2.Value");
+        assertEquals(cp1.getDefaultValue(), "PropertyName2.Value");
         CodegenProperty cp2 = cm1.vars.get(2);
-        Assert.assertEquals(cp2.getDefaultValue(), "PropertyName3.nonkeywordvalue");
+        assertEquals(cp2.getDefaultValue(), "PropertyName3.nonkeywordvalue");
     }
 
     @Test(description = "Issue #3804")
@@ -342,8 +344,8 @@ public class AbstractKotlinCodegenTest {
 
         // Assert the enum default value is properly generated
         CodegenProperty cp3 = cm1.vars.get(3);
-        Assert.assertEquals(cp3.getEnumName(), "PropertyName4");
-        Assert.assertEquals(cp3.getDefaultValue(), "PropertyName4.`value`");
+        assertEquals(cp3.getEnumName(), "PropertyName4");
+        assertEquals(cp3.getDefaultValue(), "PropertyName4.`value`");
     }
 
 
@@ -384,7 +386,7 @@ public class AbstractKotlinCodegenTest {
         // Make sure a real map is still flagged as map
         final CodegenModel mapSchemaModel = codegen
             .fromModel("MapSchema", mapSchema);
-        Assert.assertTrue(mapSchemaModel.isMap);
+        assertTrue(mapSchemaModel.isMap);
     }
 
     @Test

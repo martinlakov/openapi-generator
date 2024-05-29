@@ -4,8 +4,8 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.TypeScriptNestjsClientCodegen;
 import org.openapitools.codegen.typescript.TypeScriptGroups;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 @Test(groups = {TypeScriptGroups.TYPESCRIPT, TypeScriptGroups.TYPESCRIPT_NESTJS})
 public class TypescriptNestjsApiVersionTest {
@@ -20,7 +20,7 @@ public class TypescriptNestjsApiVersionTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertEquals(codegen.getNpmVersion(), "1.0.7");
+        assertEquals(codegen.getNpmVersion(), "1.0.7");
     }
 
     @Test(description = "tests if npmVersion additional property is used")
@@ -34,7 +34,7 @@ public class TypescriptNestjsApiVersionTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertEquals(codegen.getNpmVersion(), "2.0.0");
+        assertEquals(codegen.getNpmVersion(), "2.0.0");
     }
 
     @Test(description = "tests if default version is used when neither OpenAPI version nor npmVersion additional property has been provided")
@@ -48,7 +48,7 @@ public class TypescriptNestjsApiVersionTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertEquals(codegen.getNpmVersion(), "1.0.0");
+        assertEquals(codegen.getNpmVersion(), "1.0.0");
     }
 
 }

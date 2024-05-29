@@ -9,7 +9,7 @@ import org.openapitools.codegen.ClientOptInput;
 import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
-import org.testng.annotations.Test;
+
 
 public class PhpFlightServerCodegenTest {
 

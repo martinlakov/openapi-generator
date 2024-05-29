@@ -5,8 +5,8 @@ import org.openapitools.codegen.languages.XojoClientCodegen;
 import io.swagger.models.*;
 import io.swagger.models.properties.*;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 @SuppressWarnings("static-method")
 public class ModelTest {

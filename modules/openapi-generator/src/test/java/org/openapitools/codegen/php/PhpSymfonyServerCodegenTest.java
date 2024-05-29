@@ -30,8 +30,8 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.AbstractPhpCodegen;
 import org.openapitools.codegen.languages.PhpSymfonyServerCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 
 public class PhpSymfonyServerCodegenTest {
@@ -41,8 +41,8 @@ public class PhpSymfonyServerCodegenTest {
         final PhpSymfonyServerCodegen codegen = new PhpSymfonyServerCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
     }
 
     @Test
@@ -51,8 +51,8 @@ public class PhpSymfonyServerCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test
@@ -61,8 +61,8 @@ public class PhpSymfonyServerCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.HIDE_GENERATION_TIMESTAMP, false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class PhpSymfonyServerCodegenTest {
         DefaultGenerator generator = new DefaultGenerator();
         List<File> files = generator.opts(clientOptInput).generate();
 
-        Assert.assertEquals(files.size(), 33);
+        assertEquals(files.size(), 33);
         TestUtils.ensureContainsFile(files, output, ".coveralls.yml");
         TestUtils.ensureContainsFile(files, output, ".gitignore");
         TestUtils.ensureContainsFile(files, output, ".openapi-generator-ignore");
@@ -136,7 +136,7 @@ public class PhpSymfonyServerCodegenTest {
         DefaultGenerator generator = new DefaultGenerator();
         List<File> files = generator.opts(clientOptInput).generate();
 
-        Assert.assertEquals(files.size(), 33);
+        assertEquals(files.size(), 33);
         TestUtils.ensureContainsFile(files, output, ".coveralls.yml");
         TestUtils.ensureContainsFile(files, output, ".gitignore");
         TestUtils.ensureContainsFile(files, output, ".openapi-generator-ignore");

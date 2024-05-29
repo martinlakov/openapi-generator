@@ -26,8 +26,8 @@ import org.openapitools.codegen.DefaultCodegen;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.AspNetServerCodegen;
 import org.openapitools.codegen.languages.CSharpClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 import org.testng.annotations.DataProvider;
 
 import java.util.Arrays;
@@ -82,18 +82,18 @@ public class CSharpModelEnumTest {
         codegen.setOpenAPI(allModels);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.parent, "ParentModel");
-        Assert.assertTrue(cm.imports.contains("ParentModel"));
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.parent, "ParentModel");
+        assertTrue(cm.imports.contains("ParentModel"));
 
         // Assert that only the unshared/uninherited enum remains
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
         final CodegenProperty enumVar = cm.vars.get(0);
-        Assert.assertEquals(enumVar.baseName, "unsharedThing");
-        Assert.assertEquals(enumVar.datatype, "string");
-        Assert.assertEquals(enumVar.datatypeWithEnum, "UnsharedThingEnum");
-        Assert.assertTrue(enumVar.isEnum);
+        assertEquals(enumVar.baseName, "unsharedThing");
+        assertEquals(enumVar.datatype, "string");
+        assertEquals(enumVar.datatypeWithEnum, "UnsharedThingEnum");
+        assertTrue(enumVar.isEnum);
         */
     }
 
@@ -109,11 +109,11 @@ public class CSharpModelEnumTest {
         final Schema petSchema = openAPI.getComponents().getSchemas().get("Pet");
         final CodegenModel cm = codegen.fromModel("Pet", petSchema);
         final CodegenProperty statusProperty = cm.vars.get(5);
-        Assert.assertEquals(statusProperty.name, "Status");
-        Assert.assertTrue(statusProperty.isEnum);
-        Assert.assertEquals(statusProperty.datatypeWithEnum, "StatusEnumName");
+        assertEquals(statusProperty.name, "Status");
+        assertTrue(statusProperty.isEnum);
+        assertEquals(statusProperty.datatypeWithEnum, "StatusEnumName");
 
-        Assert.assertEquals(codegen.toEnumVarName("Aaaa", ""), "AaaaEnumValue");
+        assertEquals(codegen.toEnumVarName("Aaaa", ""), "AaaaEnumValue");
     }
 
     @Test(description = "use default suffixes for enums")
@@ -126,11 +126,11 @@ public class CSharpModelEnumTest {
         final Schema petSchema = openAPI.getComponents().getSchemas().get("Pet");
         final CodegenModel cm = codegen.fromModel("Pet", petSchema);
         final CodegenProperty statusProperty = cm.vars.get(5);
-        Assert.assertEquals(statusProperty.name, "Status");
-        Assert.assertTrue(statusProperty.isEnum);
-        Assert.assertEquals(statusProperty.datatypeWithEnum, "StatusEnum");
+        assertEquals(statusProperty.name, "Status");
+        assertTrue(statusProperty.isEnum);
+        assertEquals(statusProperty.datatypeWithEnum, "StatusEnum");
 
-        Assert.assertEquals(codegen.toEnumVarName("Aaaa", ""), "AaaaEnum");
+        assertEquals(codegen.toEnumVarName("Aaaa", ""), "AaaaEnum");
     }
 
     @Test(description = "support empty suffixes for enums")
@@ -145,11 +145,11 @@ public class CSharpModelEnumTest {
         final Schema petSchema = openAPI.getComponents().getSchemas().get("Pet");
         final CodegenModel cm = codegen.fromModel("Pet", petSchema);
         final CodegenProperty statusProperty = cm.vars.get(5);
-        Assert.assertEquals(statusProperty.name, "Status");
-        Assert.assertTrue(statusProperty.isEnum);
-        Assert.assertEquals(statusProperty.datatypeWithEnum, "Status");
+        assertEquals(statusProperty.name, "Status");
+        assertTrue(statusProperty.isEnum);
+        assertEquals(statusProperty.datatypeWithEnum, "Status");
 
-        Assert.assertEquals(codegen.toEnumVarName("Aaaa", ""), "Aaaa");
+        assertEquals(codegen.toEnumVarName("Aaaa", ""), "Aaaa");
     }
 
     @Test(description = "support enum naming style options", dataProvider = "enumVarName")
@@ -158,7 +158,7 @@ public class CSharpModelEnumTest {
         codegen.setEnumPropertyNaming(naming.name());
         codegen.setEnumValueSuffix("");
 
-        Assert.assertEquals(codegen.toEnumVarName(name, "string"), expected);
+        assertEquals(codegen.toEnumVarName(name, "string"), expected);
     }
 
     @DataProvider(name = "enumVarName")

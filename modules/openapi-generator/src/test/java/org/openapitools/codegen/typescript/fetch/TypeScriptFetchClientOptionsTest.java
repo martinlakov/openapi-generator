@@ -22,8 +22,8 @@ import org.openapitools.codegen.CodegenConfig;
 import org.openapitools.codegen.languages.TypeScriptFetchClientCodegen;
 import org.openapitools.codegen.options.TypeScriptFetchClientOptionsProvider;
 import org.openapitools.codegen.typescript.TypeScriptGroups;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

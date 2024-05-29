@@ -4,9 +4,9 @@ import io.swagger.v3.oas.models.OpenAPI;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.validation.Invalid;
 import org.openapitools.codegen.validation.ValidationResult;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,9 +26,9 @@ public class OpenApiSchemaTypeTest {
 
         Assert.assertNotNull(warnings);
         if (matches) {
-            Assert.assertEquals(warnings.size() >= 1, true, "Expected to match recommendation.");
+            assertEquals(warnings.size() >= 1, true, "Expected to match recommendation.");
         } else {
-            Assert.assertEquals(warnings.size(), 0, "Expected not to match recommendation.");
+            assertEquals(warnings.size(), 0, "Expected not to match recommendation.");
         }
     }
 

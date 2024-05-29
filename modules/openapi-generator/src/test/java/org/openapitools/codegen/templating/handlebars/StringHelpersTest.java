@@ -5,12 +5,12 @@ import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.context.FieldValueResolver;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import java.io.IOException;
 import java.util.HashMap;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.assertEquals;
 
 public class StringHelpersTest {
 

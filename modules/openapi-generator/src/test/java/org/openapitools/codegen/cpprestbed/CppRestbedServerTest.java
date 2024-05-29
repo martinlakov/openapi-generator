@@ -5,9 +5,9 @@ import org.openapitools.codegen.CodegenOperation;
 import org.openapitools.codegen.languages.CppRestbedServerCodegen;
 import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,8 +43,8 @@ public class CppRestbedServerTest {
         // Assert
         List<CodegenOperation> processedObjsOperationList = extractOperationsList(processedObjs);
 
-        Assert.assertEquals(processedObjsOperationList.size(), 1);
-        Assert.assertEquals(processedObjsOperationList.get(0).path, expectedPath);
+        assertEquals(processedObjsOperationList.size(), 1);
+        assertEquals(processedObjsOperationList.get(0).path, expectedPath);
     }
 
     private static List<CodegenOperation> extractOperationsList(Map<String, Object> processedObjs) {

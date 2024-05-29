@@ -1,7 +1,7 @@
 package org.openapitools.codegen;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class SpecValidationExceptionTest {
 
@@ -13,6 +13,6 @@ public class SpecValidationExceptionTest {
                 .append(System.lineSeparator()).append("Errors: ")
                 .append(System.lineSeparator()).toString();
 
-        Assert.assertEquals(specValidationException.getMessage(), expectedResult);
+        assertEquals(specValidationException.getMessage(), expectedResult);
     }
 }

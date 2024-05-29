@@ -8,8 +8,8 @@ import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.CppTinyClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 @SuppressWarnings("rawtypes")
 public class CppTinyBaseTest {
@@ -46,11 +46,11 @@ public class CppTinyBaseTest {
         // We can then test, and see if the codegen model have the right data.
         // Assert
         CodegenProperty id_property = model_to_be_generated.vars.get(0);
-        Assert.assertEquals(id_property.dataType, "long");
+        assertEquals(id_property.dataType, "long");
     }
 
     // Make example test of assert that some codegen is generated correctly
-    // Assert.assertEquals(generated_code, "long id = 0;"
+    // assertEquals(generated_code, "long id = 0;"
 
 
 }

@@ -8,9 +8,9 @@ import io.swagger.v3.oas.models.parameters.RequestBody;
 import org.apache.commons.lang3.StringUtils;
 import org.openapitools.codegen.validation.Invalid;
 import org.openapitools.codegen.validation.ValidationResult;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,9 +56,9 @@ public class OpenApiOperationValidationsTest {
 
         Assert.assertNotNull(warnings);
         if (shouldTriggerFailure) {
-            Assert.assertEquals(warnings.size(), 1, "Expected warnings to include recommendation.");
+            assertEquals(warnings.size(), 1, "Expected warnings to include recommendation.");
         } else {
-            Assert.assertEquals(warnings.size(), 0, "Expected warnings not to include recommendation.");
+            assertEquals(warnings.size(), 0, "Expected warnings not to include recommendation.");
         }
     }
 
@@ -85,7 +85,7 @@ public class OpenApiOperationValidationsTest {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(warnings);
-        Assert.assertEquals(warnings.size(), 0, "Expected warnings not to include recommendation.");
+        assertEquals(warnings.size(), 0, "Expected warnings not to include recommendation.");
     }
 
     @Test(dataProvider = "getOrHeadWithBodyExpectations")
@@ -111,6 +111,6 @@ public class OpenApiOperationValidationsTest {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(warnings);
-        Assert.assertEquals(warnings.size(), 0, "Expected warnings not to include recommendation.");
+        assertEquals(warnings.size(), 0, "Expected warnings not to include recommendation.");
     }
 }

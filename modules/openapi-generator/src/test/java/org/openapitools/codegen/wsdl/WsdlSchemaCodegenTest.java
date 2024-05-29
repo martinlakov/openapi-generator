@@ -3,15 +3,12 @@ package org.openapitools.codegen.wsdl;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
 import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.DisplayName;
 import org.openapitools.codegen.ClientOptInput;
 import org.openapitools.codegen.CodegenOperation;
 import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.WsdlSchemaCodegen;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,32 +19,37 @@ import java.util.List;
 import static org.openapitools.codegen.TestUtils.assertFileContains;
 import static org.openapitools.codegen.TestUtils.ensureContainsFile;
 
-public class WsdlSchemaCodegenTest {
-    private OpenAPI openAPI;
-    private File outputDirectory;
-    private String outputPath;
-    private List<File> listOfFiles;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-    @BeforeClass
-    public void setUp() throws IOException {
-        this.openAPI = TestUtils.parseFlattenSpec("src/test/resources/3_0/wsdl/petstore.yaml");
-        this.outputDirectory = Files.createTempDirectory("test").toFile().getCanonicalFile();
-        this.outputPath = this.outputDirectory.getAbsolutePath().replace('\\', '/');
+public class WsdlSchemaCodegenTest {
+    static private OpenAPI openAPI;
+    static private File outputDirectory;
+    static private String outputPath;
+    static private List<File> listOfFiles;
+
+    @BeforeAll
+    static public void setUp() throws IOException {
+        openAPI = TestUtils.parseFlattenSpec("src/test/resources/3_0/wsdl/petstore.yaml");
+        outputDirectory = Files.createTempDirectory("test").toFile().getCanonicalFile();
+        outputPath = outputDirectory.getAbsolutePath().replace('\\', '/');
 
         WsdlSchemaCodegen codegen = new WsdlSchemaCodegen();
-        codegen.setOutputDir(this.outputDirectory.getAbsolutePath());
+        codegen.setOutputDir(outputDirectory.getAbsolutePath());
 
         ClientOptInput input = new ClientOptInput()
-                .openAPI(this.openAPI)
+                .openAPI(openAPI)
                 .config(codegen);
 
         DefaultGenerator generator = new DefaultGenerator();
-        this.listOfFiles = generator.opts(input).generate();
+        listOfFiles = generator.opts(input).generate();
     }
 
-    @Test(description = "ensure that the operationid has been generated correctly")
+    @Test
+    @DisplayName("ensure that the operationid has been generated correctly")
     public void testOperationIdGeneration() {
-        final OpenAPI openAPI = this.openAPI;
         WsdlSchemaCodegen codegen = new WsdlSchemaCodegen();
         codegen.setOpenAPI(openAPI);
 
@@ -61,19 +63,20 @@ public class WsdlSchemaCodegenTest {
         CodegenOperation opPost = codegen.fromOperation(requestPathWithoutId, "post", textOperationPost, null);
         String newOperationIdWithoutId = codegen.generateOperationId(opPost);
 
-        Assert.assertEquals(newOperationIdWithId, "GetStoreOrderByOrderid");
-        Assert.assertEquals(newOperationIdWithoutId, "PostStoreOrder");
+        assertEquals(newOperationIdWithId, "GetStoreOrderByOrderid");
+        assertEquals(newOperationIdWithoutId, "PostStoreOrder");
     }
 
-    @Test(description = "Ensure that passed strings are processed correctly by this method")
+    @Test
+    @DisplayName("Ensure that passed strings are processed correctly by this method")
     public void testLowerCaseStringExceptFirstLetter() {
         WsdlSchemaCodegen codegen = new WsdlSchemaCodegen();
         String value = codegen.lowerCaseStringExceptFirstLetter("uploadPetByPathId");
 
-        Assert.assertEquals(value, "Uploadpetbypathid");
+        assertEquals(value, "Uploadpetbypathid");
     }
 
-    @Test(description = "Check if element tags has been created for an operation ")
+    @DisplayName("Check if element tags has been created for an operation ")
     public void testIfElementTagsExist() {
         String xsElementRequestMessage =
                 "<xs:element name=\"PostPetByPetid_RequestMessage\" type=\"schemas:PostPetByPetid_RequestMessage\" />";
@@ -86,12 +89,12 @@ public class WsdlSchemaCodegenTest {
                         + "   </xs:annotation>\n"
                         + " </xs:element>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), xsElementRequestMessage);
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), xsElementResponseMessage);
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), xsElementErrorResponse);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), xsElementRequestMessage);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), xsElementResponseMessage);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), xsElementErrorResponse);
     }
 
-    @Test(description = "Check if complexType input- and output-message has been created for an operation ")
+    @DisplayName("Check if complexType input- and output-message has been created for an operation ")
     public void testIfInputAndResponseMessageExist() {
         String complexTypeRequestMessage =
                 " <xs:complexType name=\"GetPetByPetid_RequestMessage\">\n"
@@ -115,12 +118,12 @@ public class WsdlSchemaCodegenTest {
                         + "   </xs:sequence>\n"
                         + " </xs:complexType>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), complexTypeRequestMessage);
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), complexTypeResponseMessage);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), complexTypeRequestMessage);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), complexTypeResponseMessage);
     }
 
-    @Test(description =
-            "Check if complexType RequestMessage with minimum and maximum restriction has been created for an operation ")
+    @Test
+    @DisplayName("Check if complexType RequestMessage w/ minimum & maximum restriction's been created for an operation")
     public void testIfRequestMessageMinimumExists() {
         String complexTypeRequestMessageMinimum =
                 " <xs:complexType name=\"GetStoreOrderByOrderid_RequestMessage\">\n"
@@ -139,10 +142,11 @@ public class WsdlSchemaCodegenTest {
                         + "   </xs:sequence>\n"
                         + " </xs:complexType>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), complexTypeRequestMessageMinimum);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), complexTypeRequestMessageMinimum);
     }
 
-    @Test(description = "Check if complexType model has been created for an openapi model schema")
+    @Test
+    @DisplayName("Check if complexType model has been created for an openapi model schema")
     public void testIfComplexTypeModelExists() {
         String complexTypeModel =
                 " <xs:complexType name=\"Pet\">\n"
@@ -160,10 +164,11 @@ public class WsdlSchemaCodegenTest {
                         + "   </xs:sequence>\n"
                         + " </xs:complexType>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), complexTypeModel);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), complexTypeModel);
     }
 
-    @Test(description = "Check if message and part tags has been created for an operation ")
+    @Test
+    @DisplayName("Check if message and part tags has been created for an operation ")
     public void testIfMessageTagsAndContentExist() {
         String messageRequestMessage =
                 " <message name=\"PostPetByPetid_RequestMessage\">\n"
@@ -175,11 +180,12 @@ public class WsdlSchemaCodegenTest {
                         + "   <part name=\"PostPetByPetid_405\" element=\"schemas:PostPetByPetid_405\" />\n"
                         + " </message>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), messageRequestMessage);
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), messageError);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), messageRequestMessage);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), messageError);
     }
 
-    @Test(description = "Check if portType tag and portType operation has been generated")
+    @Test
+    @DisplayName("Check if portType tag and portType operation has been generated")
     public void testIfPortTypeOperationExists() {
         String portType = "<portType name=\"ServiceV1_PortType\">";
 
@@ -198,11 +204,12 @@ public class WsdlSchemaCodegenTest {
                         + "   </fault>\n"
                         + " </operation>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), portType);
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), portTypeOperation);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), portType);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), portTypeOperation);
     }
 
-    @Test(description = "Check if portType tag and portType operation has been generated")
+    @Test
+    @DisplayName("Check if portType tag and portType operation has been generated")
     public void testIfBindingOperationExists() {
         String binding = "<binding name=\"ServiceV1_Binding\" type=\"wsdl:ServiceV1_PortType\">";
 
@@ -223,28 +230,30 @@ public class WsdlSchemaCodegenTest {
                         + "   </fault>\n"
                         + " </operation>\n";
 
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), binding);
-        assertFileContains(Paths.get(this.outputPath + "/service.wsdl"), bindingOperation);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), binding);
+        assertFileContains(Paths.get(outputPath + "/service.wsdl"), bindingOperation);
     }
 
-    @Test(description = "Ensure that all files have been correctly generated")
+    @Test
+    @DisplayName("Ensure that all files have been correctly generated")
     public void testFileGeneration() throws Exception {
-        Assert.assertEquals(this.listOfFiles.size(), 5);
-        ensureContainsFile(this.listOfFiles, this.outputDirectory, ".openapi-generator-ignore");
-        ensureContainsFile(this.listOfFiles, this.outputDirectory, ".openapi-generator/FILES");
-        ensureContainsFile(this.listOfFiles, this.outputDirectory, ".openapi-generator/VERSION");
-        ensureContainsFile(this.listOfFiles, this.outputDirectory, "service.wsdl");
-        ensureContainsFile(this.listOfFiles, this.outputDirectory, "jaxb-customization.xml");
+        assertEquals(listOfFiles.size(), 5);
+        ensureContainsFile(listOfFiles, outputDirectory, ".openapi-generator-ignore");
+        ensureContainsFile(listOfFiles, outputDirectory, ".openapi-generator/FILES");
+        ensureContainsFile(listOfFiles, outputDirectory, ".openapi-generator/VERSION");
+        ensureContainsFile(listOfFiles, outputDirectory, "service.wsdl");
+        ensureContainsFile(listOfFiles, outputDirectory, "jaxb-customization.xml");
     }
 
-    @Test(description = "Ensure that default description is set if it doesn't exist")
+    @Test
+    @DisplayName("Ensure that default description is set if it doesn't exist")
     public void testOpenapiDescriptionWasNotProvided() throws IOException {
         final OpenAPI openAPI = TestUtils.parseFlattenSpec("src/test/resources/3_0/ping.yaml");
         File outputDirectory = Files.createTempDirectory("test").toFile().getCanonicalFile();
-        String outputPath = this.outputDirectory.getAbsolutePath().replace('\\', '/');
+        String outputPath = outputDirectory.getAbsolutePath().replace('\\', '/');
 
         WsdlSchemaCodegen codegen = new WsdlSchemaCodegen();
-        codegen.setOutputDir(this.outputDirectory.getAbsolutePath());
+        codegen.setOutputDir(outputDirectory.getAbsolutePath());
 
         ClientOptInput input = new ClientOptInput().openAPI(openAPI).config(codegen);
 
@@ -257,10 +266,9 @@ public class WsdlSchemaCodegenTest {
         FileUtils.deleteDirectory(outputDirectory);
     }
 
-
-    @AfterClass
-    public void cleanUp() throws Exception {
+    @AfterAll
+    static public void cleanUp() throws Exception {
         // Delete temp folder
-        FileUtils.deleteDirectory(this.outputDirectory);
+        FileUtils.deleteDirectory(outputDirectory);
     }
 }

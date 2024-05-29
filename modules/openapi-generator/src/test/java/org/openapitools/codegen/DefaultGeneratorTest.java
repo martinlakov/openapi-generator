@@ -16,9 +16,9 @@ import org.openapitools.codegen.config.GlobalSettings;
 import org.openapitools.codegen.model.ModelMap;
 import org.openapitools.codegen.model.OperationsMap;
 import org.openapitools.codegen.utils.ModelUtils;
-import org.testng.Assert;
+
 import org.testng.annotations.Ignore;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -69,23 +69,23 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 42);
+            assertEquals(files.size(), 42);
 
             // Check expected generated files
             // api sanity check
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/api/PetApi.java");
-            Assert.assertTrue(new File(output, "src/main/java/org/openapitools/client/api/PetApi.java").exists());
+            assertTrue(new File(output, "src/main/java/org/openapitools/client/api/PetApi.java").exists());
 
             // model sanity check
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/model/Category.java");
-            Assert.assertTrue(new File(output, "src/main/java/org/openapitools/client/model/Category.java").exists());
+            assertTrue(new File(output, "src/main/java/org/openapitools/client/model/Category.java").exists());
 
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/model/ModelApiResponse.java");
-            Assert.assertTrue(new File(output, "src/main/java/org/openapitools/client/model/ModelApiResponse.java").exists());
+            assertTrue(new File(output, "src/main/java/org/openapitools/client/model/ModelApiResponse.java").exists());
 
             // supporting files sanity check
             TestUtils.ensureContainsFile(files, output, "build.gradle");
-            Assert.assertTrue(new File(output, "build.gradle").exists());
+            assertTrue(new File(output, "build.gradle").exists());
 
             TestUtils.ensureDoesNotContainsFile(files, output, "api/openapi.yaml");
             Assert.assertFalse(new File(output, "api").exists());
@@ -157,25 +157,25 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 16);
+            assertEquals(files.size(), 16);
 
             // Check API is written and Test is not
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/api/PetApi.java");
-            Assert.assertTrue(new File(output, "src/main/java/org/openapitools/client/api/PetApi.java").exists());
+            assertTrue(new File(output, "src/main/java/org/openapitools/client/api/PetApi.java").exists());
 
             TestUtils.ensureDoesNotContainsFile(files, output, apiTestRelativePath);
-            Assert.assertTrue(apiTestFile.exists());
+            assertTrue(apiTestFile.exists());
             String apiTestContents = Files.readAllLines(apiTestFile.toPath()).get(0);
-            Assert.assertEquals(apiTestContents, "empty", "Expected test file to retain original contents.");
+            assertEquals(apiTestContents, "empty", "Expected test file to retain original contents.");
 
             // Check Model is written and Test is not
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/model/Category.java");
-            Assert.assertTrue(new File(output, "src/test/java/org/openapitools/client/model/CategoryTest.java").exists());
+            assertTrue(new File(output, "src/test/java/org/openapitools/client/model/CategoryTest.java").exists());
 
             TestUtils.ensureDoesNotContainsFile(files, output, modelTestRelativePath);
-            Assert.assertTrue(modelTestFile.exists());
+            assertTrue(modelTestFile.exists());
             String modelTestContents = Files.readAllLines(modelTestFile.toPath()).get(0);
-            Assert.assertEquals(modelTestContents, "empty", "Expected test file to retain original contents.");
+            assertEquals(modelTestContents, "empty", "Expected test file to retain original contents.");
         } finally {
             output.deleteOnExit();
         }
@@ -205,7 +205,7 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 1);
+            assertEquals(files.size(), 1);
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/api/PingApi.java");
         } finally {
             output.deleteOnExit();
@@ -236,7 +236,7 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 1);
+            assertEquals(files.size(), 1);
             TestUtils.ensureContainsFile(files, output, "src/main/java/org/openapitools/client/model/SomeObj.java");
         } finally {
             output.deleteOnExit();
@@ -275,7 +275,7 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 5);
+            assertEquals(files.size(), 5);
 
             TestUtils.ensureContainsFile(files, output, "pom.xml");
             TestUtils.ensureContainsFile(files, output, ".travis.yml");
@@ -318,23 +318,23 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 5);
+            assertEquals(files.size(), 5);
 
             // Check API is written and Test is not
             TestUtils.ensureContainsFile(files, output, "PingApi.jmx");
-            Assert.assertTrue(new File(output, "PingApi.jmx").exists());
+            assertTrue(new File(output, "PingApi.jmx").exists());
 
             TestUtils.ensureContainsFile(files, output, "PingApi.csv");
-            Assert.assertTrue(new File(output, "PingApi.csv").exists());
+            assertTrue(new File(output, "PingApi.csv").exists());
 
             TestUtils.ensureContainsFile(files, output, ".openapi-generator-ignore");
-            Assert.assertTrue(new File(output, ".openapi-generator-ignore").exists());
+            assertTrue(new File(output, ".openapi-generator-ignore").exists());
 
             TestUtils.ensureContainsFile(files, output, ".openapi-generator/VERSION");
-            Assert.assertTrue(new File(output, ".openapi-generator/VERSION").exists());
+            assertTrue(new File(output, ".openapi-generator/VERSION").exists());
 
             TestUtils.ensureContainsFile(files, output, ".openapi-generator/FILES");
-            Assert.assertTrue(new File(output, ".openapi-generator/FILES").exists());
+            assertTrue(new File(output, ".openapi-generator/FILES").exists());
 
             TestUtils.assertFileContains(java.nio.file.Paths.get(output + "/PingApi.jmx"), "PingApi Test Plan via Handlebars");
             TestUtils.assertFileContains(java.nio.file.Paths.get(output + "/PingApi.csv"),
@@ -361,13 +361,13 @@ public class DefaultGeneratorTest {
         DefaultGenerator generator = new DefaultGenerator();
         generator.opts(opts);
         Map<String, List<CodegenOperation>> result = generator.processPaths(openAPI.getPaths());
-        Assert.assertEquals(result.size(), 1);
+        assertEquals(result.size(), 1);
         List<CodegenOperation> defaultList = result.get("Default");
-        Assert.assertEquals(defaultList.size(), 2);
-        Assert.assertEquals(defaultList.get(0).path, "path1/");
-        Assert.assertEquals(defaultList.get(0).allParams.size(), 0);
-        Assert.assertEquals(defaultList.get(1).path, "path2/");
-        Assert.assertEquals(defaultList.get(1).allParams.size(), 1);
+        assertEquals(defaultList.size(), 2);
+        assertEquals(defaultList.get(0).path, "path1/");
+        assertEquals(defaultList.get(0).allParams.size(), 0);
+        assertEquals(defaultList.get(1).path, "path2/");
+        assertEquals(defaultList.get(1).allParams.size(), 1);
     }
 
     @Test
@@ -386,17 +386,17 @@ public class DefaultGeneratorTest {
         DefaultGenerator generator = new DefaultGenerator();
         generator.opts(opts);
         Map<String, List<CodegenOperation>> result = generator.processPaths(openAPI.getPaths());
-        Assert.assertEquals(result.size(), 1);
+        assertEquals(result.size(), 1);
         List<CodegenOperation> defaultList = result.get("Default");
-        Assert.assertEquals(defaultList.size(), 4);
-        Assert.assertEquals(defaultList.get(0).path, "/path1");
-        Assert.assertEquals(defaultList.get(0).allParams.size(), 0);
-        Assert.assertEquals(defaultList.get(1).path, "/path2");
-        Assert.assertEquals(defaultList.get(1).allParams.size(), 1);
-        Assert.assertEquals(defaultList.get(2).path, "/path3");
-        Assert.assertEquals(defaultList.get(2).allParams.size(), 2);
-        Assert.assertEquals(defaultList.get(3).path, "/path4");
-        Assert.assertEquals(defaultList.get(3).allParams.size(), 1);
+        assertEquals(defaultList.size(), 4);
+        assertEquals(defaultList.get(0).path, "/path1");
+        assertEquals(defaultList.get(0).allParams.size(), 0);
+        assertEquals(defaultList.get(1).path, "/path2");
+        assertEquals(defaultList.get(1).allParams.size(), 1);
+        assertEquals(defaultList.get(2).path, "/path3");
+        assertEquals(defaultList.get(2).allParams.size(), 2);
+        assertEquals(defaultList.get(3).path, "/path4");
+        assertEquals(defaultList.get(3).allParams.size(), 1);
     }
 
     @Test
@@ -417,29 +417,29 @@ public class DefaultGeneratorTest {
 
         Schema stringRegex = openAPI.getComponents().getSchemas().get("StringRegex");
         // Sanity check.
-        Assert.assertEquals(stringRegex.getPattern(), expectedPattern);
+        assertEquals(stringRegex.getPattern(), expectedPattern);
 
         // Validate when we alias/unalias
         Schema unaliasedStringRegex = ModelUtils.unaliasSchema(openAPI, stringRegex);
-        Assert.assertEquals(unaliasedStringRegex.getPattern(), expectedPattern);
+        assertEquals(unaliasedStringRegex.getPattern(), expectedPattern);
 
         // Validate when converting to property
         CodegenProperty stringRegexProperty = config.fromProperty("stringRegex", stringRegex);
-        Assert.assertEquals(stringRegexProperty.pattern, escapedPattern);
+        assertEquals(stringRegexProperty.pattern, escapedPattern);
 
         // Validate when converting to parameter
         Operation operation = openAPI.getPaths().get("/fake/StringRegex").getPost();
         RequestBody body = operation.getRequestBody();
         CodegenParameter codegenParameter = config.fromRequestBody(body, new HashSet<>(), "body");
 
-        Assert.assertEquals(codegenParameter.pattern, escapedPattern);
+        assertEquals(codegenParameter.pattern, escapedPattern);
 
         // Validate when converting to response
         ApiResponse response = operation.getResponses().get("200");
         CodegenResponse codegenResponse = config.fromResponse("200", response);
 
-        Assert.assertEquals(((Schema) codegenResponse.schema).getPattern(), expectedPattern);
-        Assert.assertEquals(codegenResponse.pattern, escapedPattern);
+        assertEquals(((Schema) codegenResponse.schema).getPattern(), expectedPattern);
+        assertEquals(codegenResponse.pattern, escapedPattern);
     }
 
     @Test
@@ -467,14 +467,14 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 27);
+            assertEquals(files.size(), 27);
 
             // Generator should report a library templated file as a generated file
             TestUtils.ensureContainsFile(files, output, "src/main/kotlin/org/openapitools/client/infrastructure/Errors.kt");
 
             // Generated file should exist on the filesystem after generation
             File generatedFile = new File(output, "src/main/kotlin/org/openapitools/client/infrastructure/Errors.kt");
-            Assert.assertTrue(generatedFile.exists());
+            assertTrue(generatedFile.exists());
 
             // Generated file should contain some expected text
             TestUtils.assertFileContains(generatedFile.toPath(), "package org.openapitools.client.infrastructure",
@@ -509,14 +509,14 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 27);
+            assertEquals(files.size(), 27);
 
             // Generator should report README.md as a generated file
             TestUtils.ensureContainsFile(files, output, "README.md");
 
             // Generated file should exist on the filesystem after generation
             File readme = new File(output, "README.md");
-            Assert.assertTrue(readme.exists());
+            assertTrue(readme.exists());
 
             // README.md should contain some expected text
             TestUtils.assertFileContains(readme.toPath(), "# org.openapitools.client - Kotlin client library for OpenAPI Petstore",
@@ -574,14 +574,14 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 27);
+            assertEquals(files.size(), 27);
 
             // Generator should report a library templated file as a generated file
             TestUtils.ensureContainsFile(files, output, "src/main/kotlin/org/openapitools/client/infrastructure/Errors.kt");
 
             // Generated file should exist on the filesystem after generation
             File readme = new File(output, "src/main/kotlin/org/openapitools/client/infrastructure/Errors.kt");
-            Assert.assertTrue(readme.exists());
+            assertTrue(readme.exists());
 
             // Generated file should contain our custom templated text
             TestUtils.assertFileContains(readme.toPath(), "// testCustomLibraryTemplates",
@@ -628,14 +628,14 @@ public class DefaultGeneratorTest {
 
             List<File> files = generator.opts(clientOptInput).generate();
 
-            Assert.assertEquals(files.size(), 27);
+            assertEquals(files.size(), 27);
 
             // Generator should report README.md as a generated file
             TestUtils.ensureContainsFile(files, output, "README.md");
 
             // Generated file should exist on the filesystem after generation
             File readme = new File(output, "README.md");
-            Assert.assertTrue(readme.exists());
+            assertTrue(readme.exists());
 
             // README.md should contain our custom templated text
             TestUtils.assertFileContains(readme.toPath(), "# testCustomNonLibraryTemplates");
@@ -667,9 +667,9 @@ public class DefaultGeneratorTest {
 
         Map<String, Object> bundle = generator.buildSupportFileBundle(allOperations, allModels, aliasModels);
         LinkedList<CodegenServer> servers = (LinkedList<CodegenServer>) bundle.get("servers");
-        Assert.assertEquals(servers.get(0).url, "");
-        Assert.assertEquals(servers.get(1).url, "http://trailingshlash.io:80/v1");
-        Assert.assertEquals(servers.get(2).url, "http://notrailingslash.io:80/v2");
+        assertEquals(servers.get(0).url, "");
+        assertEquals(servers.get(1).url, "http://trailingshlash.io:80/v1");
+        assertEquals(servers.get(2).url, "http://notrailingslash.io:80/v2");
     }
     
     @Test
@@ -694,7 +694,7 @@ public class DefaultGeneratorTest {
 
         Map<String, Object> bundle = generator.buildSupportFileBundle(allOperations, allModels, aliasModels);
         LinkedList<CodegenServer> servers = (LinkedList<CodegenServer>) bundle.get("servers");
-        Assert.assertEquals(servers.get(0).url, "/relative/url");
+        assertEquals(servers.get(0).url, "/relative/url");
     }
 
     @Test
@@ -736,14 +736,14 @@ public class DefaultGeneratorTest {
             // remove commented code based on review - files does not seem to be supported in CodegenConfigurator
             // supporting files sanity check
             // TestUtils.ensureContainsFile(files, output, "sampleConfig.json");
-            // Assert.assertTrue(new File(output, "sampleConfig.json").exists());
+            // assertTrue(new File(output, "sampleConfig.json").exists());
 
             // Generator should report api_client.py as a generated file
             TestUtils.ensureContainsFile(files, output, "io/something/api_client.py");
 
             // Generated file should exist on the filesystem after generation
             File apiClient = new File(output, "io/something/api_client.py");
-            Assert.assertTrue(apiClient.exists());
+            assertTrue(apiClient.exists());
 
             // Generated file should contain our custom packageName
             TestUtils.assertFileContains(apiClient.toPath(),
@@ -809,22 +809,22 @@ public class DefaultGeneratorTest {
             GlobalSettings.setProperty("models", "RQ1,RS1");
             ClientOptInput clientOptInput = createOptInputIssue18444(target);
             List<File> files = generator.opts(clientOptInput ).generate();
-            Assert.assertEquals(files.size(), 17);
+            assertEquals(files.size(), 17);
 
             // Check expected generated files
             // api sanity check
             String apiJavaFileName = "src/main/java/org/openapitools/api/ApiApi.java"; 
             TestUtils.ensureContainsFile(files, output, apiJavaFileName);
-            Assert.assertTrue(new File(output, apiJavaFileName).exists());
+            assertTrue(new File(output, apiJavaFileName).exists());
 
             // model sanity check
             String rq1FileName = "src/main/java/org/openapitools/model/RQ1.java";
             TestUtils.ensureContainsFile(files, output, rq1FileName);
-            Assert.assertTrue(new File(output, rq1FileName).exists());
+            assertTrue(new File(output, rq1FileName).exists());
 
             String rs1FileName = "src/main/java/org/openapitools/model/RS1.java";
             TestUtils.ensureContainsFile(files, output, rs1FileName );
-            Assert.assertTrue(new File(output, rs1FileName).exists());
+            assertTrue(new File(output, rs1FileName).exists());
 
             // Check not generated cause backwards compatibility files
             String ft1FileName = "src/main/java/org/openapitools/model/FT1.java";
@@ -864,39 +864,39 @@ public class DefaultGeneratorTest {
             GlobalSettings.setProperty("models", "RQ1,RS1");
             ClientOptInput clientOptInput = createOptInputIssue18444(target);
             List<File> files = generator.opts(clientOptInput ).generate();
-            Assert.assertEquals(files.size(), 21);
+            assertEquals(files.size(), 21);
 
             // Check expected generated files
             // api sanity check
             String apiJavaFileName = "src/main/java/org/openapitools/api/ApiApi.java"; 
             TestUtils.ensureContainsFile(files, output, apiJavaFileName);
-            Assert.assertTrue(new File(output, apiJavaFileName).exists());
+            assertTrue(new File(output, apiJavaFileName).exists());
 
             // model sanity check
             String rq1FileName = "src/main/java/org/openapitools/model/RQ1.java";
             TestUtils.ensureContainsFile(files, output, rq1FileName);
-            Assert.assertTrue(new File(output, rq1FileName).exists());
+            assertTrue(new File(output, rq1FileName).exists());
 
             String rs1FileName = "src/main/java/org/openapitools/model/RS1.java";
             TestUtils.ensureContainsFile(files, output, rs1FileName );
-            Assert.assertTrue(new File(output, rs1FileName).exists());
+            assertTrue(new File(output, rs1FileName).exists());
 
             // Check generated cause RQ1 and RS1 dependents of FT1,FT2,FT3 files
             String ft1FileName = "src/main/java/org/openapitools/model/FT1.java";
             TestUtils.ensureContainsFile(files, output, ft1FileName);
-            Assert.assertTrue(new File(output, ft1FileName).exists());
+            assertTrue(new File(output, ft1FileName).exists());
 
             String ft2FileName = "src/main/java/org/openapitools/model/FT2.java";
             TestUtils.ensureContainsFile(files, output, ft2FileName);
-            Assert.assertTrue(new File(output, ft2FileName).exists());
+            assertTrue(new File(output, ft2FileName).exists());
 
             String ft3FileName = "src/main/java/org/openapitools/model/FT3.java";
             TestUtils.ensureContainsFile(files, output, ft3FileName);
-            Assert.assertTrue(new File(output, ft3FileName).exists());
+            assertTrue(new File(output, ft3FileName).exists());
 
             String bttFileName = "src/main/java/org/openapitools/model/BTT.java";
             TestUtils.ensureContainsFile(files, output, bttFileName);
-            Assert.assertTrue(new File(output, bttFileName).exists());
+            assertTrue(new File(output, bttFileName).exists());
 
         } finally {
             output.deleteOnExit();

@@ -28,8 +28,8 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.TypeScriptFetchClientCodegen;
 import org.openapitools.codegen.languages.TypeScriptNodeClientCodegen;
 import org.openapitools.codegen.typescript.TypeScriptGroups;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,49 +59,49 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 5);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 5);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "number");
-        Assert.assertEquals(property1.name, "id");
-        Assert.assertEquals(property1.defaultValue, null);
-        Assert.assertEquals(property1.baseType, "number");
-        Assert.assertTrue(property1.required);
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "number");
+        assertEquals(property1.name, "id");
+        assertEquals(property1.defaultValue, null);
+        assertEquals(property1.baseType, "number");
+        assertTrue(property1.required);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "string");
-        Assert.assertEquals(property2.name, "name");
-        Assert.assertEquals(property2.defaultValue, null);
-        Assert.assertEquals(property2.baseType, "string");
-        Assert.assertTrue(property2.required);
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "string");
+        assertEquals(property2.name, "name");
+        assertEquals(property2.defaultValue, null);
+        assertEquals(property2.baseType, "string");
+        assertTrue(property2.required);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.complexType, null);
-        Assert.assertEquals(property3.dataType, "Date");
-        Assert.assertEquals(property3.name, "createdAt");
-        Assert.assertEquals(property3.defaultValue, null);
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.complexType, null);
+        assertEquals(property3.dataType, "Date");
+        assertEquals(property3.name, "createdAt");
+        assertEquals(property3.defaultValue, null);
         Assert.assertFalse(property3.required);
 
         final CodegenProperty property4 = cm.vars.get(3);
-        Assert.assertEquals(property4.baseName, "birthDate");
-        Assert.assertEquals(property4.complexType, null);
-        Assert.assertEquals(property4.dataType, "string");
-        Assert.assertEquals(property4.name, "birthDate");
-        Assert.assertEquals(property4.defaultValue, null);
+        assertEquals(property4.baseName, "birthDate");
+        assertEquals(property4.complexType, null);
+        assertEquals(property4.dataType, "string");
+        assertEquals(property4.name, "birthDate");
+        assertEquals(property4.defaultValue, null);
         Assert.assertFalse(property4.required);
 
         final CodegenProperty property5 = cm.vars.get(4);
-        Assert.assertEquals(property5.baseName, "active");
-        Assert.assertEquals(property5.complexType, null);
-        Assert.assertEquals(property5.dataType, "boolean");
-        Assert.assertEquals(property5.name, "active");
-        Assert.assertEquals(property5.defaultValue, null);
+        assertEquals(property5.baseName, "active");
+        assertEquals(property5.complexType, null);
+        assertEquals(property5.dataType, "boolean");
+        assertEquals(property5.name, "active");
+        assertEquals(property5.defaultValue, null);
         Assert.assertFalse(property5.required);
         Assert.assertFalse(property5.isContainer);
     }
@@ -140,30 +140,30 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 5);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 5);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.defaultValue, "1234");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.defaultValue, "1234");
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.defaultValue, "'Jack'");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.defaultValue, "'Jack'");
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(OffsetDateTime.parse(property3.defaultValue), testOffsetDateTime);
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(OffsetDateTime.parse(property3.defaultValue), testOffsetDateTime);
 
         final CodegenProperty property4 = cm.vars.get(3);
-        Assert.assertEquals(property4.baseName, "birthDate");
-        Assert.assertEquals(new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH).parse(property4.defaultValue), testDate);
+        assertEquals(property4.baseName, "birthDate");
+        assertEquals(new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy", Locale.ENGLISH).parse(property4.defaultValue), testDate);
 
         final CodegenProperty property5 = cm.vars.get(4);
-        Assert.assertEquals(property5.baseName, "active");
-        Assert.assertEquals(property5.defaultValue, "true");
+        assertEquals(property5.baseName, "active");
+        assertEquals(property5.defaultValue, "true");
     }
 
     @Test(description = "convert a model with list property")
@@ -178,24 +178,24 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "number");
-        Assert.assertEquals(property1.name, "id");
-        Assert.assertEquals(property1.defaultValue, null);
-        Assert.assertEquals(property1.baseType, "number");
-        Assert.assertTrue(property1.required);
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "number");
+        assertEquals(property1.name, "id");
+        assertEquals(property1.defaultValue, null);
+        assertEquals(property1.baseType, "number");
+        assertTrue(property1.required);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "Array<string>");
-        Assert.assertEquals(property2.name, "urls");
-        Assert.assertEquals(property2.baseType, "Array");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "Array<string>");
+        assertEquals(property2.name, "urls");
+        assertEquals(property2.baseType, "Array");
         Assert.assertFalse(property2.required);
     }
 
@@ -209,16 +209,16 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "Children");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "Children");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "Children");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "Children");
         Assert.assertFalse(property1.required);
     }
 
@@ -233,17 +233,17 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.complexType, "Children");
-        Assert.assertEquals(property1.dataType, "Array<Children>");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "Array");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.complexType, "Children");
+        assertEquals(property1.dataType, "Array<Children>");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "Array");
         Assert.assertFalse(property1.required);
     }
 
@@ -257,10 +257,10 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
     }
 
     @Test(description = "convert a map model")
@@ -273,12 +273,12 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.vars.size(), 0);
-        Assert.assertEquals(cm.imports.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.imports.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
     }
 
     @Test(description = "convert an array additional properties model")
@@ -291,10 +291,10 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.additionalPropertiesType, "Array<string>");
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.additionalPropertiesType, "Array<string>");
     }
 
     @Test(description = "convert a string additional properties model")
@@ -307,10 +307,10 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.additionalPropertiesType, "string");
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.additionalPropertiesType, "string");
     }
 
     @Test(description = "convert a complex additional properties model")
@@ -323,10 +323,10 @@ public class TypeScriptNodeModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.additionalPropertiesType, "Children");
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.additionalPropertiesType, "Children");
     }
 
     @Test(description = "prepend imports with ./ by default")
@@ -337,8 +337,8 @@ public class TypeScriptNodeModelTest {
         final Schema categorySchema = openAPI.getComponents().getSchemas().get("ApiResponse");
         final CodegenModel cm = codegen.fromModel("ApiResponse", categorySchema);
 
-        Assert.assertEquals(cm.name, "ApiResponse");
-        Assert.assertEquals(cm.classFilename, "./apiResponse");
+        assertEquals(cm.name, "ApiResponse");
+        assertEquals(cm.classFilename, "./apiResponse");
     }
 
     @Test(description = "use mapped imports for type")
@@ -351,7 +351,7 @@ public class TypeScriptNodeModelTest {
         final Schema categorySchema = openAPI.getComponents().getSchemas().get("ApiResponse");
         final CodegenModel cm = codegen.fromModel("ApiResponse", categorySchema);
 
-        Assert.assertEquals(cm.name, "ApiResponse");
-        Assert.assertEquals(cm.classFilename, mappedName);
+        assertEquals(cm.name, "ApiResponse");
+        assertEquals(cm.classFilename, mappedName);
     }
 }

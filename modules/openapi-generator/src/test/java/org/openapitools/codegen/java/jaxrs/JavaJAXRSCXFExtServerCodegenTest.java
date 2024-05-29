@@ -13,14 +13,16 @@ import org.openapitools.codegen.languages.AbstractJavaJAXRSServerCodegen;
 import org.openapitools.codegen.languages.JavaCXFExtServerCodegen;
 import org.openapitools.codegen.languages.features.*;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class JavaJAXRSCXFExtServerCodegenTest extends JavaJaxrsBaseTest {
     private static class JavaCXFExtServerCodegenTester extends JavaCXFExtServerCodegen {

@@ -5,7 +5,7 @@ import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.KotlinServerCodegen;
 import org.openapitools.codegen.languages.KotlinSpringServerCodegen;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;

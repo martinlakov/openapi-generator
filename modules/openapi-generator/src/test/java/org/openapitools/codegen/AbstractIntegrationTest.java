@@ -21,7 +21,7 @@ import java.nio.file.Files;
 import java.util.stream.Collectors;
 import io.swagger.v3.oas.models.OpenAPI;
 import org.openapitools.codegen.testutils.IntegrationTestPathsConfig;
-import org.testng.annotations.Test;
+
 
 import java.io.IOException;
 import java.util.HashMap;

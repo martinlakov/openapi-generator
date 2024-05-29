@@ -44,8 +44,10 @@ import static org.openapitools.codegen.languages.SpringCodegen.USE_SPRING_BOOT3;
 import static org.openapitools.codegen.languages.SpringCodegen.USE_TAGS;
 import static org.openapitools.codegen.languages.features.DocumentationProviderFeatures.ANNOTATION_LIBRARY;
 import static org.openapitools.codegen.languages.features.DocumentationProviderFeatures.DOCUMENTATION_PROVIDER;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.fail;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,10 +82,6 @@ import org.openapitools.codegen.languages.SpringCodegen;
 import org.openapitools.codegen.languages.features.BeanValidationFeatures;
 import org.openapitools.codegen.languages.features.CXFServerFeatures;
 import org.openapitools.codegen.languages.features.DocumentationProviderFeatures;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
-import org.testng.annotations.Test;
 
 import com.google.common.collect.ImmutableMap;
 
@@ -559,7 +557,7 @@ public class SpringCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.LIBRARY, "spring-cloud");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get("jdk8-default-interface"), false);
+        assertEquals(codegen.additionalProperties().get("jdk8-default-interface"), false);
     }
 
     @Test
@@ -580,20 +578,20 @@ public class SpringCodegenTest {
         openAPI.getInfo().setTitle("Some test API");
         codegen.preprocessOpenAPI(openAPI);
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertTrue(codegen.isHideGenerationTimestamp());
-        Assert.assertEquals(codegen.modelPackage(), "xyz.yyyyy.mmmmm.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xyz.yyyyy.mmmmm.model");
-        Assert.assertEquals(codegen.apiPackage(), "xyz.yyyyy.aaaaa.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xyz.yyyyy.aaaaa.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "xyz.yyyyy.iiii.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xyz.yyyyy.iiii.invoker");
-        Assert.assertEquals(codegen.getBasePackage(), "xyz.yyyyy.bbbb.base");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.BASE_PACKAGE), "xyz.yyyyy.bbbb.base");
-        Assert.assertEquals(codegen.getConfigPackage(), "xyz.yyyyy.cccc.config");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.CONFIG_PACKAGE), "xyz.yyyyy.cccc.config");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.TITLE), "someTest");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.SERVER_PORT), "8088");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertTrue(codegen.isHideGenerationTimestamp());
+        assertEquals(codegen.modelPackage(), "xyz.yyyyy.mmmmm.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xyz.yyyyy.mmmmm.model");
+        assertEquals(codegen.apiPackage(), "xyz.yyyyy.aaaaa.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xyz.yyyyy.aaaaa.api");
+        assertEquals(codegen.getInvokerPackage(), "xyz.yyyyy.iiii.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xyz.yyyyy.iiii.invoker");
+        assertEquals(codegen.getBasePackage(), "xyz.yyyyy.bbbb.base");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.BASE_PACKAGE), "xyz.yyyyy.bbbb.base");
+        assertEquals(codegen.getConfigPackage(), "xyz.yyyyy.cccc.config");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.CONFIG_PACKAGE), "xyz.yyyyy.cccc.config");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.TITLE), "someTest");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.SERVER_PORT), "8088");
     }
 
     @Test
@@ -616,9 +614,9 @@ public class SpringCodegenTest {
         CodegenProperty int64Prop = cm.vars.get(0);
         CodegenProperty floatProp = cm.vars.get(1);
         CodegenProperty doubleProp = cm.vars.get(2);
-        Assert.assertEquals(int64Prop.defaultValue, int64Val);
-        Assert.assertEquals(floatProp.defaultValue, floatVal);
-        Assert.assertEquals(doubleProp.defaultValue, doubleVal);
+        assertEquals(int64Prop.defaultValue, int64Val);
+        assertEquals(floatProp.defaultValue, floatVal);
+        assertEquals(doubleProp.defaultValue, doubleVal);
 
         int64Val = "9223372036854775807";
         floatVal = "3.14159";
@@ -631,9 +629,9 @@ public class SpringCodegenTest {
         CodegenParameter int64Param = co.queryParams.get(0);
         CodegenParameter floatParam = co.queryParams.get(1);
         CodegenParameter doubleParam = co.queryParams.get(2);
-        Assert.assertEquals(int64Param.defaultValue, int64Val);
-        Assert.assertEquals(floatParam.defaultValue, floatVal);
-        Assert.assertEquals(doubleParam.defaultValue, doubleVal);
+        assertEquals(int64Param.defaultValue, int64Val);
+        assertEquals(floatParam.defaultValue, floatVal);
+        assertEquals(doubleParam.defaultValue, doubleVal);
     }
 
     @Test
@@ -680,21 +678,21 @@ public class SpringCodegenTest {
         openAPI.setInfo(new Info());
         codegen.preprocessOpenAPI(openAPI);
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
         Assert.assertFalse(codegen.isHideGenerationTimestamp());
-        Assert.assertEquals(codegen.modelPackage(), "org.openapitools.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
-        Assert.assertEquals(codegen.apiPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.getBasePackage(), "org.openapitools");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.BASE_PACKAGE), "org.openapitools");
-        Assert.assertEquals(codegen.getConfigPackage(), "org.openapitools.configuration");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.CONFIG_PACKAGE), "org.openapitools.configuration");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.SERVER_PORT), "8082");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.UNHANDLED_EXCEPTION_HANDLING), false);
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.USE_RESPONSE_ENTITY), true);
+        assertEquals(codegen.modelPackage(), "org.openapitools.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
+        assertEquals(codegen.apiPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.getInvokerPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.getBasePackage(), "org.openapitools");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.BASE_PACKAGE), "org.openapitools");
+        assertEquals(codegen.getConfigPackage(), "org.openapitools.configuration");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.CONFIG_PACKAGE), "org.openapitools.configuration");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.SERVER_PORT), "8082");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.UNHANDLED_EXCEPTION_HANDLING), false);
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.USE_RESPONSE_ENTITY), true);
     }
 
     @Test
@@ -1101,7 +1099,7 @@ public class SpringCodegenTest {
      * how we can fix it accordingly.
      */
     @Test
-    @Ignore
+    @Disabled
     public void testMultipartCloud() throws IOException {
         final SpringCodegen codegen = new SpringCodegen();
         codegen.setLibrary("spring-cloud");
@@ -1180,20 +1178,20 @@ public class SpringCodegenTest {
         codegen.setUnhandledException(true);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertTrue(codegen.isHideGenerationTimestamp());
-        Assert.assertEquals(codegen.modelPackage(), "xx.yyyyyyyy.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xx.yyyyyyyy.model");
-        Assert.assertEquals(codegen.apiPackage(), "xx.yyyyyyyy.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xx.yyyyyyyy.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "xx.yyyyyyyy.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xx.yyyyyyyy.invoker");
-        Assert.assertEquals(codegen.getBasePackage(), "xx.yyyyyyyy.base");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.BASE_PACKAGE), "xx.yyyyyyyy.base");
-        Assert.assertEquals(codegen.getConfigPackage(), "xx.yyyyyyyy.config");
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.CONFIG_PACKAGE), "xx.yyyyyyyy.config");
-        Assert.assertTrue(codegen.isUnhandledException());
-        Assert.assertEquals(codegen.additionalProperties().get(SpringCodegen.UNHANDLED_EXCEPTION_HANDLING), true);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertTrue(codegen.isHideGenerationTimestamp());
+        assertEquals(codegen.modelPackage(), "xx.yyyyyyyy.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xx.yyyyyyyy.model");
+        assertEquals(codegen.apiPackage(), "xx.yyyyyyyy.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xx.yyyyyyyy.api");
+        assertEquals(codegen.getInvokerPackage(), "xx.yyyyyyyy.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xx.yyyyyyyy.invoker");
+        assertEquals(codegen.getBasePackage(), "xx.yyyyyyyy.base");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.BASE_PACKAGE), "xx.yyyyyyyy.base");
+        assertEquals(codegen.getConfigPackage(), "xx.yyyyyyyy.config");
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.CONFIG_PACKAGE), "xx.yyyyyyyy.config");
+        assertTrue(codegen.isUnhandledException());
+        assertEquals(codegen.additionalProperties().get(SpringCodegen.UNHANDLED_EXCEPTION_HANDLING), true);
     }
 
     @Test
@@ -1869,21 +1867,26 @@ public class SpringCodegenTest {
     public void testTypeMappings() {
         final SpringCodegen codegen = new SpringCodegen();
         codegen.processOpts();
-        Assert.assertEquals(codegen.typeMapping().get("file"), "org.springframework.core.io.Resource");
+        assertEquals(codegen.typeMapping().get("file"), "org.springframework.core.io.Resource");
     }
 
     @Test
     public void testImportMappings() {
         final SpringCodegen codegen = new SpringCodegen();
         codegen.processOpts();
-        Assert.assertEquals(codegen.importMapping().get("org.springframework.core.io.Resource"), "org.springframework.core.io.Resource");
-        Assert.assertEquals(codegen.importMapping().get("DateTimeFormat"), "org.springframework.format.annotation.DateTimeFormat");
-        Assert.assertEquals(codegen.importMapping().get("ApiIgnore"), "springfox.documentation.annotations.ApiIgnore");
-        Assert.assertEquals(codegen.importMapping().get("ParameterObject"), "org.springdoc.api.annotations.ParameterObject");
+        assertEquals(codegen.importMapping().get("org.springframework.core.io.Resource"), "org.springframework.core.io.Resource");
+        assertEquals(codegen.importMapping().get("DateTimeFormat"), "org.springframework.format.annotation.DateTimeFormat");
+        assertEquals(codegen.importMapping().get("ApiIgnore"), "springfox.documentation.annotations.ApiIgnore");
+        assertEquals(codegen.importMapping().get("ParameterObject"), "org.springdoc.api.annotations.ParameterObject");
     }
 
-    @Test(dataProvider = "issue11464TestCases")
-    public void shouldGenerateOneTagAttributeForMultipleTags_Regression11464(String documentProvider, Consumer<String> assertFunction) throws IOException {
+    @Test
+    public void testIssue11464() {
+        Object[][] data = issue11464TestCases();
+        shouldGenerateOneTagAttributeForMultipleTagsRegression11464()
+    }
+
+    public void shouldGenerateOneTagAttributeForMultipleTagsRegression11464(String documentProvider, Consumer<String> assertFunction) throws IOException {
         File output = Files.createTempDirectory("test").toFile().getCanonicalFile();
         output.deleteOnExit();
         String outputPath = output.getAbsolutePath().replace('\\', '/');
@@ -1908,8 +1911,6 @@ public class SpringCodegenTest {
 
         assertFunction.accept(outputPath);
     }
-
-    @DataProvider
     public Object[][] issue11464TestCases() {
         return new Object[][]{
                 {DocumentationProviderFeatures.DocumentationProvider.SPRINGDOC.name(), (Consumer<String>) outputPath -> {
@@ -1936,8 +1937,8 @@ public class SpringCodegenTest {
         final SpringCodegen codegen = new SpringCodegen();
         codegen.additionalProperties().put(SpringCodegen.API_FIRST, true);
         codegen.processOpts();
-        Assert.assertTrue(codegen.modelTemplateFiles().isEmpty());
-        Assert.assertTrue(codegen.apiTemplateFiles().isEmpty());
+        assertTrue(codegen.modelTemplateFiles().isEmpty());
+        assertTrue(codegen.apiTemplateFiles().isEmpty());
     }
 
     @Test

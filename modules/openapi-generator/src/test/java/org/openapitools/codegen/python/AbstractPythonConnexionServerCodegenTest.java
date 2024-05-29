@@ -15,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.languages.AbstractPythonConnexionServerCodegen;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 public class AbstractPythonConnexionServerCodegenTest {
 

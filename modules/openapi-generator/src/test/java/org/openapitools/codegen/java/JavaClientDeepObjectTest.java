@@ -21,7 +21,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.JavaClientCodegen;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;

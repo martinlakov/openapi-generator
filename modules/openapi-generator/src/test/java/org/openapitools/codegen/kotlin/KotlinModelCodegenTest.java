@@ -12,7 +12,7 @@ import org.openapitools.codegen.languages.KotlinServerCodegen;
 import org.openapitools.codegen.languages.KotlinSpringServerCodegen;
 import org.openapitools.codegen.languages.KotlinVertxServerCodegen;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;

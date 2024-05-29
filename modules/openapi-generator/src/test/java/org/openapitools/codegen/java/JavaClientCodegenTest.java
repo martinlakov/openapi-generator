@@ -22,9 +22,6 @@ import static org.openapitools.codegen.TestUtils.assertFileContains;
 import static org.openapitools.codegen.TestUtils.assertFileNotContains;
 import static org.openapitools.codegen.TestUtils.validateJavaSourceFiles;
 import static org.openapitools.codegen.languages.JavaClientCodegen.USE_ENUM_CASE_INSENSITIVE;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
 
 import com.google.common.collect.ImmutableMap;
 import io.swagger.parser.OpenAPIParser;
@@ -88,10 +85,16 @@ import org.openapitools.codegen.languages.features.CXFServerFeatures;
 import org.openapitools.codegen.meta.features.SecurityFeature;
 import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
-import org.testng.annotations.Test;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class JavaClientCodegenTest {
 
@@ -1840,29 +1843,29 @@ public class JavaClientCodegenTest {
         output.deleteOnExit();
     }
 
-    @Test(
-            expectedExceptions = IllegalArgumentException.class,
-            expectedExceptionsMessageRegExp =
-                    "Version incorrectVersion of MicroProfile Rest Client is not supported or incorrect."
-                            + " Supported versions are 1.4.1, 2.0, 3.0")
-    public void testMicroprofileRestClientIncorrectVersion() throws Exception {
-        Map<String, Object> properties = new HashMap<>();
-        properties.put(JavaClientCodegen.MICROPROFILE_REST_CLIENT_VERSION, "incorrectVersion");
+    @Test
+    public void testMicroprofileRestClientIncorrectVersion() {
+        Exception thrown = assertThrows(IllegalArgumentException.class, ()->{
+            Map<String, Object> properties = new HashMap<>();
+            properties.put(JavaClientCodegen.MICROPROFILE_REST_CLIENT_VERSION, "incorrectVersion");
 
-        File output = Files.createTempDirectory("test").toFile();
-        output.deleteOnExit();
+            File output = Files.createTempDirectory("test").toFile();
+            output.deleteOnExit();
 
-        final CodegenConfigurator configurator = new CodegenConfigurator()
-                .setAdditionalProperties(properties)
-                .setGeneratorName("java")
-                .setLibrary(JavaClientCodegen.MICROPROFILE)
-                .setInputSpec("src/test/resources/3_0/petstore.yaml")
-                .setOutputDir(output.getAbsolutePath().replace("\\", "/"));
+            final CodegenConfigurator configurator = new CodegenConfigurator()
+                    .setAdditionalProperties(properties)
+                    .setGeneratorName("java")
+                    .setLibrary(JavaClientCodegen.MICROPROFILE)
+                    .setInputSpec("src/test/resources/3_0/petstore.yaml")
+                    .setOutputDir(output.getAbsolutePath().replace("\\", "/"));
 
-        final ClientOptInput clientOptInput = configurator.toClientOptInput();
-        DefaultGenerator generator = new DefaultGenerator();
-        generator.opts(clientOptInput).generate();
-        fail("Expected an exception that did not occur");
+            final ClientOptInput clientOptInput = configurator.toClientOptInput();
+            DefaultGenerator generator = new DefaultGenerator();
+            generator.opts(clientOptInput).generate();
+        });
+        assertEquals("Version incorrectVersion of MicroProfile Rest Client is not supported or incorrect."
+                             + " Supported versions are 1.4.1, 2.0, 3.0", thrown.getMessage());
+
     }
 
     @Test
@@ -2648,13 +2651,15 @@ public class JavaClientCodegenTest {
         output.deleteOnExit();
     }
 
-    @DataProvider(name = "shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchema_issue15684")
-    public static Object[][] shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchema_issue15684_dataProvider() {
-        return new Object[][]{{"okhttp-gson"}, {"jersey2"}, {"jersey3"}, {"native"}};
+    @Test
+    public void shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchemaIssue15684Tests() throws Exception {
+        String[] libraries = {"okhttp-gson", "jersey2", "jersey3", "native"};
+        for (String library : libraries) {
+            shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchemaIssue15684(library);
+        }
     }
 
-    @Test(dataProvider = "shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchema_issue15684")
-    public void shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchema_issue15684(String library) throws Exception {
+    public void shouldNotAddAdditionalModelAnnotationsToAbstractOpenApiSchemaIssue15684(String library) throws Exception {
         File output = Files.createTempDirectory("test").toFile();
         output.deleteOnExit();
 

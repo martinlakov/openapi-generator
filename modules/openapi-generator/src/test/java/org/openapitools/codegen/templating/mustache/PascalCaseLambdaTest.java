@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.openapitools.codegen.CodegenConfig;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 public class PascalCaseLambdaTest extends LambdaTest {
 

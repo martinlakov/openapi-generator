@@ -33,7 +33,7 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 public class JavaHelidonCommonCodegenPackagePrefixTest {
 
@@ -82,7 +82,7 @@ public class JavaHelidonCommonCodegenPackagePrefixTest {
                                                                                        libraryName),
                                                      IllegalArgumentException.class,
         () -> runTest(explicitHelidonVersion, explicitPrefix, generatorName, libraryName));
-    Assert.assertTrue("Exception message for " + assertMsg(explicitHelidonVersion,
+    assertTrue("Exception message for " + assertMsg(explicitHelidonVersion,
                                                            explicitPrefix,
                                                            generatorName,
                                                            libraryName)

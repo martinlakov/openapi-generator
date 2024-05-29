@@ -19,7 +19,7 @@ package org.openapitools.codegen.config;
 import org.openapitools.codegen.ClientOptInput;
 import org.openapitools.codegen.CodegenConfig;
 import org.openapitools.codegen.CodegenConstants;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +28,9 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CodegenConfiguratorTest {
     private void want(Map<String, Object> additionalProperties, String key, Object expected) {

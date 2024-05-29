@@ -38,8 +38,8 @@ import org.openapitools.codegen.DefaultGenerator;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.CSharpClientCodegen;
 import org.openapitools.codegen.languages.JavaClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class CSharpClientCodegenTest {
 
@@ -48,15 +48,15 @@ public class CSharpClientCodegenTest {
         final CSharpClientCodegen codegen = new CSharpClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.toEnumVarName("FooBar", "string"), "FooBar");
-        Assert.assertEquals(codegen.toEnumVarName("fooBar", "string"), "FooBar");
-        Assert.assertEquals(codegen.toEnumVarName("foo-bar", "string"), "FooBar");
-        Assert.assertEquals(codegen.toEnumVarName("foo_bar", "string"), "FooBar");
-        Assert.assertEquals(codegen.toEnumVarName("foo bar", "string"), "FooBar");
+        assertEquals(codegen.toEnumVarName("FooBar", "string"), "FooBar");
+        assertEquals(codegen.toEnumVarName("fooBar", "string"), "FooBar");
+        assertEquals(codegen.toEnumVarName("foo-bar", "string"), "FooBar");
+        assertEquals(codegen.toEnumVarName("foo_bar", "string"), "FooBar");
+        assertEquals(codegen.toEnumVarName("foo bar", "string"), "FooBar");
 
         // The below cases do not work currently, camelize doesn't support uppercase
-        // Assert.assertEquals(codegen.toEnumVarName("FOO-BAR", "string"), "FooBar");
-        // Assert.assertEquals(codegen.toEnumVarName("FOO_BAR", "string"), "FooBar");
+        // assertEquals(codegen.toEnumVarName("FOO-BAR", "string"), "FooBar");
+        // assertEquals(codegen.toEnumVarName("FOO_BAR", "string"), "FooBar");
     }
 
     @Test
@@ -69,24 +69,24 @@ public class CSharpClientCodegenTest {
         codegen.setOpenAPI(openAPI);
         codegen.processOpts();
         CodegenModel cm1 = codegen.fromModel("format_test", test1);
-        Assert.assertEquals(cm1.getClassname(), "FormatTest");
+        assertEquals(cm1.getClassname(), "FormatTest");
 
         final CodegenProperty property1 = cm1.allVars.get(2);
-        Assert.assertEquals(property1.baseName, "unsigned_integer");
-        Assert.assertEquals(property1.dataType, "uint");
-        Assert.assertEquals(property1.vendorExtensions.get("x-unsigned"), Boolean.TRUE);
-        Assert.assertTrue(property1.isPrimitiveType);
-        Assert.assertTrue(property1.isInteger);
+        assertEquals(property1.baseName, "unsigned_integer");
+        assertEquals(property1.dataType, "uint");
+        assertEquals(property1.vendorExtensions.get("x-unsigned"), Boolean.TRUE);
+        assertTrue(property1.isPrimitiveType);
+        assertTrue(property1.isInteger);
         Assert.assertFalse(property1.isContainer);
         Assert.assertFalse(property1.isFreeFormObject);
         Assert.assertFalse(property1.isAnyType);
 
         final CodegenProperty property2 = cm1.allVars.get(4);
-        Assert.assertEquals(property2.baseName, "unsigned_long");
-        Assert.assertEquals(property2.dataType, "ulong");
-        Assert.assertEquals(property2.vendorExtensions.get("x-unsigned"), Boolean.TRUE);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isLong);
+        assertEquals(property2.baseName, "unsigned_long");
+        assertEquals(property2.dataType, "ulong");
+        assertEquals(property2.vendorExtensions.get("x-unsigned"), Boolean.TRUE);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isLong);
         Assert.assertFalse(property2.isContainer);
         Assert.assertFalse(property2.isFreeFormObject);
         Assert.assertFalse(property2.isAnyType);

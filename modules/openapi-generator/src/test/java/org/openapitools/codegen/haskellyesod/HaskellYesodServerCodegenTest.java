@@ -3,8 +3,8 @@ package org.openapitools.codegen.haskellyesod;
 import java.util.*;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.HaskellYesodServerCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class HaskellYesodServerCodegenTest {
 
@@ -13,11 +13,11 @@ public class HaskellYesodServerCodegenTest {
         final HaskellYesodServerCodegen codegen = new HaskellYesodServerCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.toApiTestFilename("Foo"), "FooSpec");
-        Assert.assertEquals(codegen.toApiTestFilename("foo"), "FooSpec");
-        Assert.assertEquals(codegen.toApiTestFilename("FOO"), "FOOSpec");
-        Assert.assertEquals(codegen.toApiTestFilename("foo-bar"), "FooBarSpec");
-        Assert.assertEquals(codegen.toApiTestFilename("foo_bar"), "FooBarSpec");
+        assertEquals(codegen.toApiTestFilename("Foo"), "FooSpec");
+        assertEquals(codegen.toApiTestFilename("foo"), "FooSpec");
+        assertEquals(codegen.toApiTestFilename("FOO"), "FOOSpec");
+        assertEquals(codegen.toApiTestFilename("foo-bar"), "FooBarSpec");
+        assertEquals(codegen.toApiTestFilename("foo_bar"), "FooBarSpec");
     }
 
     @Test
@@ -25,11 +25,11 @@ public class HaskellYesodServerCodegenTest {
         final HaskellYesodServerCodegen codegen = new HaskellYesodServerCodegen();
         codegen.processOpts();
 
-        Assert.assertTrue(codegen.isOverlappedPath("/foo", "/#param"));
-        Assert.assertTrue(codegen.isOverlappedPath("/#param", "/foo"));
-        Assert.assertTrue(codegen.isOverlappedPath("/foo/bar", "/foo/#param"));
-        Assert.assertTrue(codegen.isOverlappedPath("/foo/bar", "/#param/bar"));
-        Assert.assertTrue(codegen.isOverlappedPath("/foo/bar", "/#param1/#param2"));
+        assertTrue(codegen.isOverlappedPath("/foo", "/#param"));
+        assertTrue(codegen.isOverlappedPath("/#param", "/foo"));
+        assertTrue(codegen.isOverlappedPath("/foo/bar", "/foo/#param"));
+        assertTrue(codegen.isOverlappedPath("/foo/bar", "/#param/bar"));
+        assertTrue(codegen.isOverlappedPath("/foo/bar", "/#param1/#param2"));
 
         Assert.assertFalse(codegen.isOverlappedPath("/foo", "/bar"));
         Assert.assertFalse(codegen.isOverlappedPath("/foo", "/foo"));
@@ -41,9 +41,9 @@ public class HaskellYesodServerCodegenTest {
         final HaskellYesodServerCodegen codegen = new HaskellYesodServerCodegen();
         codegen.processOpts();
 
-        Assert.assertTrue(codegen.hasOverlappedPath("/foo", toRoutes("/#param")));
-        Assert.assertTrue(codegen.hasOverlappedPath("/foo", toRoutes("/foo", "/#param")));
-        Assert.assertTrue(codegen.hasOverlappedPath("/foo", toRoutes("/#param", "/foo")));
+        assertTrue(codegen.hasOverlappedPath("/foo", toRoutes("/#param")));
+        assertTrue(codegen.hasOverlappedPath("/foo", toRoutes("/foo", "/#param")));
+        assertTrue(codegen.hasOverlappedPath("/foo", toRoutes("/#param", "/foo")));
 
         Assert.assertFalse(codegen.hasOverlappedPath("/foo", toRoutes()));
         Assert.assertFalse(codegen.hasOverlappedPath("/foo", toRoutes("/bar")));

@@ -26,9 +26,9 @@ import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.DefaultCodegen;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.GoClientCodegen;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 
@@ -49,37 +49,37 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
-        Assert.assertEquals(cm.imports.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.imports.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int64");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int64");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "int64");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "int64");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "string");
-        Assert.assertEquals(property2.name, "Name");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "string");
+        assertEquals(property2.name, "Name");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "string");
-        Assert.assertTrue(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertEquals(property2.baseType, "string");
+        assertTrue(property2.required);
+        assertTrue(property2.isPrimitiveType);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.complexType, "time.Time");
-        Assert.assertEquals(property3.dataType, "time.Time");
-        Assert.assertEquals(property3.name, "CreatedAt");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.complexType, "time.Time");
+        assertEquals(property3.dataType, "time.Time");
+        assertEquals(property3.name, "CreatedAt");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "time.Time");
+        assertEquals(property3.baseType, "time.Time");
         Assert.assertFalse(property3.required);
     }
 
@@ -96,28 +96,28 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int64");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int64");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "int64");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "int64");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "[]string");
-        Assert.assertEquals(property2.name, "Urls");
-        Assert.assertEquals(property2.baseType, "array");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "[]string");
+        assertEquals(property2.name, "Urls");
+        assertEquals(property2.baseType, "array");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isPrimitiveType);
     }
 
     @Test(description = "convert a model with a map property")
@@ -132,20 +132,20 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "translations");
-        Assert.assertEquals(property1.dataType, "map[string]string");
-        Assert.assertEquals(property1.name, "Translations");
-        Assert.assertEquals(property1.baseType, "map");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "translations");
+        assertEquals(property1.dataType, "map[string]string");
+        assertEquals(property1.name, "Translations");
+        assertEquals(property1.baseType, "map");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertTrue(property1.isContainer);
+        assertTrue(property1.isPrimitiveType);
     }
 
     @Test(description = "convert a model with complex property")
@@ -158,16 +158,16 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "Children");
-        Assert.assertEquals(property1.name, "Children");
-        Assert.assertEquals(property1.baseType, "Children");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "Children");
+        assertEquals(property1.name, "Children");
+        assertEquals(property1.baseType, "Children");
         Assert.assertFalse(property1.required);
     }
 
@@ -182,19 +182,19 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "[]Children");
-        Assert.assertEquals(property1.name, "Children");
-        Assert.assertEquals(property1.baseType, "array");
-        Assert.assertEquals(property1.containerType, "array");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "[]Children");
+        assertEquals(property1.name, "Children");
+        assertEquals(property1.baseType, "array");
+        assertEquals(property1.containerType, "array");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert a model with complex map property")
@@ -208,21 +208,21 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.complexType, "Children");
-        Assert.assertEquals(property1.dataType, "map[string]Children");
-        Assert.assertEquals(property1.name, "Children");
-        Assert.assertEquals(property1.baseType, "map");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.complexType, "Children");
+        assertEquals(property1.dataType, "map[string]Children");
+        assertEquals(property1.name, "Children");
+        assertEquals(property1.baseType, "map");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert an array model")
@@ -235,11 +235,11 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
-        Assert.assertEquals(cm.imports.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.imports.size(), 1);
     }
 
     @Test(description = "convert a map model")
@@ -252,28 +252,28 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.vars.size(), 0);
-        Assert.assertEquals(cm.imports.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.imports.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
     }
 
     @Test(description = "convert file type and file schema models")
     public void filePropertyTest() {
         final DefaultCodegen codegen = new GoClientCodegen();
         final Schema model1 = new Schema().type("file");
-        Assert.assertEquals(codegen.getSchemaType(model1), "*os.File");
-        Assert.assertEquals(codegen.getTypeDeclaration(model1), "*os.File");
+        assertEquals(codegen.getSchemaType(model1), "*os.File");
+        assertEquals(codegen.getTypeDeclaration(model1), "*os.File");
 
         final Schema model2 = new Schema().$ref("#/definitions/File");
-        Assert.assertEquals(codegen.getSchemaType(model2), "File");
-        Assert.assertEquals(codegen.getTypeDeclaration(model2), "File");
+        assertEquals(codegen.getSchemaType(model2), "File");
+        assertEquals(codegen.getTypeDeclaration(model2), "File");
 
         final Schema model3 = new Schema().$ref("#/components/schemas/File");
-        Assert.assertEquals(codegen.getSchemaType(model3), "File");
-        Assert.assertEquals(codegen.getTypeDeclaration(model3), "File");
+        assertEquals(codegen.getSchemaType(model3), "File");
+        assertEquals(codegen.getTypeDeclaration(model3), "File");
     }
 
     @DataProvider(name = "modelNames")
@@ -297,8 +297,8 @@ public class GoModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel(name, model);
 
-        Assert.assertEquals(cm.name, name);
-        Assert.assertEquals(cm.classname, expectedName);
+        assertEquals(cm.name, name);
+        assertEquals(cm.classname, expectedName);
     }
 
     @DataProvider(name = "modelMappedNames")
@@ -319,9 +319,9 @@ public class GoModelTest {
         final CodegenModel cm = codegen.fromModel(name, model);
 
         final String fn = codegen.modelFilename("model.mustache", name, "");
-        Assert.assertEquals(fn, File.separator + expectedFilename);
+        assertEquals(fn, File.separator + expectedFilename);
 
-        Assert.assertEquals(cm.name, name);
-        Assert.assertEquals(cm.classname, expectedName);
+        assertEquals(cm.name, name);
+        assertEquals(cm.classname, expectedName);
     }
 }

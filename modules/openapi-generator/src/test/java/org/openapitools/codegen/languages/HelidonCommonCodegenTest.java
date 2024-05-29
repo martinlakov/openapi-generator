@@ -19,7 +19,7 @@ package org.openapitools.codegen.languages;
 import java.util.List;
 
 import org.junit.Assert;
-import org.testng.annotations.Test;
+
 
 // This test class is in this package, not org.openapitools.codegen.java.helidon, so it can refer to elements of
 // JavaHelidonCommonCodegen without making them public; package-private is sufficient and we don't want to expose those methods
@@ -28,7 +28,7 @@ class HelidonCommonCodegenTest {
 
     @Test
     void checkMajorVersionMatch() {
-        Assert.assertEquals("1.2.3",
+        assertEquals("1.2.3",
                             JavaHelidonCommonCodegen.VersionUtil.instance().chooseVersion("1",
                                                                                           List.of("3.2.1",
                                                                                                   "3.2.0",
@@ -40,7 +40,7 @@ class HelidonCommonCodegenTest {
 
     @Test
     void checkExactMatch() {
-        Assert.assertEquals("1.2.2",
+        assertEquals("1.2.2",
                             JavaHelidonCommonCodegen.VersionUtil.instance().chooseVersion("1.2.2",
                                                                                           List.of("3.2.1",
                                                                                                   "3.2.0",

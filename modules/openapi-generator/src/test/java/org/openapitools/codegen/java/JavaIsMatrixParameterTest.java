@@ -17,8 +17,8 @@ import org.openapitools.codegen.CodegenParameter;
 import org.openapitools.codegen.DefaultCodegen;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.JavaClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.PathItem;
@@ -37,10 +37,10 @@ public class JavaIsMatrixParameterTest {
         Assert.assertNotNull(pathItem);
 
         final List<Parameter> parameters = pathItem.getParameters();
-        Assert.assertEquals(pathItem.getParameters().size(), 2);
+        assertEquals(pathItem.getParameters().size(), 2);
 
         final CodegenParameter matrixParameter = codegen.fromParameter(parameters.get(0), new HashSet<>());
-        Assert.assertTrue(matrixParameter.isMatrix);
+        assertTrue(matrixParameter.isMatrix);
 
         final CodegenParameter simpleParameter = codegen.fromParameter(parameters.get(1), new HashSet<>());
         Assert.assertFalse(simpleParameter.isMatrix);

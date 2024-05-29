@@ -33,9 +33,9 @@ import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.JavaClientCodegen;
 import org.openapitools.codegen.languages.features.DocumentationProviderFeatures;
 import org.openapitools.codegen.languages.features.DocumentationProviderFeatures.AnnotationLibrary;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.nio.file.Files;
@@ -58,53 +58,53 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
 
         final List<CodegenProperty> vars = cm.vars;
 
         final CodegenProperty property1 = vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.nameInPascalCase, "Id");
-        Assert.assertEquals(property1.nameInCamelCase, "id");
-        Assert.assertEquals(property1.nameInSnakeCase, "ID");
-        Assert.assertEquals(property1.getter, "getId");
-        Assert.assertEquals(property1.setter, "setId");
-        Assert.assertEquals(property1.dataType, "Long");
-        Assert.assertEquals(property1.name, "id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.nameInPascalCase, "Id");
+        assertEquals(property1.nameInCamelCase, "id");
+        assertEquals(property1.nameInSnakeCase, "ID");
+        assertEquals(property1.getter, "getId");
+        assertEquals(property1.setter, "setId");
+        assertEquals(property1.dataType, "Long");
+        assertEquals(property1.name, "id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "Long");
-        Assert.assertTrue(property1.required);
+        assertEquals(property1.baseType, "Long");
+        assertTrue(property1.required);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.nameInPascalCase, "Name");
-        Assert.assertEquals(property2.nameInCamelCase, "name");
-        Assert.assertEquals(property2.nameInSnakeCase, "NAME");
-        Assert.assertEquals(property2.getter, "getName");
-        Assert.assertEquals(property2.setter, "setName");
-        Assert.assertEquals(property2.dataType, "String");
-        Assert.assertEquals(property2.name, "name");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.nameInPascalCase, "Name");
+        assertEquals(property2.nameInCamelCase, "name");
+        assertEquals(property2.nameInSnakeCase, "NAME");
+        assertEquals(property2.getter, "getName");
+        assertEquals(property2.setter, "setName");
+        assertEquals(property2.dataType, "String");
+        assertEquals(property2.name, "name");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "String");
-        Assert.assertEquals(property2.example, "Tony");
-        Assert.assertTrue(property2.required);
+        assertEquals(property2.baseType, "String");
+        assertEquals(property2.example, "Tony");
+        assertTrue(property2.required);
         Assert.assertFalse(property2.isContainer);
 
         final CodegenProperty property3 = vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.nameInPascalCase, "CreatedAt");
-        Assert.assertEquals(property3.nameInCamelCase, "createdAt");
-        Assert.assertEquals(property3.nameInSnakeCase, "CREATED_AT");
-        Assert.assertEquals(property3.getter, "getCreatedAt");
-        Assert.assertEquals(property3.setter, "setCreatedAt");
-        Assert.assertEquals(property3.dataType, "Date");
-        Assert.assertEquals(property3.name, "createdAt");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.nameInPascalCase, "CreatedAt");
+        assertEquals(property3.nameInCamelCase, "createdAt");
+        assertEquals(property3.nameInSnakeCase, "CREATED_AT");
+        assertEquals(property3.getter, "getCreatedAt");
+        assertEquals(property3.setter, "setCreatedAt");
+        assertEquals(property3.dataType, "Date");
+        assertEquals(property3.name, "createdAt");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "Date");
+        assertEquals(property3.baseType, "Date");
         Assert.assertFalse(property3.required);
         Assert.assertFalse(property3.isContainer);
     }
@@ -122,22 +122,22 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property = cm.vars.get(1);
-        Assert.assertEquals(property.baseName, "urls");
-        Assert.assertEquals(property.getter, "getUrls");
-        Assert.assertEquals(property.setter, "setUrls");
-        Assert.assertEquals(property.dataType, "List<String>");
-        Assert.assertEquals(property.name, "urls");
-        Assert.assertEquals(property.defaultValue, "new ArrayList<>()");
-        Assert.assertEquals(property.baseType, "List");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.baseName, "urls");
+        assertEquals(property.getter, "getUrls");
+        assertEquals(property.setter, "setUrls");
+        assertEquals(property.dataType, "List<String>");
+        assertEquals(property.name, "urls");
+        assertEquals(property.defaultValue, "new ArrayList<>()");
+        assertEquals(property.baseType, "List");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with set property")
@@ -154,22 +154,22 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property = cm.vars.get(1);
-        Assert.assertEquals(property.baseName, "urls");
-        Assert.assertEquals(property.getter, "getUrls");
-        Assert.assertEquals(property.setter, "setUrls");
-        Assert.assertEquals(property.dataType, "Set<String>");
-        Assert.assertEquals(property.name, "urls");
-        Assert.assertEquals(property.defaultValue, "new LinkedHashSet<>()");
-        Assert.assertEquals(property.baseType, "Set");
-        Assert.assertEquals(property.containerType, "set");
+        assertEquals(property.baseName, "urls");
+        assertEquals(property.getter, "getUrls");
+        assertEquals(property.setter, "setUrls");
+        assertEquals(property.dataType, "Set<String>");
+        assertEquals(property.name, "urls");
+        assertEquals(property.defaultValue, "new LinkedHashSet<>()");
+        assertEquals(property.baseType, "Set");
+        assertEquals(property.containerType, "set");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with a map property")
@@ -184,22 +184,22 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "translations");
-        Assert.assertEquals(property.getter, "getTranslations");
-        Assert.assertEquals(property.setter, "setTranslations");
-        Assert.assertEquals(property.dataType, "Map<String, String>");
-        Assert.assertEquals(property.name, "translations");
-        Assert.assertEquals(property.defaultValue, "new HashMap<>()");
-        Assert.assertEquals(property.baseType, "Map");
-        Assert.assertEquals(property.containerType, "map");
+        assertEquals(property.baseName, "translations");
+        assertEquals(property.getter, "getTranslations");
+        assertEquals(property.setter, "setTranslations");
+        assertEquals(property.dataType, "Map<String, String>");
+        assertEquals(property.name, "translations");
+        assertEquals(property.defaultValue, "new HashMap<>()");
+        assertEquals(property.baseType, "Map");
+        assertEquals(property.containerType, "map");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with a map with complex list property")
@@ -214,22 +214,22 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "translations");
-        Assert.assertEquals(property.getter, "getTranslations");
-        Assert.assertEquals(property.setter, "setTranslations");
-        Assert.assertEquals(property.dataType, "Map<String, List<Pet>>");
-        Assert.assertEquals(property.name, "translations");
-        Assert.assertEquals(property.defaultValue, "new HashMap<>()");
-        Assert.assertEquals(property.baseType, "Map");
-        Assert.assertEquals(property.containerType, "map");
+        assertEquals(property.baseName, "translations");
+        assertEquals(property.getter, "getTranslations");
+        assertEquals(property.setter, "setTranslations");
+        assertEquals(property.dataType, "Map<String, List<Pet>>");
+        assertEquals(property.name, "translations");
+        assertEquals(property.defaultValue, "new HashMap<>()");
+        assertEquals(property.baseType, "Map");
+        assertEquals(property.containerType, "map");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with a 2D list property")
@@ -243,19 +243,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "list2D");
-        Assert.assertEquals(property.getter, "getList2D");
-        Assert.assertEquals(property.setter, "setList2D");
-        Assert.assertEquals(property.dataType, "List<List<Pet>>");
-        Assert.assertEquals(property.name, "list2D");
-        Assert.assertEquals(property.defaultValue, "new ArrayList<>()");
-        Assert.assertEquals(property.baseType, "List");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.baseName, "list2D");
+        assertEquals(property.getter, "getList2D");
+        assertEquals(property.setter, "setList2D");
+        assertEquals(property.dataType, "List<List<Pet>>");
+        assertEquals(property.name, "list2D");
+        assertEquals(property.defaultValue, "new ArrayList<>()");
+        assertEquals(property.baseType, "List");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with restricted characters")
@@ -268,19 +268,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "@Some:restricted%characters#to!handle+");
-        Assert.assertEquals(property.getter, "getAtSomeColonRestrictedPercentCharactersHashToExclamationHandlePlus");
-        Assert.assertEquals(property.setter, "setAtSomeColonRestrictedPercentCharactersHashToExclamationHandlePlus");
-        Assert.assertEquals(property.dataType, "Boolean");
-        Assert.assertEquals(property.name, "atSomeColonRestrictedPercentCharactersHashToExclamationHandlePlus");
+        assertEquals(property.baseName, "@Some:restricted%characters#to!handle+");
+        assertEquals(property.getter, "getAtSomeColonRestrictedPercentCharactersHashToExclamationHandlePlus");
+        assertEquals(property.setter, "setAtSomeColonRestrictedPercentCharactersHashToExclamationHandlePlus");
+        assertEquals(property.dataType, "Boolean");
+        assertEquals(property.name, "atSomeColonRestrictedPercentCharactersHashToExclamationHandlePlus");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "Boolean");
+        assertEquals(property.baseType, "Boolean");
         Assert.assertFalse(property.required);
         Assert.assertFalse(property.isContainer);
     }
@@ -295,20 +295,20 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "children");
-        Assert.assertEquals(property.getter, "getChildren");
-        Assert.assertEquals(property.setter, "setChildren");
-        Assert.assertEquals(property.dataType, "Children");
-        Assert.assertEquals(property.name, "children");
+        assertEquals(property.baseName, "children");
+        assertEquals(property.getter, "getChildren");
+        assertEquals(property.setter, "setChildren");
+        assertEquals(property.dataType, "Children");
+        assertEquals(property.name, "children");
         // "null" as default value for model
-        Assert.assertEquals(property.defaultValue, "null");
-        Assert.assertEquals(property.baseType, "Children");
+        assertEquals(property.defaultValue, "null");
+        assertEquals(property.baseType, "Children");
         Assert.assertFalse(property.required);
         Assert.assertFalse(property.isContainer);
     }
@@ -324,23 +324,23 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "children");
-        Assert.assertEquals(property.complexType, "Children");
-        Assert.assertEquals(property.getter, "getChildren");
-        Assert.assertEquals(property.setter, "setChildren");
-        Assert.assertEquals(property.dataType, "List<Children>");
-        Assert.assertEquals(property.name, "children");
-        Assert.assertEquals(property.defaultValue, "new ArrayList<>()");
-        Assert.assertEquals(property.baseType, "List");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.baseName, "children");
+        assertEquals(property.complexType, "Children");
+        assertEquals(property.getter, "getChildren");
+        assertEquals(property.setter, "setChildren");
+        assertEquals(property.dataType, "List<Children>");
+        assertEquals(property.name, "children");
+        assertEquals(property.defaultValue, "new ArrayList<>()");
+        assertEquals(property.baseType, "List");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with complex map property")
@@ -354,25 +354,25 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Map", "Children")).size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Map", "Children")).size(), 2);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "children");
-        Assert.assertEquals(property.complexType, "Children");
-        Assert.assertEquals(property.getter, "getChildren");
-        Assert.assertEquals(property.setter, "setChildren");
-        Assert.assertEquals(property.dataType, "Map<String, Children>");
-        Assert.assertEquals(property.name, "children");
-        Assert.assertEquals(property.defaultValue, "new HashMap<>()");
-        Assert.assertEquals(property.baseType, "Map");
-        Assert.assertEquals(property.containerType, "map");
+        assertEquals(property.baseName, "children");
+        assertEquals(property.complexType, "Children");
+        assertEquals(property.getter, "getChildren");
+        assertEquals(property.setter, "setChildren");
+        assertEquals(property.dataType, "Map<String, Children>");
+        assertEquals(property.name, "children");
+        assertEquals(property.defaultValue, "new HashMap<>()");
+        assertEquals(property.baseType, "Map");
+        assertEquals(property.containerType, "map");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
-        Assert.assertTrue(property.isMap);
+        assertTrue(property.isContainer);
+        assertTrue(property.isMap);
     }
 
     @Test(description = "convert a model with complex array property")
@@ -386,25 +386,25 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("List", "Children")).size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("List", "Children")).size(), 2);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "children");
-        Assert.assertEquals(property.complexType, "Children");
-        Assert.assertEquals(property.getter, "getChildren");
-        Assert.assertEquals(property.setter, "setChildren");
-        Assert.assertEquals(property.dataType, "List<Children>");
-        Assert.assertEquals(property.name, "children");
-        Assert.assertEquals(property.defaultValue, "new ArrayList<>()");
-        Assert.assertEquals(property.baseType, "List");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.baseName, "children");
+        assertEquals(property.complexType, "Children");
+        assertEquals(property.getter, "getChildren");
+        assertEquals(property.setter, "setChildren");
+        assertEquals(property.dataType, "List<Children>");
+        assertEquals(property.name, "children");
+        assertEquals(property.defaultValue, "new ArrayList<>()");
+        assertEquals(property.baseType, "List");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
-        Assert.assertTrue(property.isArray);
+        assertTrue(property.isContainer);
+        assertTrue(property.isArray);
     }
 
     @Test(description = "convert a model with complex set property")
@@ -419,25 +419,25 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
-        Assert.assertTrue(cm.imports.contains("Set"));
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
+        assertTrue(cm.imports.contains("Set"));
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "children");
-        Assert.assertEquals(property.complexType, "Children");
-        Assert.assertEquals(property.getter, "getChildren");
-        Assert.assertEquals(property.setter, "setChildren");
-        Assert.assertEquals(property.dataType, "Set<Children>");
-        Assert.assertEquals(property.name, "children");
-        Assert.assertEquals(property.defaultValue, "new LinkedHashSet<>()");
-        Assert.assertEquals(property.baseType, "Set");
-        Assert.assertEquals(property.containerType, "set");
+        assertEquals(property.baseName, "children");
+        assertEquals(property.complexType, "Children");
+        assertEquals(property.getter, "getChildren");
+        assertEquals(property.setter, "setChildren");
+        assertEquals(property.dataType, "Set<Children>");
+        assertEquals(property.name, "children");
+        assertEquals(property.defaultValue, "new LinkedHashSet<>()");
+        assertEquals(property.baseType, "Set");
+        assertEquals(property.containerType, "set");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
-        Assert.assertTrue(property.getUniqueItemsBoolean());
+        assertTrue(property.isContainer);
+        assertTrue(property.getUniqueItemsBoolean());
     }
     @Test(description = "convert a model with an array property with item name")
     public void arrayModelWithItemNameTest() {
@@ -456,28 +456,28 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("List", "Child")).size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("List", "Child")).size(), 2);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "children");
-        Assert.assertEquals(property.complexType, "Child");
-        Assert.assertEquals(property.getter, "getChildren");
-        Assert.assertEquals(property.setter, "setChildren");
-        Assert.assertEquals(property.dataType, "List<Child>");
-        Assert.assertEquals(property.name, "children");
-        Assert.assertEquals(property.defaultValue, "new ArrayList<>()");
-        Assert.assertEquals(property.baseType, "List");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.baseName, "children");
+        assertEquals(property.complexType, "Child");
+        assertEquals(property.getter, "getChildren");
+        assertEquals(property.setter, "setChildren");
+        assertEquals(property.dataType, "List<Child>");
+        assertEquals(property.name, "children");
+        assertEquals(property.defaultValue, "new ArrayList<>()");
+        assertEquals(property.baseType, "List");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
 
         final CodegenProperty itemsProperty = property.items;
-        Assert.assertEquals(itemsProperty.baseName, "child");
-        Assert.assertEquals(itemsProperty.name, "child");
+        assertEquals(itemsProperty.baseName, "child");
+        assertEquals(itemsProperty.name, "child");
     }
 
     @Test(description = "convert an array model")
@@ -492,13 +492,13 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
-        Assert.assertEquals(cm.parent, "ArrayList<Children>");
-        Assert.assertEquals(cm.imports.size(), 4);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "List", "ArrayList", "Children")).size(), 4);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.parent, "ArrayList<Children>");
+        assertEquals(cm.imports.size(), 4);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "List", "ArrayList", "Children")).size(), 4);
     }
 
     @Test(description = "convert a set model")
@@ -514,13 +514,13 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
-        Assert.assertEquals(cm.parent, "LinkedHashSet<Children>");
-        Assert.assertEquals(cm.imports.size(), 4);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "Set", "LinkedHashSet", "Children")).size(), 4);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.parent, "LinkedHashSet<Children>");
+        assertEquals(cm.imports.size(), 4);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "Set", "LinkedHashSet", "Children")).size(), 4);
     }
 
     @Test(description = "convert a map model")
@@ -534,13 +534,13 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.vars.size(), 0);
-        Assert.assertEquals(cm.parent, "HashMap<String, Children>");
-        Assert.assertEquals(cm.imports.size(), 4);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "Map", "HashMap", "Children")).size(), 4);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.parent, "HashMap<String, Children>");
+        assertEquals(cm.imports.size(), 4);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("ApiModel", "Map", "HashMap", "Children")).size(), 4);
     }
 
     @Test(description = "convert a model with upper-case property names")
@@ -554,19 +554,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "NAME");
-        Assert.assertEquals(property.getter, "getNAME");
-        Assert.assertEquals(property.setter, "setNAME");
-        Assert.assertEquals(property.dataType, "String");
-        Assert.assertEquals(property.name, "NAME");
+        assertEquals(property.baseName, "NAME");
+        assertEquals(property.getter, "getNAME");
+        assertEquals(property.setter, "setNAME");
+        assertEquals(property.dataType, "String");
+        assertEquals(property.name, "NAME");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "String");
-        Assert.assertTrue(property.required);
+        assertEquals(property.baseType, "String");
+        assertTrue(property.required);
         Assert.assertFalse(property.isContainer);
     }
 
@@ -581,19 +581,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "NAME1");
-        Assert.assertEquals(property.getter, "getNAME1");
-        Assert.assertEquals(property.setter, "setNAME1");
-        Assert.assertEquals(property.dataType, "String");
-        Assert.assertEquals(property.name, "NAME1");
+        assertEquals(property.baseName, "NAME1");
+        assertEquals(property.getter, "getNAME1");
+        assertEquals(property.setter, "setNAME1");
+        assertEquals(property.dataType, "String");
+        assertEquals(property.name, "NAME1");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "String");
-        Assert.assertTrue(property.required);
+        assertEquals(property.baseType, "String");
+        assertTrue(property.required);
         Assert.assertFalse(property.isContainer);
     }
 
@@ -608,19 +608,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "pId");
-        Assert.assertEquals(property.getter, "getpId");
-        Assert.assertEquals(property.setter, "setpId");
-        Assert.assertEquals(property.dataType, "String");
-        Assert.assertEquals(property.name, "pId");
+        assertEquals(property.baseName, "pId");
+        assertEquals(property.getter, "getpId");
+        assertEquals(property.setter, "setpId");
+        assertEquals(property.dataType, "String");
+        assertEquals(property.name, "pId");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "String");
-        Assert.assertTrue(property.required);
+        assertEquals(property.baseType, "String");
+        assertTrue(property.required);
         Assert.assertFalse(property.isContainer);
     }
 
@@ -635,19 +635,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "ATTName");
-        Assert.assertEquals(property.getter, "getAtTName");
-        Assert.assertEquals(property.setter, "setAtTName");
-        Assert.assertEquals(property.dataType, "String");
-        Assert.assertEquals(property.name, "atTName");
+        assertEquals(property.baseName, "ATTName");
+        assertEquals(property.getter, "getAtTName");
+        assertEquals(property.setter, "setAtTName");
+        assertEquals(property.dataType, "String");
+        assertEquals(property.name, "atTName");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "String");
-        Assert.assertTrue(property.required);
+        assertEquals(property.baseType, "String");
+        assertTrue(property.required);
         Assert.assertFalse(property.isContainer);
     }
 
@@ -662,19 +662,19 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "ATT_NAME");
-        Assert.assertEquals(property.getter, "getATTNAME");
-        Assert.assertEquals(property.setter, "setATTNAME");
-        Assert.assertEquals(property.dataType, "String");
-        Assert.assertEquals(property.name, "ATT_NAME");
+        assertEquals(property.baseName, "ATT_NAME");
+        assertEquals(property.getter, "getATTNAME");
+        assertEquals(property.setter, "setATTNAME");
+        assertEquals(property.dataType, "String");
+        assertEquals(property.name, "ATT_NAME");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "String");
-        Assert.assertTrue(property.required);
+        assertEquals(property.baseType, "String");
+        assertTrue(property.required);
         Assert.assertFalse(property.isContainer);
     }
 
@@ -689,10 +689,10 @@ public class JavaModelTest {
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "created-at");
-        Assert.assertEquals(property.getter, "getCreatedAt");
-        Assert.assertEquals(property.setter, "setCreatedAt");
-        Assert.assertEquals(property.name, "createdAt");
+        assertEquals(property.baseName, "created-at");
+        assertEquals(property.getter, "getCreatedAt");
+        assertEquals(property.setter, "setCreatedAt");
+        assertEquals(property.name, "createdAt");
     }
 
     @Test(description = "convert query[password] to queryPassword")
@@ -706,10 +706,10 @@ public class JavaModelTest {
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "query[password]");
-        Assert.assertEquals(property.getter, "getQueryPassword");
-        Assert.assertEquals(property.setter, "setQueryPassword");
-        Assert.assertEquals(property.name, "queryPassword");
+        assertEquals(property.baseName, "query[password]");
+        assertEquals(property.getter, "getQueryPassword");
+        assertEquals(property.setter, "setQueryPassword");
+        assertEquals(property.name, "queryPassword");
     }
 
     @Test(description = "properly escape names per 567")
@@ -722,7 +722,7 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("with.dots", schema);
 
-        Assert.assertEquals(cm.classname, "WithDots");
+        assertEquals(cm.classname, "WithDots");
     }
 
     @Test(description = "convert a model with binary data")
@@ -736,13 +736,13 @@ public class JavaModelTest {
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "inputBinaryData");
-        Assert.assertEquals(property.getter, "getInputBinaryData");
-        Assert.assertEquals(property.setter, "setInputBinaryData");
-        Assert.assertEquals(property.dataType, "byte[]");
-        Assert.assertEquals(property.name, "inputBinaryData");
+        assertEquals(property.baseName, "inputBinaryData");
+        assertEquals(property.getter, "getInputBinaryData");
+        assertEquals(property.setter, "setInputBinaryData");
+        assertEquals(property.dataType, "byte[]");
+        assertEquals(property.name, "inputBinaryData");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "byte[]");
+        assertEquals(property.baseType, "byte[]");
         Assert.assertFalse(property.required);
         Assert.assertFalse(property.isContainer);
     }
@@ -757,18 +757,18 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, "_");
-        Assert.assertEquals(property.getter, "getU");
-        Assert.assertEquals(property.setter, "setU");
-        Assert.assertEquals(property.dataType, "String");
-        Assert.assertEquals(property.name, "u");
+        assertEquals(property.baseName, "_");
+        assertEquals(property.getter, "getU");
+        assertEquals(property.setter, "setU");
+        assertEquals(property.dataType, "String");
+        assertEquals(property.name, "u");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "String");
+        assertEquals(property.baseType, "String");
         Assert.assertFalse(property.isContainer);
     }
 
@@ -784,7 +784,7 @@ public class JavaModelTest {
         final CodegenParameter cm = codegen.fromParameter(parameter, null);
 
         Assert.assertNull(cm.allowableValues);
-        Assert.assertEquals(cm.description, "this is a description");
+        assertEquals(cm.description, "this is a description");
     }
 
     @Test(description = "types used by inner properties should be imported")
@@ -800,8 +800,8 @@ public class JavaModelTest {
         JavaClientCodegen codegen1 = new JavaClientCodegen();
         codegen1.setOpenAPI(openAPI1);
         final CodegenModel cm1 = codegen1.fromModel("sample", schema1);
-        Assert.assertEquals(cm1.vars.get(0).dataType, "Map<String, List<BigDecimal>>");
-        Assert.assertTrue(cm1.imports.contains("BigDecimal"));
+        assertEquals(cm1.vars.get(0).dataType, "Map<String, List<BigDecimal>>");
+        assertTrue(cm1.imports.contains("BigDecimal"));
 
         Schema schema2 = new Schema()
                 .description("model with Map<String, Map<String, List<BigDecimal>>>")
@@ -812,8 +812,8 @@ public class JavaModelTest {
         JavaClientCodegen codegen2 = new JavaClientCodegen();
         codegen2.setOpenAPI(openAPI2);
         final CodegenModel cm2 = codegen2.fromModel("sample", schema2);
-        Assert.assertEquals(cm2.vars.get(0).dataType, "Map<String, Map<String, List<BigDecimal>>>");
-        Assert.assertTrue(cm2.imports.contains("BigDecimal"));
+        assertEquals(cm2.vars.get(0).dataType, "Map<String, Map<String, List<BigDecimal>>>");
+        assertTrue(cm2.imports.contains("BigDecimal"));
     }
 
     @DataProvider(name = "modelNames")
@@ -838,8 +838,8 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel(name, schema);
 
-        Assert.assertEquals(cm.name, name);
-        Assert.assertEquals(cm.classname, expectedName);
+        assertEquals(cm.name, name);
+        assertEquals(cm.classname, expectedName);
     }
 
     @DataProvider(name = "classProperties")
@@ -862,10 +862,10 @@ public class JavaModelTest {
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
         final CodegenProperty property = cm.vars.get(0);
-        Assert.assertEquals(property.baseName, baseName);
-        Assert.assertEquals(property.getter, getter);
-        Assert.assertEquals(property.setter, setter);
-        Assert.assertEquals(property.name, name);
+        assertEquals(property.baseName, baseName);
+        assertEquals(property.getter, getter);
+        assertEquals(property.setter, setter);
+        assertEquals(property.name, name);
     }
 
 
@@ -896,45 +896,45 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.xmlPrefix, "my");
-        Assert.assertEquals(cm.xmlName, "customXmlName");
-        Assert.assertEquals(cm.xmlNamespace, "xmlNamespace");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.xmlPrefix, "my");
+        assertEquals(cm.xmlName, "customXmlName");
+        assertEquals(cm.xmlNamespace, "xmlNamespace");
+        assertEquals(cm.vars.size(), 3);
 
         final List<CodegenProperty> vars = cm.vars;
 
         final CodegenProperty property2 = vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.getter, "getName");
-        Assert.assertEquals(property2.setter, "setName");
-        Assert.assertEquals(property2.dataType, "String");
-        Assert.assertEquals(property2.name, "name");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.getter, "getName");
+        assertEquals(property2.setter, "setName");
+        assertEquals(property2.dataType, "String");
+        assertEquals(property2.name, "name");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "String");
-        Assert.assertEquals(property2.example, "Tony");
-        Assert.assertTrue(property2.required);
+        assertEquals(property2.baseType, "String");
+        assertEquals(property2.example, "Tony");
+        assertTrue(property2.required);
         Assert.assertFalse(property2.isContainer);
-        Assert.assertTrue(property2.isXmlAttribute);
-        Assert.assertEquals(property2.xmlName, "myName");
+        assertTrue(property2.isXmlAttribute);
+        assertEquals(property2.xmlName, "myName");
         Assert.assertNull(property2.xmlNamespace);
 
         final CodegenProperty property3 = vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.getter, "getCreatedAt");
-        Assert.assertEquals(property3.setter, "setCreatedAt");
-        Assert.assertEquals(property3.dataType, "Date");
-        Assert.assertEquals(property3.name, "createdAt");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.getter, "getCreatedAt");
+        assertEquals(property3.setter, "setCreatedAt");
+        assertEquals(property3.dataType, "Date");
+        assertEquals(property3.name, "createdAt");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "Date");
+        assertEquals(property3.baseType, "Date");
         Assert.assertFalse(property3.required);
         Assert.assertFalse(property3.isContainer);
         Assert.assertFalse(property3.isXmlAttribute);
-        Assert.assertEquals(property3.xmlName, "myCreatedAt");
-        Assert.assertEquals(property3.xmlNamespace, "myNamespace");
-        Assert.assertEquals(property3.xmlPrefix, "my");
+        assertEquals(property3.xmlName, "myCreatedAt");
+        assertEquals(property3.xmlNamespace, "myNamespace");
+        assertEquals(property3.xmlPrefix, "my");
     }
 
     @Test(description = "test models with wrapped xml")
@@ -961,32 +961,32 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.xmlPrefix, "my");
-        Assert.assertEquals(cm.xmlName, "customXmlName");
-        Assert.assertEquals(cm.xmlNamespace, "xmlNamespace");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.xmlPrefix, "my");
+        assertEquals(cm.xmlName, "customXmlName");
+        assertEquals(cm.xmlNamespace, "xmlNamespace");
+        assertEquals(cm.vars.size(), 2);
 
         final List<CodegenProperty> vars = cm.vars;
 
         final CodegenProperty property2 = vars.get(1);
-        Assert.assertEquals(property2.baseName, "array");
-        Assert.assertEquals(property2.getter, "getArray");
-        Assert.assertEquals(property2.setter, "setArray");
-        Assert.assertEquals(property2.dataType, "List<String>");
-        Assert.assertEquals(property2.name, "array");
-        Assert.assertEquals(property2.defaultValue, "new ArrayList<>()");
-        Assert.assertEquals(property2.baseType, "List");
-        Assert.assertTrue(property2.isContainer);
-        Assert.assertTrue(property2.isXmlWrapped);
-        Assert.assertEquals(property2.xmlName, "xmlArray");
+        assertEquals(property2.baseName, "array");
+        assertEquals(property2.getter, "getArray");
+        assertEquals(property2.setter, "setArray");
+        assertEquals(property2.dataType, "List<String>");
+        assertEquals(property2.name, "array");
+        assertEquals(property2.defaultValue, "new ArrayList<>()");
+        assertEquals(property2.baseType, "List");
+        assertTrue(property2.isContainer);
+        assertTrue(property2.isXmlWrapped);
+        assertEquals(property2.xmlName, "xmlArray");
         Assert.assertNotNull(property2.xmlNamespace);
         Assert.assertNotNull(property2.items);
         CodegenProperty items = property2.items;
-        Assert.assertEquals(items.xmlName, "i");
-        Assert.assertEquals(items.baseName, "array");
+        assertEquals(items.xmlName, "i");
+        assertEquals(items.baseName, "array");
     }
 
     @Test(description = "convert a boolean parameter")
@@ -998,13 +998,13 @@ public class JavaModelTest {
         codegen.setBooleanGetterPrefix("is");
         final CodegenProperty cp = codegen.fromProperty("property", property);
 
-        Assert.assertEquals(cp.baseName, "property");
-        Assert.assertEquals(cp.dataType, "Boolean");
-        Assert.assertEquals(cp.name, "property");
-        Assert.assertEquals(cp.baseType, "Boolean");
+        assertEquals(cp.baseName, "property");
+        assertEquals(cp.dataType, "Boolean");
+        assertEquals(cp.name, "property");
+        assertEquals(cp.baseType, "Boolean");
         Assert.assertFalse(cp.isContainer);
-        Assert.assertTrue(cp.isBoolean);
-        Assert.assertEquals(cp.getter, "isProperty");
+        assertTrue(cp.isBoolean);
+        assertEquals(cp.getter, "isProperty");
     }
 
     @Test(description = "convert an integer property")
@@ -1015,14 +1015,14 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenProperty cp = codegen.fromProperty("property", property);
 
-        Assert.assertEquals(cp.baseName, "property");
-        Assert.assertEquals(cp.dataType, "Integer");
-        Assert.assertEquals(cp.name, "property");
-        Assert.assertEquals(cp.baseType, "Integer");
+        assertEquals(cp.baseName, "property");
+        assertEquals(cp.dataType, "Integer");
+        assertEquals(cp.name, "property");
+        assertEquals(cp.baseType, "Integer");
         Assert.assertFalse(cp.isContainer);
-        Assert.assertTrue(cp.isInteger);
+        assertTrue(cp.isInteger);
         Assert.assertFalse(cp.isLong);
-        Assert.assertEquals(cp.getter, "getProperty");
+        assertEquals(cp.getter, "getProperty");
     }
 
     @Test(description = "convert a long property")
@@ -1033,17 +1033,17 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenProperty cp = codegen.fromProperty("property", property);
 
-        Assert.assertEquals(cp.baseName, "property");
-        Assert.assertEquals(cp.nameInPascalCase, "Property");
-        Assert.assertEquals(cp.nameInCamelCase, "property");
-        Assert.assertEquals(cp.nameInSnakeCase, "PROPERTY");
-        Assert.assertEquals(cp.dataType, "Long");
-        Assert.assertEquals(cp.name, "property");
-        Assert.assertEquals(cp.baseType, "Long");
+        assertEquals(cp.baseName, "property");
+        assertEquals(cp.nameInPascalCase, "Property");
+        assertEquals(cp.nameInCamelCase, "property");
+        assertEquals(cp.nameInSnakeCase, "PROPERTY");
+        assertEquals(cp.dataType, "Long");
+        assertEquals(cp.name, "property");
+        assertEquals(cp.baseType, "Long");
         Assert.assertFalse(cp.isContainer);
-        Assert.assertTrue(cp.isLong);
+        assertTrue(cp.isLong);
         Assert.assertFalse(cp.isInteger);
-        Assert.assertEquals(cp.getter, "getProperty");
+        assertEquals(cp.getter, "getProperty");
     }
 
     @Test(description = "convert an integer property in a referenced schema")
@@ -1057,27 +1057,27 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("test", testSchema);
 
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.vars.size(), 2);
 
         CodegenProperty cp1 = cm.vars.get(0);
-        Assert.assertEquals(cp1.baseName, "Integer1");
-        Assert.assertEquals(cp1.nameInPascalCase, "Integer1");
-        Assert.assertEquals(cp1.nameInCamelCase, "integer1");
-        Assert.assertEquals(cp1.nameInSnakeCase, "INTEGER1");
-        Assert.assertEquals(cp1.dataType, "Integer");
-        Assert.assertEquals(cp1.name, "integer1");
-        Assert.assertEquals(cp1.baseType, "Integer");
-        Assert.assertEquals(cp1.getter, "getInteger1");
+        assertEquals(cp1.baseName, "Integer1");
+        assertEquals(cp1.nameInPascalCase, "Integer1");
+        assertEquals(cp1.nameInCamelCase, "integer1");
+        assertEquals(cp1.nameInSnakeCase, "INTEGER1");
+        assertEquals(cp1.dataType, "Integer");
+        assertEquals(cp1.name, "integer1");
+        assertEquals(cp1.baseType, "Integer");
+        assertEquals(cp1.getter, "getInteger1");
 
         CodegenProperty cp2 = cm.vars.get(1);
-        Assert.assertEquals(cp2.baseName, "Integer2");
-        Assert.assertEquals(cp2.nameInPascalCase, "Integer2");
-        Assert.assertEquals(cp2.nameInCamelCase, "integer2");
-        Assert.assertEquals(cp2.nameInSnakeCase, "INTEGER2");
-        Assert.assertEquals(cp2.dataType, "Integer");
-        Assert.assertEquals(cp2.name, "integer2");
-        Assert.assertEquals(cp2.baseType, "Integer");
-        Assert.assertEquals(cp2.getter, "getInteger2");
+        assertEquals(cp2.baseName, "Integer2");
+        assertEquals(cp2.nameInPascalCase, "Integer2");
+        assertEquals(cp2.nameInCamelCase, "integer2");
+        assertEquals(cp2.nameInSnakeCase, "INTEGER2");
+        assertEquals(cp2.dataType, "Integer");
+        assertEquals(cp2.name, "integer2");
+        assertEquals(cp2.baseType, "Integer");
+        assertEquals(cp2.getter, "getInteger2");
     }
 
     @Test(description = "convert a long property in a referenced schema")
@@ -1091,21 +1091,21 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("test", TestSchema);
 
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.vars.size(), 2);
 
         CodegenProperty cp1 = cm.vars.get(0);
-        Assert.assertEquals(cp1.baseName, "Long1");
-        Assert.assertEquals(cp1.dataType, "Long");
-        Assert.assertEquals(cp1.name, "long1");
-        Assert.assertEquals(cp1.baseType, "Long");
-        Assert.assertEquals(cp1.getter, "getLong1");
+        assertEquals(cp1.baseName, "Long1");
+        assertEquals(cp1.dataType, "Long");
+        assertEquals(cp1.name, "long1");
+        assertEquals(cp1.baseType, "Long");
+        assertEquals(cp1.getter, "getLong1");
 
         CodegenProperty cp2 = cm.vars.get(1);
-        Assert.assertEquals(cp2.baseName, "Long2");
-        Assert.assertEquals(cp2.dataType, "Long");
-        Assert.assertEquals(cp2.name, "long2");
-        Assert.assertEquals(cp2.baseType, "Long");
-        Assert.assertEquals(cp2.getter, "getLong2");
+        assertEquals(cp2.baseName, "Long2");
+        assertEquals(cp2.dataType, "Long");
+        assertEquals(cp2.name, "long2");
+        assertEquals(cp2.baseType, "Long");
+        assertEquals(cp2.getter, "getLong2");
     }
 
     @Test(description = "convert string property")
@@ -1116,21 +1116,21 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenProperty cp = codegen.fromProperty("somePropertyWithMinMaxAndPattern", property);
 
-        Assert.assertEquals(cp.baseName, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInPascalCase, "SomePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInCamelCase, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInSnakeCase, "SOME_PROPERTY_WITH_MIN_MAX_AND_PATTERN");
-        Assert.assertEquals(cp.dataType, "String");
-        Assert.assertEquals(cp.name, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.baseType, "String");
+        assertEquals(cp.baseName, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInPascalCase, "SomePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInCamelCase, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInSnakeCase, "SOME_PROPERTY_WITH_MIN_MAX_AND_PATTERN");
+        assertEquals(cp.dataType, "String");
+        assertEquals(cp.name, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.baseType, "String");
         Assert.assertFalse(cp.isContainer);
         Assert.assertFalse(cp.isLong);
         Assert.assertFalse(cp.isInteger);
-        Assert.assertTrue(cp.isString);
-        Assert.assertEquals(cp.getter, "getSomePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.minLength, Integer.valueOf(3));
-        Assert.assertEquals(cp.maxLength, Integer.valueOf(10));
-        Assert.assertEquals(cp.pattern, "^[A-Z]+$");
+        assertTrue(cp.isString);
+        assertEquals(cp.getter, "getSomePropertyWithMinMaxAndPattern");
+        assertEquals(cp.minLength, Integer.valueOf(3));
+        assertEquals(cp.maxLength, Integer.valueOf(10));
+        assertEquals(cp.pattern, "^[A-Z]+$");
     }
     
     @Test(description = "convert string property with password format")
@@ -1141,7 +1141,7 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         
         final CodegenProperty cp = codegen.fromProperty("somePropertyWithPasswordFormat", property);
-        Assert.assertEquals(cp.isPassword, true);
+        assertEquals(cp.isPassword, true);
     }
 
     @Test(description = "convert string property in an object")
@@ -1154,23 +1154,23 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         CodegenModel cm = codegen.fromModel("myObject", myObject);
 
-        Assert.assertEquals(cm.getVars().size(), 1);
+        assertEquals(cm.getVars().size(), 1);
         CodegenProperty cp = cm.getVars().get(0);
-        Assert.assertEquals(cp.baseName, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInPascalCase, "SomePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInCamelCase, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInSnakeCase, "SOME_PROPERTY_WITH_MIN_MAX_AND_PATTERN");
-        Assert.assertEquals(cp.dataType, "String");
-        Assert.assertEquals(cp.name, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.baseType, "String");
+        assertEquals(cp.baseName, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInPascalCase, "SomePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInCamelCase, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInSnakeCase, "SOME_PROPERTY_WITH_MIN_MAX_AND_PATTERN");
+        assertEquals(cp.dataType, "String");
+        assertEquals(cp.name, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.baseType, "String");
         Assert.assertFalse(cp.isContainer);
         Assert.assertFalse(cp.isLong);
         Assert.assertFalse(cp.isInteger);
-        Assert.assertTrue(cp.isString);
-        Assert.assertEquals(cp.getter, "getSomePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.minLength, Integer.valueOf(3));
-        Assert.assertEquals(cp.maxLength, Integer.valueOf(10));
-        Assert.assertEquals(cp.pattern, "^[A-Z]+$");
+        assertTrue(cp.isString);
+        assertEquals(cp.getter, "getSomePropertyWithMinMaxAndPattern");
+        assertEquals(cp.minLength, Integer.valueOf(3));
+        assertEquals(cp.maxLength, Integer.valueOf(10));
+        assertEquals(cp.pattern, "^[A-Z]+$");
     }
 
     @Test(description = "convert referenced string property in an object")
@@ -1187,23 +1187,23 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         CodegenModel cm = codegen.fromModel("myObject", myObject);
 
-        Assert.assertEquals(cm.getVars().size(), 1);
+        assertEquals(cm.getVars().size(), 1);
         CodegenProperty cp = cm.getVars().get(0);
-        Assert.assertEquals(cp.baseName, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInPascalCase, "SomePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInCamelCase, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.nameInSnakeCase, "SOME_PROPERTY_WITH_MIN_MAX_AND_PATTERN");
-        Assert.assertEquals(cp.dataType, "String");
-        Assert.assertEquals(cp.name, "somePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.baseType, "String");
+        assertEquals(cp.baseName, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInPascalCase, "SomePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInCamelCase, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.nameInSnakeCase, "SOME_PROPERTY_WITH_MIN_MAX_AND_PATTERN");
+        assertEquals(cp.dataType, "String");
+        assertEquals(cp.name, "somePropertyWithMinMaxAndPattern");
+        assertEquals(cp.baseType, "String");
         Assert.assertFalse(cp.isContainer);
         Assert.assertFalse(cp.isLong);
         Assert.assertFalse(cp.isInteger);
-        Assert.assertTrue(cp.isString);
-        Assert.assertEquals(cp.getter, "getSomePropertyWithMinMaxAndPattern");
-        Assert.assertEquals(cp.minLength, Integer.valueOf(3));
-        Assert.assertEquals(cp.maxLength, Integer.valueOf(10));
-        Assert.assertEquals(cp.pattern, "^[A-Z]+$");
+        assertTrue(cp.isString);
+        assertEquals(cp.getter, "getSomePropertyWithMinMaxAndPattern");
+        assertEquals(cp.minLength, Integer.valueOf(3));
+        assertEquals(cp.maxLength, Integer.valueOf(10));
+        assertEquals(cp.pattern, "^[A-Z]+$");
     }
 
     @Test(description = "convert an array schema")
@@ -1216,20 +1216,20 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("test", testSchema);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
         CodegenProperty cp1 = cm.vars.get(0);
-        Assert.assertEquals(cp1.baseName, "pets");
-        Assert.assertEquals(cp1.dataType, "List<Pet>");
-        Assert.assertEquals(cp1.name, "pets");
-        Assert.assertEquals(cp1.baseType, "List");
-        Assert.assertTrue(cp1.isContainer);
-        Assert.assertTrue(cp1.isArray);
+        assertEquals(cp1.baseName, "pets");
+        assertEquals(cp1.dataType, "List<Pet>");
+        assertEquals(cp1.name, "pets");
+        assertEquals(cp1.baseType, "List");
+        assertTrue(cp1.isContainer);
+        assertTrue(cp1.isArray);
         Assert.assertFalse(cp1.isMap);
-        Assert.assertEquals(cp1.getter, "getPets");
-        Assert.assertEquals(cp1.items.baseType, "Pet");
+        assertEquals(cp1.getter, "getPets");
+        assertEquals(cp1.items.baseType, "Pet");
 
-        Assert.assertTrue(cm.imports.contains("List"));
-        Assert.assertTrue(cm.imports.contains("Pet"));
+        assertTrue(cm.imports.contains("List"));
+        assertTrue(cm.imports.contains("Pet"));
     }
 
     @Test(description = "convert an array schema in a RequestBody")
@@ -1248,21 +1248,21 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenOperation co = codegen.fromOperation("testSchema", "GET", operation, null);
 
-        Assert.assertEquals(co.bodyParams.size(), 1);
+        assertEquals(co.bodyParams.size(), 1);
         CodegenParameter cp1 = co.bodyParams.get(0);
-        Assert.assertEquals(cp1.baseType, "Pet");
-        Assert.assertEquals(cp1.dataType, "List<Pet>");
-        Assert.assertTrue(cp1.isContainer);
-        Assert.assertTrue(cp1.isArray);
+        assertEquals(cp1.baseType, "Pet");
+        assertEquals(cp1.dataType, "List<Pet>");
+        assertTrue(cp1.isContainer);
+        assertTrue(cp1.isArray);
         Assert.assertFalse(cp1.isMap);
-        Assert.assertEquals(cp1.items.baseType, "Pet");
-        Assert.assertEquals(cp1.items.complexType, "Pet");
-        Assert.assertEquals(cp1.items.dataType, "Pet");
+        assertEquals(cp1.items.baseType, "Pet");
+        assertEquals(cp1.items.complexType, "Pet");
+        assertEquals(cp1.items.dataType, "Pet");
 
-        Assert.assertEquals(co.responses.size(), 1);
+        assertEquals(co.responses.size(), 1);
 
-        Assert.assertTrue(co.imports.contains("List"));
-        Assert.assertTrue(co.imports.contains("Pet"));
+        assertTrue(co.imports.contains("List"));
+        assertTrue(co.imports.contains("Pet"));
     }
 
     @Test(description = "convert an array schema in an ApiResponse")
@@ -1279,13 +1279,13 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenOperation co = codegen.fromOperation("testSchema", "GET", operation, null);
 
-        Assert.assertEquals(co.responses.size(), 1);
+        assertEquals(co.responses.size(), 1);
         CodegenResponse cr = co.responses.get(0);
-        Assert.assertEquals(cr.baseType, "Pet");
-        Assert.assertEquals(cr.dataType, "List<Pet>");
-        Assert.assertEquals(cr.containerType, "array");
+        assertEquals(cr.baseType, "Pet");
+        assertEquals(cr.dataType, "List<Pet>");
+        assertEquals(cr.containerType, "array");
 
-        Assert.assertTrue(co.imports.contains("Pet"));
+        assertTrue(co.imports.contains("Pet"));
     }
 
     @Test(description = "convert an array of array schema")
@@ -1299,16 +1299,16 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("test", testSchema);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
         CodegenProperty cp1 = cm.vars.get(0);
-        Assert.assertEquals(cp1.baseName, "pets");
-        Assert.assertEquals(cp1.dataType, "List<List<Pet>>");
-        Assert.assertEquals(cp1.name, "pets");
-        Assert.assertEquals(cp1.baseType, "List");
-        Assert.assertEquals(cp1.getter, "getPets");
+        assertEquals(cp1.baseName, "pets");
+        assertEquals(cp1.dataType, "List<List<Pet>>");
+        assertEquals(cp1.name, "pets");
+        assertEquals(cp1.baseType, "List");
+        assertEquals(cp1.getter, "getPets");
 
-        Assert.assertTrue(cm.imports.contains("List"));
-        Assert.assertTrue(cm.imports.contains("Pet"));
+        assertTrue(cm.imports.contains("List"));
+        assertTrue(cm.imports.contains("Pet"));
     }
 
     @Test(description = "convert an array of array schema in a RequestBody")
@@ -1328,24 +1328,24 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenOperation co = codegen.fromOperation("testSchema", "GET", operation, null);
 
-        Assert.assertEquals(co.bodyParams.size(), 1);
+        assertEquals(co.bodyParams.size(), 1);
         CodegenParameter cp1 = co.bodyParams.get(0);
-        Assert.assertEquals(cp1.baseType, "List");
-        Assert.assertEquals(cp1.dataType, "List<List<Pet>>");
-        Assert.assertTrue(cp1.isContainer);
-        Assert.assertTrue(cp1.isArray);
+        assertEquals(cp1.baseType, "List");
+        assertEquals(cp1.dataType, "List<List<Pet>>");
+        assertTrue(cp1.isContainer);
+        assertTrue(cp1.isArray);
         Assert.assertFalse(cp1.isMap);
-        Assert.assertEquals(cp1.items.baseType, "List");
-        Assert.assertEquals(cp1.items.complexType, "Pet");
-        Assert.assertEquals(cp1.items.dataType, "List<Pet>");
-        Assert.assertEquals(cp1.items.items.baseType, "Pet");
-        Assert.assertEquals(cp1.items.items.complexType, "Pet");
-        Assert.assertEquals(cp1.items.items.dataType, "Pet");
+        assertEquals(cp1.items.baseType, "List");
+        assertEquals(cp1.items.complexType, "Pet");
+        assertEquals(cp1.items.dataType, "List<Pet>");
+        assertEquals(cp1.items.items.baseType, "Pet");
+        assertEquals(cp1.items.items.complexType, "Pet");
+        assertEquals(cp1.items.items.dataType, "Pet");
 
-        Assert.assertEquals(co.responses.size(), 1);
+        assertEquals(co.responses.size(), 1);
 
-        Assert.assertTrue(co.imports.contains("Pet"));
-        Assert.assertTrue(co.imports.contains("List"));
+        assertTrue(co.imports.contains("Pet"));
+        assertTrue(co.imports.contains("List"));
     }
 
     @Test(description = "convert an array schema in an ApiResponse")
@@ -1363,13 +1363,13 @@ public class JavaModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenOperation co = codegen.fromOperation("testSchema", "GET", operation, null);
 
-        Assert.assertEquals(co.responses.size(), 1);
+        assertEquals(co.responses.size(), 1);
         CodegenResponse cr = co.responses.get(0);
-        Assert.assertEquals(cr.baseType, "Pet");
-        Assert.assertEquals(cr.dataType, "List<List<Pet>>");
-        Assert.assertEquals(cr.containerType, "array");
+        assertEquals(cr.baseType, "Pet");
+        assertEquals(cr.dataType, "List<List<Pet>>");
+        assertEquals(cr.containerType, "array");
 
-        Assert.assertTrue(co.imports.contains("Pet"));
+        assertTrue(co.imports.contains("Pet"));
     }
 
     @Test
@@ -1379,7 +1379,7 @@ public class JavaModelTest {
         final File output = Files.createTempDirectory("test").toFile();
         output.deleteOnExit();
 
-        Assert.assertTrue(new File(inputSpec).exists());
+        assertTrue(new File(inputSpec).exists());
 
         final CodegenConfigurator configurator = new CodegenConfigurator()
                 .setGeneratorName("java")
@@ -1393,7 +1393,7 @@ public class JavaModelTest {
         new DefaultGenerator().opts(clientOptInput).generate();
 
         File orderFile = new File(output, "src/main/java/org/openapitools/client/model/Order.java");
-        Assert.assertTrue(orderFile.exists());
+        assertTrue(orderFile.exists());
     }
 
     @Test
@@ -1402,7 +1402,7 @@ public class JavaModelTest {
 
         final File output = Files.createTempDirectory("test").toFile();
         output.deleteOnExit();
-        Assert.assertTrue(new File(inputSpec).exists());
+        assertTrue(new File(inputSpec).exists());
 
         JavaClientCodegen config = new org.openapitools.codegen.languages.JavaClientCodegen();
         config.setHideGenerationTimestamp(true);
@@ -1416,6 +1416,6 @@ public class JavaModelTest {
         new DefaultGenerator().opts(opts).generate();
 
         File orderFile = new File(output, "src/main/java/org/openapitools/client/api/DefaultApi.java");
-        Assert.assertTrue(orderFile.exists());
+        assertTrue(orderFile.exists());
     }
 }

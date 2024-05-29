@@ -32,8 +32,8 @@ import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.DefaultCodegen;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.JavaClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class JavaInheritanceTest {
 
@@ -55,10 +55,10 @@ public class JavaInheritanceTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
         Assert.assertNull(cm.parent);
-        Assert.assertEquals(cm.imports, Collections.emptySet());
+        assertEquals(cm.imports, Collections.emptySet());
     }
 
     @Test(description = "convert a composed model with discriminator")
@@ -77,10 +77,10 @@ public class JavaInheritanceTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.parent, "Base");
-        Assert.assertEquals(cm.imports, Sets.newHashSet("Base"));
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.parent, "Base");
+        assertEquals(cm.imports, Sets.newHashSet("Base"));
     }
 
     @Test(description = "composed model has the required attributes on the child")
@@ -108,28 +108,28 @@ public class JavaInheritanceTest {
         final CodegenModel pm = codegen
                 .fromModel("Parent", parent);
         final CodegenProperty propertyPA = pm.allVars.get(0);
-        Assert.assertEquals(propertyPA.name, "a");
-        Assert.assertTrue(propertyPA.required);
+        assertEquals(propertyPA.name, "a");
+        assertTrue(propertyPA.required);
         final CodegenProperty propertyPB = pm.allVars.get(1);
-        Assert.assertEquals(propertyPB.name, "b");
+        assertEquals(propertyPB.name, "b");
         Assert.assertFalse(propertyPB.required);
-        Assert.assertEquals(pm.requiredVars.size() + pm.optionalVars.size(), pm.allVars.size());
+        assertEquals(pm.requiredVars.size() + pm.optionalVars.size(), pm.allVars.size());
 
         final CodegenModel cm = codegen
                 .fromModel("Child", child);
         final CodegenProperty propertyCA = cm.allVars.get(0);
-        Assert.assertEquals(propertyCA.name, "a");
-        Assert.assertTrue(propertyCA.required);
+        assertEquals(propertyCA.name, "a");
+        assertTrue(propertyCA.required);
         final CodegenProperty propertyCB = cm.allVars.get(1);
-        Assert.assertEquals(propertyCB.name, "b");
+        assertEquals(propertyCB.name, "b");
         Assert.assertFalse(propertyCB.required);
         final CodegenProperty propertyCC = cm.allVars.get(2);
-        Assert.assertEquals(propertyCC.name, "c");
-        Assert.assertTrue(propertyCC.required);
+        assertEquals(propertyCC.name, "c");
+        assertTrue(propertyCC.required);
         final CodegenProperty propertyCD = cm.allVars.get(3);
-        Assert.assertEquals(propertyCD.name, "d");
+        assertEquals(propertyCD.name, "d");
         Assert.assertFalse(propertyCD.required);
-        Assert.assertEquals(cm.requiredVars.size() + cm.optionalVars.size(), cm.allVars.size());
+        assertEquals(cm.requiredVars.size() + cm.optionalVars.size(), cm.allVars.size());
     }
 
     @Test(description = "composed model has the required attributes for both parent & child")
@@ -157,28 +157,28 @@ public class JavaInheritanceTest {
         final CodegenModel pm = codegen
                 .fromModel("Parent", parent);
         final CodegenProperty propertyPA = pm.allVars.get(0);
-        Assert.assertEquals(propertyPA.name, "a");
-        Assert.assertTrue(propertyPA.required);
+        assertEquals(propertyPA.name, "a");
+        assertTrue(propertyPA.required);
         final CodegenProperty propertyPB = pm.allVars.get(1);
-        Assert.assertEquals(propertyPB.name, "b");
+        assertEquals(propertyPB.name, "b");
         Assert.assertFalse(propertyPB.required);
-        Assert.assertEquals(pm.requiredVars.size() + pm.optionalVars.size(), pm.allVars.size());
+        assertEquals(pm.requiredVars.size() + pm.optionalVars.size(), pm.allVars.size());
 
         final CodegenModel cm = codegen
                 .fromModel("Child", child);
         final CodegenProperty propertyCA = cm.allVars.get(0);
-        Assert.assertEquals(propertyCA.name, "a");
-        Assert.assertTrue(propertyCA.required);
+        assertEquals(propertyCA.name, "a");
+        assertTrue(propertyCA.required);
         final CodegenProperty propertyCB = cm.allVars.get(1);
-        Assert.assertEquals(propertyCB.name, "b");
+        assertEquals(propertyCB.name, "b");
         Assert.assertFalse(propertyCB.required);
         final CodegenProperty propertyCC = cm.allVars.get(2);
-        Assert.assertEquals(propertyCC.name, "c");
-        Assert.assertTrue(propertyCC.required);
+        assertEquals(propertyCC.name, "c");
+        assertTrue(propertyCC.required);
         final CodegenProperty propertyCD = cm.allVars.get(3);
-        Assert.assertEquals(propertyCD.name, "d");
+        assertEquals(propertyCD.name, "d");
         Assert.assertFalse(propertyCD.required);
-        Assert.assertEquals(cm.requiredVars.size() + cm.optionalVars.size(), cm.allVars.size());
+        assertEquals(cm.requiredVars.size() + cm.optionalVars.size(), cm.allVars.size());
     }
 
     @Test(description = "convert a composed model with parent with custom schema param")
@@ -206,6 +206,6 @@ public class JavaInheritanceTest {
                 .put("custom", custom.getName());
         CodegenModel model = codegen.fromModel("sample", schema);
 
-        Assert.assertTrue(model.imports.contains(custom.getName()));
+        assertTrue(model.imports.contains(custom.getName()));
     }
 }

@@ -3,9 +3,9 @@ package org.openapitools.codegen.validations.oas;
 import io.swagger.v3.oas.models.media.*;
 import org.openapitools.codegen.validation.Invalid;
 import org.openapitools.codegen.validation.ValidationResult;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,9 +27,9 @@ public class OpenApiSchemaValidationsTest {
 
         Assert.assertNotNull(warnings);
         if (matches) {
-            Assert.assertEquals(warnings.size(), 1, "Expected to match recommendation.");
+            assertEquals(warnings.size(), 1, "Expected to match recommendation.");
         } else {
-            Assert.assertEquals(warnings.size(), 0, "Expected not to match recommendation.");
+            assertEquals(warnings.size(), 0, "Expected not to match recommendation.");
         }
     }
 
@@ -47,7 +47,7 @@ public class OpenApiSchemaValidationsTest {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(warnings);
-        Assert.assertEquals(warnings.size(), 0, "Expected recommendations to be disabled completely.");
+        assertEquals(warnings.size(), 0, "Expected recommendations to be disabled completely.");
     }
 
     @Test(dataProvider = "apacheNginxRecommendationExpectations", description = "disable oneOf with sibling properties recommendation via turning off rule")
@@ -64,7 +64,7 @@ public class OpenApiSchemaValidationsTest {
                 .collect(Collectors.toList());
 
         Assert.assertNotNull(warnings);
-        Assert.assertEquals(warnings.size(), 0, "Expected rule to be disabled.");
+        assertEquals(warnings.size(), 0, "Expected rule to be disabled.");
     }
 
     @DataProvider(name = "apacheNginxRecommendationExpectations")

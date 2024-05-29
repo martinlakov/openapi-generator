@@ -1,7 +1,7 @@
 package org.openapitools.codegen;
 
 import org.openapitools.codegen.templating.TemplateManagerOptions;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,9 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DryRunTemplateManagerTest {
     @Test

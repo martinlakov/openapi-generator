@@ -8,7 +8,7 @@ import io.swagger.v3.oas.models.tags.Tag;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.PostmanCollectionCodegen;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 

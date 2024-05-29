@@ -4,8 +4,8 @@ import io.swagger.v3.oas.models.media.IntegerSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.CodegenProperty;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 @SuppressWarnings("rawtypes")
 public class CppTinyServiceServiceTest extends CppTinyBaseTest {
@@ -20,6 +20,6 @@ public class CppTinyServiceServiceTest extends CppTinyBaseTest {
 
         // Assert
         CodegenProperty id_property = model_to_be_generated.vars.get(0);
-        Assert.assertEquals(id_property.dataType, "long");
+        assertEquals(id_property.dataType, "long");
     }
 }

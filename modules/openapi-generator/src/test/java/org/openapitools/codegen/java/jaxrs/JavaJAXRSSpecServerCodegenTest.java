@@ -13,9 +13,6 @@ import org.openapitools.codegen.java.assertions.JavaFileAssert;
 import org.openapitools.codegen.languages.AbstractJavaJAXRSServerCodegen;
 import org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen;
 import org.openapitools.codegen.languages.features.CXFServerFeatures;
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,9 +30,13 @@ import static org.openapitools.codegen.TestUtils.validateJavaSourceFiles;
 import static org.openapitools.codegen.languages.AbstractJavaJAXRSServerCodegen.USE_TAGS;
 import static org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen.*;
 import static org.openapitools.codegen.languages.features.GzipFeatures.USE_GZIP_FEATURE;
-import static org.testng.Assert.assertTrue;
 
 import com.google.common.collect.ImmutableMap;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit-Test for {@link org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen}.
@@ -44,8 +45,8 @@ import com.google.common.collect.ImmutableMap;
  */
 public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
 
-    @BeforeMethod
-    public void before() {
+    @BeforeAll
+    static public void before() {
         codegen = new JavaJAXRSSpecServerCodegen();
     }
 
@@ -58,17 +59,17 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
         openAPI.addServersItem(new Server().url("https://api.abcde.xy:8082/v2"));
         codegen.preprocessOpenAPI(openAPI);
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
-        Assert.assertEquals(codegen.modelPackage(), "org.openapitools.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
-        Assert.assertEquals(codegen.apiPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.api");
-        Assert.assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.SERVER_PORT), "8082");
-        Assert.assertEquals(codegen.getOpenApiSpecFileLocation(), "src/main/openapi/openapi.yaml");
-        Assert.assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.OPEN_API_SPEC_FILE_LOCATION), "src/main/openapi/openapi.yaml");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.modelPackage(), "org.openapitools.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "org.openapitools.model");
+        assertEquals(codegen.apiPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.getInvokerPackage(), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "org.openapitools.api");
+        assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.SERVER_PORT), "8082");
+        assertEquals(codegen.getOpenApiSpecFileLocation(), "src/main/openapi/openapi.yaml");
+        assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.OPEN_API_SPEC_FILE_LOCATION), "src/main/openapi/openapi.yaml");
     }
 
     @Test
@@ -81,16 +82,16 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
         codegen.setOpenApiSpecFileLocation("src/main/resources/META-INF/openapi.yaml");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
-        Assert.assertEquals(codegen.modelPackage(), "xx.yyyyyyyy.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xx.yyyyyyyy.model");
-        Assert.assertEquals(codegen.apiPackage(), "xx.yyyyyyyy.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xx.yyyyyyyy.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "xx.yyyyyyyy.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xx.yyyyyyyy.invoker");
-        Assert.assertEquals(codegen.getOpenApiSpecFileLocation(), "src/main/resources/META-INF/openapi.yaml");
-        Assert.assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.OPEN_API_SPEC_FILE_LOCATION), "src/main/resources/META-INF/openapi.yaml");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.modelPackage(), "xx.yyyyyyyy.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xx.yyyyyyyy.model");
+        assertEquals(codegen.apiPackage(), "xx.yyyyyyyy.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xx.yyyyyyyy.api");
+        assertEquals(codegen.getInvokerPackage(), "xx.yyyyyyyy.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xx.yyyyyyyy.invoker");
+        assertEquals(codegen.getOpenApiSpecFileLocation(), "src/main/resources/META-INF/openapi.yaml");
+        assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.OPEN_API_SPEC_FILE_LOCATION), "src/main/resources/META-INF/openapi.yaml");
     }
 
     @Test
@@ -109,18 +110,18 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
         openAPI.addServersItem(new Server().url("https://api.abcde.xy:8082/v2"));
         codegen.preprocessOpenAPI(openAPI);
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
-        Assert.assertEquals(codegen.modelPackage(), "xyz.yyyyy.mmmmm.model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xyz.yyyyy.mmmmm.model");
-        Assert.assertEquals(codegen.apiPackage(), "xyz.yyyyy.aaaaa.api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xyz.yyyyy.aaaaa.api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "xyz.yyyyy.iiii.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xyz.yyyyy.iiii.invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(AbstractJavaJAXRSServerCodegen.SERVER_PORT), "8088");
-        Assert.assertEquals(codegen.getOpenApiSpecFileLocation(), "openapi.yml");
-        Assert.assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.OPEN_API_SPEC_FILE_LOCATION), "openapi.yml");
-        Assert.assertEquals(codegen.additionalProperties().get(SUPPORT_ASYNC), "true");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.modelPackage(), "xyz.yyyyy.mmmmm.model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "xyz.yyyyy.mmmmm.model");
+        assertEquals(codegen.apiPackage(), "xyz.yyyyy.aaaaa.api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "xyz.yyyyy.aaaaa.api");
+        assertEquals(codegen.getInvokerPackage(), "xyz.yyyyy.iiii.invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "xyz.yyyyy.iiii.invoker");
+        assertEquals(codegen.additionalProperties().get(AbstractJavaJAXRSServerCodegen.SERVER_PORT), "8088");
+        assertEquals(codegen.getOpenApiSpecFileLocation(), "openapi.yml");
+        assertEquals(codegen.additionalProperties().get(JavaJAXRSSpecServerCodegen.OPEN_API_SPEC_FILE_LOCATION), "openapi.yml");
+        assertEquals(codegen.additionalProperties().get(SUPPORT_ASYNC), "true");
     }
 
     /**
@@ -137,9 +138,9 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
 
         codegen.addOperationToGroup("Primaryresource", "/", operation, codegenOperation, operationList);
 
-        Assert.assertEquals(operationList.size(), 1);
-        Assert.assertTrue(operationList.containsKey("default"));
-        Assert.assertEquals(codegenOperation.baseName, "default");
+        assertEquals(operationList.size(), 1);
+        assertTrue(operationList.containsKey("default"));
+        assertEquals(codegenOperation.baseName, "default");
     }
 
     /**
@@ -157,9 +158,9 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
 
         codegen.addOperationToGroup("Primaryresource", "/", operation, codegenOperation, operationList);
 
-        Assert.assertEquals(operationList.size(), 1);
-        Assert.assertTrue(operationList.containsKey("Primaryresource"));
-        Assert.assertEquals(codegenOperation.baseName, "Primaryresource");
+        assertEquals(operationList.size(), 1);
+        assertTrue(operationList.containsKey("Primaryresource"));
+        assertEquals(codegenOperation.baseName, "Primaryresource");
     }
 
     /**
@@ -176,8 +177,8 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
 
         codegen.addOperationToGroup("Primaryresource", "/{uuid}", operation, codegenOperation, operationList);
 
-        Assert.assertEquals(operationList.size(), 1);
-        Assert.assertTrue(operationList.containsKey("default"));
+        assertEquals(operationList.size(), 1);
+        assertTrue(operationList.containsKey("default"));
     }
 
     /**
@@ -195,9 +196,9 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
 
         codegen.addOperationToGroup("Primaryresource", "/{uuid}", operation, codegenOperation, operationList);
 
-        Assert.assertEquals(operationList.size(), 1);
-        Assert.assertTrue(operationList.containsKey("Primaryresource"));
-        Assert.assertEquals(codegenOperation.baseName, "Primaryresource");
+        assertEquals(operationList.size(), 1);
+        assertTrue(operationList.containsKey("Primaryresource"));
+        assertEquals(codegenOperation.baseName, "Primaryresource");
     }
 
     /**
@@ -214,8 +215,8 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
 
         codegen.addOperationToGroup("Default", "/subresource", operation, codegenOperation, operationList);
 
-        Assert.assertEquals(codegenOperation.baseName, "subresource");
-        Assert.assertEquals(operationList.size(), 1);
+        assertEquals(codegenOperation.baseName, "subresource");
+        assertEquals(operationList.size(), 1);
         assertTrue(operationList.containsKey("subresource"));
     }
 
@@ -225,7 +226,7 @@ public class JavaJAXRSSpecServerCodegenTest extends JavaJaxrsBaseTest {
     @Test
     public void testToApiNameForSubresource() {
         final String subresource = codegen.toApiName("subresource");
-        Assert.assertEquals(subresource, "SubresourceApi");
+        assertEquals(subresource, "SubresourceApi");
     }
 
     @Test

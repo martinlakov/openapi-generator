@@ -21,8 +21,8 @@ import com.google.common.base.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.mockito.MockSettings;
 import org.openapitools.codegen.options.OptionsProvider;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.util.HashSet;
 import java.util.List;

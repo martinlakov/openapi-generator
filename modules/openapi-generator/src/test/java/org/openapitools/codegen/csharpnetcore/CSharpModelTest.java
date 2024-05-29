@@ -29,8 +29,8 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.AbstractCSharpCodegen;
 import org.openapitools.codegen.languages.AspNetServerCodegen;
 import org.openapitools.codegen.languages.CSharpClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 @SuppressWarnings("static-method")
 public class CSharpModelTest {
@@ -38,16 +38,16 @@ public class CSharpModelTest {
     @Test
     public void assertOuterEnumIsString() {
         // this issue has not been found yet in version 2
-        // Assert.assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 2, false), true);
-        // Assert.assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 2, true), true);
-        Assert.assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 3, false), true);
-        Assert.assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 3, true), true);
+        // assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 2, false), true);
+        // assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 2, true), true);
+        assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 3, false), true);
+        assertEquals(outerEnumVarsIsString(new AspNetServerCodegen(), 3, true), true);
 
         // this issue has not been found yet in version 2
-        // Assert.assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 2, false), true);
-        // Assert.assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 2, true), true);
-        Assert.assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 3, false), true);
-        Assert.assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 3, true), true);
+        // assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 2, false), true);
+        // assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 2, true), true);
+        assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 3, false), true);
+        assertEquals(outerEnumVarsIsString(new CSharpClientCodegen(), 3, true), true);
     }
 
     public boolean outerEnumVarsIsString(final AbstractCSharpCodegen codegen, final int openApiVersion, final Boolean nullableReferenceTypes){
@@ -72,22 +72,22 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel generated = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(generated.name, "sample");
-        Assert.assertEquals(generated.classname, "Sample");
-        Assert.assertEquals(generated.description, "a sample model");
-        Assert.assertEquals(generated.vars.size(), 2);
+        assertEquals(generated.name, "sample");
+        assertEquals(generated.classname, "Sample");
+        assertEquals(generated.description, "a sample model");
+        assertEquals(generated.vars.size(), 2);
 
         final CodegenProperty property = generated.vars.get(1);
-        Assert.assertEquals(property.baseName, "examples");
-        Assert.assertEquals(property.getter, "getExamples");
-        Assert.assertEquals(property.setter, "setExamples");
-        Assert.assertEquals(property.dataType, "List<string>");
-        Assert.assertEquals(property.name, "Examples");
+        assertEquals(property.baseName, "examples");
+        assertEquals(property.getter, "getExamples");
+        assertEquals(property.setter, "setExamples");
+        assertEquals(property.dataType, "List<string>");
+        assertEquals(property.name, "Examples");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "List");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.baseType, "List");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with array property to Collection<T>")
@@ -102,18 +102,18 @@ public class CSharpModelTest {
         codegen.setUseCollection(true);
         final CodegenModel generated = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(generated.name, "sample");
-        Assert.assertEquals(generated.vars.size(), 2);
+        assertEquals(generated.name, "sample");
+        assertEquals(generated.vars.size(), 2);
 
         final CodegenProperty property = generated.vars.get(1);
-        Assert.assertEquals(property.baseName, "examples");
-        Assert.assertEquals(property.name, "Examples");
+        assertEquals(property.baseName, "examples");
+        assertEquals(property.name, "Examples");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.dataType, "Collection<string>");
-        Assert.assertEquals(property.baseType, "Collection");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.dataType, "Collection<string>");
+        assertEquals(property.baseType, "Collection");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     @Test(description = "convert a model with array property to Collection<T>")
@@ -130,20 +130,20 @@ public class CSharpModelTest {
 
         final CodegenModel generated = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(generated.name, "sample");
-        Assert.assertEquals(generated.vars.size(), 2);
+        assertEquals(generated.name, "sample");
+        assertEquals(generated.vars.size(), 2);
 
         final CodegenProperty property = generated.vars.get(1);
-        Assert.assertEquals(property.baseName, "examples");
-        Assert.assertEquals(property.name, "Examples");
-        Assert.assertEquals(property.dataType, "Collection<string>",
+        assertEquals(property.baseName, "examples");
+        assertEquals(property.name, "Examples");
+        assertEquals(property.dataType, "Collection<string>",
                 "returnICollection option should not modify property datatype");
         Assert.assertNull(property.defaultValue);
-        Assert.assertEquals(property.baseType, "Collection",
+        assertEquals(property.baseType, "Collection",
                 "returnICollection option should not modify property baseType");
-        Assert.assertEquals(property.containerType, "array");
+        assertEquals(property.containerType, "array");
         Assert.assertFalse(property.required);
-        Assert.assertTrue(property.isContainer);
+        assertTrue(property.isContainer);
     }
 
     private Schema getArrayTestSchema() {
@@ -169,35 +169,35 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "long");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "long");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "long");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "long");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "string");
-        Assert.assertEquals(property2.name, "Name");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "string");
+        assertEquals(property2.name, "Name");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "string");
-        Assert.assertTrue(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertEquals(property2.baseType, "string");
+        assertTrue(property2.required);
+        assertTrue(property2.isPrimitiveType);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.dataType, "DateTime");
-        Assert.assertEquals(property3.name, "CreatedAt");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.dataType, "DateTime");
+        assertEquals(property3.name, "CreatedAt");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "DateTime");
+        assertEquals(property3.baseType, "DateTime");
         Assert.assertFalse(property3.required);
     }
 
@@ -216,39 +216,39 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "long");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "long");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "long");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "long");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "List<string>");
-        Assert.assertEquals(property2.name, "Urls");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "List<string>");
+        assertEquals(property2.name, "Urls");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "List");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseType, "List");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "name");
-        Assert.assertEquals(property3.dataType, "string");
-        Assert.assertEquals(property3.name, "Name");
+        assertEquals(property3.baseName, "name");
+        assertEquals(property3.dataType, "string");
+        assertEquals(property3.name, "Name");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "string");
+        assertEquals(property3.baseType, "string");
         Assert.assertFalse(property3.required);
-        Assert.assertTrue(property3.isPrimitiveType);
+        assertTrue(property3.isPrimitiveType);
     }
 
     @Test(description = "convert a model with a nullable property")
@@ -266,39 +266,39 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "long?");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "long?");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "long?");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "long?");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "List<string>");
-        Assert.assertEquals(property2.name, "Urls");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "List<string>");
+        assertEquals(property2.name, "Urls");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "List");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseType, "List");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "name");
-        Assert.assertEquals(property3.dataType, "string");
-        Assert.assertEquals(property3.name, "Name");
+        assertEquals(property3.baseName, "name");
+        assertEquals(property3.dataType, "string");
+        assertEquals(property3.name, "Name");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "string");
+        assertEquals(property3.baseType, "string");
         Assert.assertFalse(property3.required);
-        Assert.assertTrue(property3.isPrimitiveType);
+        assertTrue(property3.isPrimitiveType);
     }
 
     @Test(description = "convert a model with a nullable property without nullable annotation")
@@ -317,48 +317,48 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 4);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 4);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "long?");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "long?");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "long?");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "long?");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "List<string>");
-        Assert.assertEquals(property2.name, "Urls");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "List<string>");
+        assertEquals(property2.name, "Urls");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "List");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseType, "List");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "name");
-        Assert.assertEquals(property3.dataType, "string");
-        Assert.assertEquals(property3.name, "Name");
+        assertEquals(property3.baseName, "name");
+        assertEquals(property3.dataType, "string");
+        assertEquals(property3.name, "Name");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "string");
+        assertEquals(property3.baseType, "string");
         Assert.assertFalse(property3.required);
-        Assert.assertTrue(property3.isPrimitiveType);
+        assertTrue(property3.isPrimitiveType);
 
         final CodegenProperty property4 = cm.vars.get(3);
-        Assert.assertEquals(property4.baseName, "subObject");
-        Assert.assertEquals(property4.dataType, "Object");
-        Assert.assertEquals(property4.name, "SubObject");
+        assertEquals(property4.baseName, "subObject");
+        assertEquals(property4.dataType, "Object");
+        assertEquals(property4.name, "SubObject");
         Assert.assertNull(property4.defaultValue);
-        Assert.assertEquals(property4.baseType, "Object");
+        assertEquals(property4.baseType, "Object");
         Assert.assertFalse(property4.required);
-        Assert.assertTrue(property4.isPrimitiveType);
+        assertTrue(property4.isPrimitiveType);
     }
 
     @Test(description = "convert a model with a nullable property using nullable annotation")
@@ -379,46 +379,46 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 4);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 4);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "long?");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "long?");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "long?");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "long?");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "List<string>");
-        Assert.assertEquals(property2.name, "Urls");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "List<string>");
+        assertEquals(property2.name, "Urls");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "List?");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseType, "List?");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "name");
-        Assert.assertEquals(property3.dataType, "string?");
-        Assert.assertEquals(property3.name, "Name");
+        assertEquals(property3.baseName, "name");
+        assertEquals(property3.dataType, "string?");
+        assertEquals(property3.name, "Name");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "string?");
+        assertEquals(property3.baseType, "string?");
         Assert.assertFalse(property3.required);
         Assert.assertFalse(property3.isPrimitiveType);
 
         final CodegenProperty property4 = cm.vars.get(3);
-        Assert.assertEquals(property4.baseName, "subObject");
-        Assert.assertEquals(property4.dataType, "Object?");
-        Assert.assertEquals(property4.name, "SubObject");
+        assertEquals(property4.baseName, "subObject");
+        assertEquals(property4.dataType, "Object?");
+        assertEquals(property4.name, "SubObject");
         Assert.assertNull(property4.defaultValue);
-        Assert.assertEquals(property4.baseType, "Object?");
+        assertEquals(property4.baseType, "Object?");
         Assert.assertFalse(property4.required);
         Assert.assertFalse(property4.isPrimitiveType);
     }
@@ -437,30 +437,30 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "long");
-        Assert.assertEquals(property1.name, "Id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "long");
+        assertEquals(property1.name, "Id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "long");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "long");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "List<string>");
-        Assert.assertEquals(property2.name, "Urls");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "List<string>");
+        assertEquals(property2.name, "Urls");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "List");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseType, "List");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
     }
 
     @Test(description = "convert a model with a map property")
@@ -476,20 +476,20 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "translations");
-        Assert.assertEquals(property1.dataType, "Dictionary<string, string>");
-        Assert.assertEquals(property1.name, "Translations");
-        Assert.assertEquals(property1.baseType, "Dictionary");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "translations");
+        assertEquals(property1.dataType, "Dictionary<string, string>");
+        assertEquals(property1.name, "Translations");
+        assertEquals(property1.baseType, "Dictionary");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertTrue(property1.isContainer);
+        assertTrue(property1.isPrimitiveType);
     }
 
     @Test(description = "convert a model with complex property")
@@ -503,16 +503,16 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "Children");
-        Assert.assertEquals(property1.name, "Children");
-        Assert.assertEquals(property1.baseType, "Children");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "Children");
+        assertEquals(property1.name, "Children");
+        assertEquals(property1.baseType, "Children");
         Assert.assertFalse(property1.required);
     }
 
@@ -528,20 +528,20 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.complexType, "Children");
-        Assert.assertEquals(property1.dataType, "List<Children>");
-        Assert.assertEquals(property1.name, "Children");
-        Assert.assertEquals(property1.baseType, "List");
-        Assert.assertEquals(property1.containerType, "array");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.complexType, "Children");
+        assertEquals(property1.dataType, "List<Children>");
+        assertEquals(property1.name, "Children");
+        assertEquals(property1.baseType, "List");
+        assertEquals(property1.containerType, "array");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert a model with complex map property")
@@ -556,21 +556,21 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.complexType, "Children");
-        Assert.assertEquals(property1.dataType, "Dictionary<string, Children>");
-        Assert.assertEquals(property1.name, "Children");
-        Assert.assertEquals(property1.baseType, "Dictionary");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.complexType, "Children");
+        assertEquals(property1.dataType, "Dictionary<string, Children>");
+        assertEquals(property1.name, "Children");
+        assertEquals(property1.baseType, "Dictionary");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert an array model")
@@ -584,13 +584,13 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
         // TODO: additional properties should be of type Dictionary<string, List<Children>>
-        Assert.assertEquals(cm.imports.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        assertEquals(cm.imports.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
     }
 
     @Test(description = "convert a map model")
@@ -604,12 +604,12 @@ public class CSharpModelTest {
         codegen.processOpts();
         final CodegenModel cm = codegen.fromModel("sample", schema);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.vars.size(), 0);
         // TODO: additional properties should be of type Dictionary<string, Children>
-        Assert.assertEquals(cm.imports.size(), 1);
-        Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        assertEquals(cm.imports.size(), 1);
+        assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
     }
 }

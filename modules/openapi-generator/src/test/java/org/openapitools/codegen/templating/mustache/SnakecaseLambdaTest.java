@@ -17,7 +17,7 @@ package org.openapitools.codegen.templating.mustache;
 
 import java.util.Map;
 
-import org.testng.annotations.Test;
+
 
 public class SnakecaseLambdaTest extends LambdaTest {
 

@@ -20,7 +20,7 @@ package org.openapitools.codegen.testutils;
 import difflib.Delta;
 import difflib.DiffUtils;
 import difflib.Patch;
-import org.testng.Assert;
+
 
 import java.io.IOException;
 import java.nio.charset.Charset;

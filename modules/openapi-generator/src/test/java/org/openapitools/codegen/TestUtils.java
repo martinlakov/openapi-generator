@@ -1,9 +1,7 @@
 package org.openapitools.codegen;
 
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.fail;
-import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ParserConfiguration;
@@ -25,7 +23,6 @@ import org.openapitools.codegen.model.ModelMap;
 import org.openapitools.codegen.model.ModelsMap;
 import org.openapitools.codegen.utils.ModelUtils;
 import org.openrewrite.maven.internal.RawPom;
-import org.testng.Assert;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -121,7 +118,7 @@ public class TestUtils {
     public static WrittenTemplateBasedFile getTemplateBasedFile(MockDefaultGenerator generator, File root, String filename) {
         String defaultApiFilename = new File(root, filename).getAbsolutePath().replace("\\", "/");
         Optional<WrittenTemplateBasedFile> optional = generator.getTemplateBasedFiles().stream().filter(f -> defaultApiFilename.equals(f.getOutputFilename())).findFirst();
-        Assert.assertTrue(optional.isPresent());
+        assertTrue(optional.isPresent());
         return optional.get();
     }
 

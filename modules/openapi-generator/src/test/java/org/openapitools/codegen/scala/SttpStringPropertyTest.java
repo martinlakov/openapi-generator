@@ -1,7 +1,7 @@
 package org.openapitools.codegen.scala;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 import org.openapitools.codegen.languages.ScalaSttpClientCodegen;
 
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public class SttpStringPropertyTest {
         Map<String, Object> additionalProperties = new HashMap<>();
         property.updateAdditionalProperties(additionalProperties);
 
-        Assert.assertEquals(additionalProperties.get("k1"), "default");
+        assertEquals(additionalProperties.get("k1"), "default");
     }
 
     @Test
@@ -25,6 +25,6 @@ public class SttpStringPropertyTest {
         additionalProperties.put("k1", "custom");
         property.updateAdditionalProperties(additionalProperties);
 
-        Assert.assertEquals(additionalProperties.get("k1"), "custom");
+        assertEquals(additionalProperties.get("k1"), "custom");
     }
 }

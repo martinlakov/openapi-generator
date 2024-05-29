@@ -33,7 +33,7 @@ import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.config.CodegenConfigurator;
 import org.openapitools.codegen.languages.JavaHelidonCommonCodegen;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 public class JavaHelidonCommonCodegenTest {
 
@@ -98,7 +98,7 @@ public class JavaHelidonCommonCodegenTest {
     @Test
     public void bothNotEqualsVersionTest() {
         IllegalArgumentException e = Assert.assertThrows(IllegalArgumentException.class,() -> runServerVersionTest("1.0.0", "2.0.0"));
-        Assert.assertEquals(
+        assertEquals(
                 "Both parentVersion and helidonVersion properties were set with different value.",
                 e.getMessage());
     }

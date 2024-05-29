@@ -28,7 +28,7 @@ import com.fasterxml.jackson.datatype.threetenbp.ThreeTenModule;
 import org.openapitools.codegen.utils.JsonCache.CacheException;
 import org.openapitools.codegen.utils.JsonCache.Root.MergePolicy;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -43,7 +43,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests the JsonCache class.

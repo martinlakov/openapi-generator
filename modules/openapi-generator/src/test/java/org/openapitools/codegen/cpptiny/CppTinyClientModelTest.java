@@ -6,8 +6,8 @@ import io.swagger.v3.oas.models.media.ObjectSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.CppTinyClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 
 

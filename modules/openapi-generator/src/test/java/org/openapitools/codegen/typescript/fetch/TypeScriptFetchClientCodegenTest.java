@@ -19,8 +19,8 @@ import org.openapitools.codegen.languages.AbstractTypeScriptClientCodegen;
 import org.openapitools.codegen.languages.TypeScriptFetchClientCodegen;
 import org.openapitools.codegen.typescript.TypeScriptGroups;
 import org.openapitools.codegen.utils.ModelUtils;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.io.IOException;
@@ -45,7 +45,7 @@ public class TypeScriptFetchClientCodegenTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertTrue(codegen.getNpmVersion().matches("^1.0.0-SNAPSHOT.[0-9]{12}$"));
+        assertTrue(codegen.getNpmVersion().matches("^1.0.0-SNAPSHOT.[0-9]{12}$"));
 
         codegen = new TypeScriptFetchClientCodegen();
         codegen.additionalProperties().put("npmName", "@openapi/typescript-fetch-petstore");
@@ -54,7 +54,7 @@ public class TypeScriptFetchClientCodegenTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertTrue(codegen.getNpmVersion().matches("^3.0.0-M1-SNAPSHOT.[0-9]{12}$"));
+        assertTrue(codegen.getNpmVersion().matches("^3.0.0-M1-SNAPSHOT.[0-9]{12}$"));
 
     }
 
@@ -65,7 +65,7 @@ public class TypeScriptFetchClientCodegenTest {
         codegen.setOpenAPI(openApi);
         PathItem path = openApi.getPaths().get("/api/Users/{userId}");
         CodegenOperation operation = codegen.fromOperation("/api/Users/{userId}", "get", path.getGet(), path.getServers());
-        Assert.assertEquals(operation.isResponseOptional, true);
+        assertEquals(operation.isResponseOptional, true);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class TypeScriptFetchClientCodegenTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertTrue(codegen.getNpmVersion().matches("^1.0.0-SNAPSHOT$"));
+        assertTrue(codegen.getNpmVersion().matches("^1.0.0-SNAPSHOT$"));
 
         codegen = new TypeScriptFetchClientCodegen();
         codegen.additionalProperties().put("npmName", "@openapi/typescript-fetch-petstore");
@@ -114,7 +114,7 @@ public class TypeScriptFetchClientCodegenTest {
         codegen.processOpts();
         codegen.preprocessOpenAPI(api);
 
-        Assert.assertTrue(codegen.getNpmVersion().matches("^3.0.0-M1$"));
+        assertTrue(codegen.getNpmVersion().matches("^3.0.0-M1$"));
 
     }
 
@@ -122,43 +122,43 @@ public class TypeScriptFetchClientCodegenTest {
     public void toVarName() {
         TypeScriptFetchClientCodegen codegen = new TypeScriptFetchClientCodegen();
         codegen.processOpts();
-        Assert.assertEquals(codegen.toVarName("valid_var"), "validVar");
+        assertEquals(codegen.toVarName("valid_var"), "validVar");
 
         codegen = new TypeScriptFetchClientCodegen();
         codegen.additionalProperties().put(CodegenConstants.MODEL_PROPERTY_NAMING, "original");
         codegen.processOpts();
-        Assert.assertEquals(codegen.toVarName("valid_var"), "valid_var");
+        assertEquals(codegen.toVarName("valid_var"), "valid_var");
     }
 
     @Test
     public void toEnumVarName() {
         TypeScriptFetchClientCodegen codegen = new TypeScriptFetchClientCodegen();
         codegen.processOpts();
-        Assert.assertEquals(codegen.toEnumVarName("", "string"), "Empty");
-        Assert.assertEquals(codegen.toEnumVarName("$", "string"), "Dollar");
-        Assert.assertEquals(codegen.toEnumVarName("valid_var", "string"), "ValidVar");
-        Assert.assertEquals(codegen.toEnumVarName("-valid_var+", "string"), "ValidVar");
-        Assert.assertEquals(codegen.toEnumVarName("30valid_+var", "string"), "_30validVar");
+        assertEquals(codegen.toEnumVarName("", "string"), "Empty");
+        assertEquals(codegen.toEnumVarName("$", "string"), "Dollar");
+        assertEquals(codegen.toEnumVarName("valid_var", "string"), "ValidVar");
+        assertEquals(codegen.toEnumVarName("-valid_var+", "string"), "ValidVar");
+        assertEquals(codegen.toEnumVarName("30valid_+var", "string"), "_30validVar");
 
         codegen = new TypeScriptFetchClientCodegen();
         codegen.additionalProperties().put(CodegenConstants.ENUM_PROPERTY_NAMING, "original");
         codegen.processOpts();
-        Assert.assertEquals(codegen.toEnumVarName("", "string"), "empty");
-        Assert.assertEquals(codegen.toEnumVarName("$", "string"), "Dollar");
-        Assert.assertEquals(codegen.toEnumVarName("valid_var", "string"), "valid_var");
-        Assert.assertEquals(codegen.toEnumVarName("-valid_var+", "string"), "valid_var");
-        Assert.assertEquals(codegen.toEnumVarName("30valid_+var", "string"), "_30valid_var");
+        assertEquals(codegen.toEnumVarName("", "string"), "empty");
+        assertEquals(codegen.toEnumVarName("$", "string"), "Dollar");
+        assertEquals(codegen.toEnumVarName("valid_var", "string"), "valid_var");
+        assertEquals(codegen.toEnumVarName("-valid_var+", "string"), "valid_var");
+        assertEquals(codegen.toEnumVarName("30valid_+var", "string"), "_30valid_var");
 
         codegen = new TypeScriptFetchClientCodegen();
         codegen.additionalProperties().put(CodegenConstants.ENUM_PROPERTY_NAMING, "UPPERCASE");
         codegen.additionalProperties().put(AbstractTypeScriptClientCodegen.ENUM_PROPERTY_NAMING_REPLACE_SPECIAL_CHAR, "true");
         codegen.processOpts();
-        Assert.assertEquals(codegen.toEnumVarName("", "string"), "EMPTY");
-        Assert.assertEquals(codegen.toEnumVarName("$", "string"), "DOLLAR");
-        Assert.assertEquals(codegen.toEnumVarName("valid_var", "string"), "VALID_VAR");
-        Assert.assertEquals(codegen.toEnumVarName("-valid_+var", "string"), "MINUS_VALID_PLUS_VAR");
-        Assert.assertEquals(codegen.toEnumVarName("-valid_var+", "string"), "MINUS_VALID_VAR_PLUS");
-        Assert.assertEquals(codegen.toEnumVarName("30valid_+var", "string"), "_30VALID_PLUS_VAR");
+        assertEquals(codegen.toEnumVarName("", "string"), "EMPTY");
+        assertEquals(codegen.toEnumVarName("$", "string"), "DOLLAR");
+        assertEquals(codegen.toEnumVarName("valid_var", "string"), "VALID_VAR");
+        assertEquals(codegen.toEnumVarName("-valid_+var", "string"), "MINUS_VALID_PLUS_VAR");
+        assertEquals(codegen.toEnumVarName("-valid_var+", "string"), "MINUS_VALID_VAR_PLUS");
+        assertEquals(codegen.toEnumVarName("30valid_+var", "string"), "_30VALID_PLUS_VAR");
 
     }
 
@@ -178,19 +178,19 @@ public class TypeScriptFetchClientCodegenTest {
         );
 
         ModelUtils.setGenerateAliasAsModel(false);
-        Assert.assertEquals(codegen.getTypeDeclaration(parentSchema), "Array<Array<string>>");
+        assertEquals(codegen.getTypeDeclaration(parentSchema), "Array<Array<string>>");
 
         ModelUtils.setGenerateAliasAsModel(true);
-        Assert.assertEquals(codegen.getTypeDeclaration(parentSchema), "Array<Child>");
+        assertEquals(codegen.getTypeDeclaration(parentSchema), "Array<Child>");
 
         // Same for Map
         parentSchema = new MapSchema().additionalProperties(new Schema().$ref("#/components/schemas/Child"));
 
         ModelUtils.setGenerateAliasAsModel(false);
-        Assert.assertEquals(codegen.getTypeDeclaration(parentSchema), "{ [key: string]: Array<string>; }");
+        assertEquals(codegen.getTypeDeclaration(parentSchema), "{ [key: string]: Array<string>; }");
 
         ModelUtils.setGenerateAliasAsModel(true);
-        Assert.assertEquals(codegen.getTypeDeclaration(parentSchema), "{ [key: string]: Child; }");
+        assertEquals(codegen.getTypeDeclaration(parentSchema), "{ [key: string]: Child; }");
     }
 
     @Test
@@ -227,33 +227,33 @@ public class TypeScriptFetchClientCodegenTest {
     public void testModelFileNameInPascalCase() {
         final TypeScriptFetchClientCodegen codegen = new TypeScriptFetchClientCodegen();
         codegen.setFileNaming(TypeScriptFetchClientCodegen.PASCAL_CASE);
-        Assert.assertEquals("FirstSimpleModel", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("FirstSimpleModel", codegen.toModelFilename("FirstSimpleModel"));
         codegen.setModelNameSuffix("suffix");
-        Assert.assertEquals("FirstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("FirstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
         codegen.setModelNamePrefix("prefix");
-        Assert.assertEquals("PrefixFirstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("PrefixFirstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
     }
 
     @Test(description = "Verify file name formatting from model name in camelCase")
     public void testModelFileNameInCamelCase() {
         final TypeScriptFetchClientCodegen codegen = new TypeScriptFetchClientCodegen();
         codegen.setFileNaming(TypeScriptFetchClientCodegen.CAMEL_CASE);
-        Assert.assertEquals("firstSimpleModel", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("firstSimpleModel", codegen.toModelFilename("FirstSimpleModel"));
         codegen.setModelNameSuffix("suffix");
-        Assert.assertEquals("firstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("firstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
         codegen.setModelNamePrefix("prefix");
-        Assert.assertEquals("prefixFirstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("prefixFirstSimpleModelSuffix", codegen.toModelFilename("FirstSimpleModel"));
     }
 
     @Test(description = "Verify file name formatting from model name in kebab-case")
     public void testModelFileNameInKebabCase() {
         final TypeScriptFetchClientCodegen codegen = new TypeScriptFetchClientCodegen();
         codegen.setFileNaming("kebab-case");
-        Assert.assertEquals("first-simple-model", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("first-simple-model", codegen.toModelFilename("FirstSimpleModel"));
         codegen.setModelNameSuffix("suffix");
-        Assert.assertEquals("first-simple-model-suffix", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("first-simple-model-suffix", codegen.toModelFilename("FirstSimpleModel"));
         codegen.setModelNamePrefix("prefix");
-        Assert.assertEquals("prefix-first-simple-model-suffix", codegen.toModelFilename("FirstSimpleModel"));
+        assertEquals("prefix-first-simple-model-suffix", codegen.toModelFilename("FirstSimpleModel"));
     }
 
     @Test(description = "Verify file name formatting from api name in PascalCase, camelCase and kebab-case")
@@ -262,13 +262,13 @@ public class TypeScriptFetchClientCodegenTest {
         codegen.setFileNaming(TypeScriptFetchClientCodegen.PASCAL_CASE);
         String prefix = codegen.getApiNamePrefix() != null ? codegen.getApiNamePrefix() : "";
         String suffix = codegen.getApiNameSuffix() != null ? codegen.getApiNameSuffix() : "";
-        Assert.assertEquals(StringUtils.capitalize(prefix + "FirstSimpleController") + StringUtils.capitalize(suffix),
+        assertEquals(StringUtils.capitalize(prefix + "FirstSimpleController") + StringUtils.capitalize(suffix),
                 codegen.toApiFilename("FirstSimpleController"));
         codegen.setFileNaming(TypeScriptFetchClientCodegen.CAMEL_CASE);
-        Assert.assertEquals(StringUtils.uncapitalize(prefix + "FirstSimpleController") + StringUtils.capitalize(suffix),
+        assertEquals(StringUtils.uncapitalize(prefix + "FirstSimpleController") + StringUtils.capitalize(suffix),
                 codegen.toApiFilename("FirstSimpleController"));
         codegen.setFileNaming(TypeScriptFetchClientCodegen.KEBAB_CASE);
-        Assert.assertEquals((prefix.isBlank() ? "" : (StringUtils.lowerCase(suffix) + "-")) + "first-simple-controller" + (suffix.isBlank() ? "" : ("-" + StringUtils.lowerCase(suffix))),
+        assertEquals((prefix.isBlank() ? "" : (StringUtils.lowerCase(suffix) + "-")) + "first-simple-controller" + (suffix.isBlank() ? "" : ("-" + StringUtils.lowerCase(suffix))),
                 codegen.toApiFilename("FirstSimpleController"));
     }
 

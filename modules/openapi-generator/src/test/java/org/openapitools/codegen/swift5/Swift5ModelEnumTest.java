@@ -27,8 +27,8 @@ import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.DefaultCodegen;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.Swift5ClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -47,16 +47,16 @@ public class Swift5ModelEnumTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty enumVar = cm.vars.get(0);
-        Assert.assertEquals(enumVar.baseName, "name");
-        Assert.assertEquals(enumVar.dataType, "String");
-        Assert.assertEquals(enumVar.datatypeWithEnum, "Name");
-        Assert.assertEquals(enumVar.name, "name");
-        Assert.assertEquals(enumVar.defaultValue, ".value2");
-        Assert.assertEquals(enumVar.baseType, "String");
-        Assert.assertTrue(enumVar.isEnum);
+        assertEquals(enumVar.baseName, "name");
+        assertEquals(enumVar.dataType, "String");
+        assertEquals(enumVar.datatypeWithEnum, "Name");
+        assertEquals(enumVar.name, "name");
+        assertEquals(enumVar.defaultValue, ".value2");
+        assertEquals(enumVar.baseType, "String");
+        assertTrue(enumVar.isEnum);
     }
 
     @Test(description = "convert a java model with a reserved word string enum and a default value")
@@ -71,16 +71,16 @@ public class Swift5ModelEnumTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty enumVar = cm.vars.get(0);
-        Assert.assertEquals(enumVar.baseName, "name");
-        Assert.assertEquals(enumVar.dataType, "String");
-        Assert.assertEquals(enumVar.datatypeWithEnum, "Name");
-        Assert.assertEquals(enumVar.name, "name");
-        Assert.assertEquals(enumVar.defaultValue, "._2nd");
-        Assert.assertEquals(enumVar.baseType, "String");
-        Assert.assertTrue(enumVar.isEnum);
+        assertEquals(enumVar.baseName, "name");
+        assertEquals(enumVar.dataType, "String");
+        assertEquals(enumVar.datatypeWithEnum, "Name");
+        assertEquals(enumVar.name, "name");
+        assertEquals(enumVar.defaultValue, "._2nd");
+        assertEquals(enumVar.baseType, "String");
+        assertTrue(enumVar.isEnum);
     }
 
     @Test(description = "convert a java model with an integer enum and a default value")
@@ -95,16 +95,16 @@ public class Swift5ModelEnumTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty enumVar = cm.vars.get(0);
-        Assert.assertEquals(enumVar.baseName, "name");
-        Assert.assertEquals(enumVar.dataType, "Int");
-        Assert.assertEquals(enumVar.datatypeWithEnum, "Name");
-        Assert.assertEquals(enumVar.name, "name");
-        Assert.assertEquals(enumVar.defaultValue, "._2");
-        Assert.assertEquals(enumVar.baseType, "Int");
-        Assert.assertTrue(enumVar.isEnum);
+        assertEquals(enumVar.baseName, "name");
+        assertEquals(enumVar.dataType, "Int");
+        assertEquals(enumVar.datatypeWithEnum, "Name");
+        assertEquals(enumVar.name, "name");
+        assertEquals(enumVar.defaultValue, "._2");
+        assertEquals(enumVar.baseType, "Int");
+        assertTrue(enumVar.isEnum);
     }
 
     @Test(description = "convert a java model with a number enum and a default value")
@@ -119,15 +119,15 @@ public class Swift5ModelEnumTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty enumVar = cm.vars.get(0);
-        Assert.assertEquals(enumVar.baseName, "name");
-        Assert.assertEquals(enumVar.dataType, "Double");
-        Assert.assertEquals(enumVar.datatypeWithEnum, "Name");
-        Assert.assertEquals(enumVar.name, "name");
-        Assert.assertEquals(enumVar.defaultValue, "._100");
-        Assert.assertEquals(enumVar.baseType, "Double");
-        Assert.assertTrue(enumVar.isEnum);
+        assertEquals(enumVar.baseName, "name");
+        assertEquals(enumVar.dataType, "Double");
+        assertEquals(enumVar.datatypeWithEnum, "Name");
+        assertEquals(enumVar.name, "name");
+        assertEquals(enumVar.defaultValue, "._100");
+        assertEquals(enumVar.baseType, "Double");
+        assertTrue(enumVar.isEnum);
     }
 }

@@ -20,9 +20,9 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.media.*;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.DartDioClientCodegen;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 @SuppressWarnings("static-method")
 public class DartDioModelTest {
@@ -41,40 +41,40 @@ public class DartDioModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
         // {{imports}} is not used in template
-        //Assert.assertEquals(cm.imports.size(), 1);
+        //assertEquals(cm.imports.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "String");
-        Assert.assertEquals(property2.name, "name");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "String");
+        assertEquals(property2.name, "name");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "String");
-        Assert.assertTrue(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertEquals(property2.baseType, "String");
+        assertTrue(property2.required);
+        assertTrue(property2.isPrimitiveType);
         Assert.assertFalse(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.complexType, "DateTime");
-        Assert.assertEquals(property3.dataType, "DateTime");
-        Assert.assertEquals(property3.name, "createdAt");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.complexType, "DateTime");
+        assertEquals(property3.dataType, "DateTime");
+        assertEquals(property3.name, "createdAt");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "DateTime");
+        assertEquals(property3.baseType, "DateTime");
         Assert.assertFalse(property3.required);
         Assert.assertFalse(property3.isContainer);
     }
@@ -98,50 +98,50 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 4);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 4);
         // {{imports}} is not used in template
-        //Assert.assertEquals(cm.imports.size(), 1);
+        //assertEquals(cm.imports.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "String");
-        Assert.assertEquals(property2.name, "name");
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "String");
+        assertEquals(property2.name, "name");
         Assert.assertNull(property2.defaultValue);
-        Assert.assertEquals(property2.baseType, "String");
-        Assert.assertTrue(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertEquals(property2.baseType, "String");
+        assertTrue(property2.required);
+        assertTrue(property2.isPrimitiveType);
         Assert.assertFalse(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.complexType, "OffsetDateTime");
-        Assert.assertEquals(property3.dataType, "OffsetDateTime");
-        Assert.assertEquals(property3.name, "createdAt");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.complexType, "OffsetDateTime");
+        assertEquals(property3.dataType, "OffsetDateTime");
+        assertEquals(property3.name, "createdAt");
         Assert.assertNull(property3.defaultValue);
-        Assert.assertEquals(property3.baseType, "OffsetDateTime");
+        assertEquals(property3.baseType, "OffsetDateTime");
         Assert.assertFalse(property3.required);
         Assert.assertFalse(property3.isContainer);
 
         final CodegenProperty property4 = cm.vars.get(3);
-        Assert.assertEquals(property4.baseName, "birthDate");
-        Assert.assertEquals(property4.complexType, "OffsetDate");
-        Assert.assertEquals(property4.dataType, "OffsetDate");
-        Assert.assertEquals(property4.name, "birthDate");
+        assertEquals(property4.baseName, "birthDate");
+        assertEquals(property4.complexType, "OffsetDate");
+        assertEquals(property4.dataType, "OffsetDate");
+        assertEquals(property4.name, "birthDate");
         Assert.assertNull(property4.defaultValue);
-        Assert.assertEquals(property4.baseType, "OffsetDate");
+        assertEquals(property4.baseType, "OffsetDate");
         Assert.assertFalse(property4.required);
         Assert.assertFalse(property4.isContainer);
     }
@@ -163,30 +163,30 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "BuiltList<String>");
-        Assert.assertEquals(property2.name, "urls");
-        Assert.assertEquals(property2.baseType, "BuiltList");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "BuiltList<String>");
+        assertEquals(property2.name, "urls");
+        assertEquals(property2.baseType, "BuiltList");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
     }
 
     @Test(description = "convert a model with set property")
@@ -205,30 +205,30 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
         Assert.assertNull(property1.defaultValue);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "BuiltSet<String>");
-        Assert.assertEquals(property2.name, "urls");
-        Assert.assertEquals(property2.baseType, "BuiltSet");
-        Assert.assertEquals(property2.containerType, "set");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "BuiltSet<String>");
+        assertEquals(property2.name, "urls");
+        assertEquals(property2.baseType, "BuiltSet");
+        assertEquals(property2.containerType, "set");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
     }
 
     @Test(description = "convert a model with a map property")
@@ -247,20 +247,20 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "translations");
-        Assert.assertEquals(property1.dataType, "BuiltMap<String, String>");
-        Assert.assertEquals(property1.name, "translations");
-        Assert.assertEquals(property1.baseType, "BuiltMap");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "translations");
+        assertEquals(property1.dataType, "BuiltMap<String, String>");
+        assertEquals(property1.name, "translations");
+        assertEquals(property1.baseType, "BuiltMap");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertTrue(property1.isContainer);
+        assertTrue(property1.isPrimitiveType);
     }
 
     @Test(description = "convert a model with complex property")
@@ -277,16 +277,16 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "Children");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "Children");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "Children");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "Children");
         Assert.assertFalse(property1.required);
         Assert.assertFalse(property1.isContainer);
     }
@@ -306,19 +306,19 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "BuiltList<Children>");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "BuiltList");
-        Assert.assertEquals(property1.containerType, "array");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "BuiltList<Children>");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "BuiltList");
+        assertEquals(property1.containerType, "array");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert a model with complex map property")
@@ -336,20 +336,20 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.complexType, "Children");
-        Assert.assertEquals(property1.dataType, "BuiltMap<String, Children>");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "BuiltMap");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.complexType, "Children");
+        assertEquals(property1.dataType, "BuiltMap<String, Children>");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "BuiltMap");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert an array model")
@@ -362,13 +362,13 @@ public class DartDioModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(model.getDescription(), "an array model");
+        assertEquals(model.getDescription(), "an array model");
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertTrue(cm.isArray);
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertTrue(cm.isArray);
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
     }
 
     @Test(description = "convert a map model")
@@ -381,10 +381,10 @@ public class DartDioModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.vars.size(), 0);
     }
 
     @DataProvider(name = "modelNames")
@@ -409,8 +409,8 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel(name, model);
 
-        Assert.assertEquals(cm.name, name);
-        Assert.assertEquals(cm.classname, expectedName);
+        assertEquals(cm.name, name);
+        assertEquals(cm.classname, expectedName);
     }
 
     @DataProvider(name = "modelNamesTimemachine")
@@ -436,8 +436,8 @@ public class DartDioModelTest {
 
         final CodegenModel cm = codegen.fromModel(name, model);
 
-        Assert.assertEquals(cm.name, name);
-        Assert.assertEquals(cm.classname, expectedName);
+        assertEquals(cm.name, name);
+        assertEquals(cm.classname, expectedName);
     }
 
     @Test(description = "correctly generate collection default values")
@@ -456,15 +456,15 @@ public class DartDioModelTest {
         final CodegenModel cm = codegen.fromModel("sample", model);
 
         final CodegenProperty arrayNoDefault = cm.vars.get(0);
-        Assert.assertEquals(arrayNoDefault.name, "arrayNoDefault");
+        assertEquals(arrayNoDefault.name, "arrayNoDefault");
         Assert.assertNull(arrayNoDefault.defaultValue);
 
         final CodegenProperty arrayEmptyDefault = cm.vars.get(1);
-        Assert.assertEquals(arrayEmptyDefault.name, "arrayEmptyDefault");
-        Assert.assertEquals(arrayEmptyDefault.defaultValue, "ListBuilder()");
+        assertEquals(arrayEmptyDefault.name, "arrayEmptyDefault");
+        assertEquals(arrayEmptyDefault.defaultValue, "ListBuilder()");
 
         final CodegenProperty mapNoDefault = cm.vars.get(2);
-        Assert.assertEquals(mapNoDefault.name, "mapNoDefault");
+        assertEquals(mapNoDefault.name, "mapNoDefault");
         Assert.assertNull(mapNoDefault.defaultValue);
     }
 
@@ -485,11 +485,11 @@ public class DartDioModelTest {
         final CodegenModel cm = codegen.fromModel("sample", model);
 
         final CodegenProperty dateDefault = cm.vars.get(0);
-        Assert.assertEquals(dateDefault.name, "date");
+        assertEquals(dateDefault.name, "date");
         Assert.assertNull(dateDefault.defaultValue);
 
         final CodegenProperty dateTimeDefault = cm.vars.get(1);
-        Assert.assertEquals(dateTimeDefault.name, "dateTime");
+        assertEquals(dateTimeDefault.name, "dateTime");
         Assert.assertNull(dateTimeDefault.defaultValue);
     }
 }

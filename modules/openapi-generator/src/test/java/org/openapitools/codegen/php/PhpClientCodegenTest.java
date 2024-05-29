@@ -22,8 +22,8 @@ import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.CodegenModel;
 import org.openapitools.codegen.languages.PhpClientCodegen;
 import org.openapitools.codegen.TestUtils;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class PhpClientCodegenTest {
 
@@ -32,13 +32,13 @@ public class PhpClientCodegenTest {
         final PhpClientCodegen codegen = new PhpClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
-        Assert.assertEquals(codegen.modelPackage(), "OpenAPI\\Client\\Model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "OpenAPI\\Client\\Model");
-        Assert.assertEquals(codegen.apiPackage(), "OpenAPI\\Client\\Api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "OpenAPI\\Client\\Api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "OpenAPI\\Client");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.modelPackage(), "OpenAPI\\Client\\Model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "OpenAPI\\Client\\Model");
+        assertEquals(codegen.apiPackage(), "OpenAPI\\Client\\Api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "OpenAPI\\Client\\Api");
+        assertEquals(codegen.getInvokerPackage(), "OpenAPI\\Client");
     }
 
     @Test
@@ -50,14 +50,14 @@ public class PhpClientCodegenTest {
         codegen.setInvokerPackage("My\\Client\\Invoker");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
-        Assert.assertEquals(codegen.modelPackage(), "My\\Client\\Model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "My\\Client\\Model");
-        Assert.assertEquals(codegen.apiPackage(), "My\\Client\\Api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE),"My\\Client\\Api");
-        Assert.assertEquals(codegen.getInvokerPackage(), "My\\Client\\Invoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "My\\Client\\Invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.modelPackage(), "My\\Client\\Model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "My\\Client\\Model");
+        assertEquals(codegen.apiPackage(), "My\\Client\\Api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE),"My\\Client\\Api");
+        assertEquals(codegen.getInvokerPackage(), "My\\Client\\Invoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "My\\Client\\Invoker");
     }
 
     @Test
@@ -69,14 +69,14 @@ public class PhpClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.INVOKER_PACKAGE, "Xinvoker");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
-        Assert.assertEquals(codegen.modelPackage(), "Xinvoker\\Xmodel");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "Xinvoker\\Xmodel");
-        Assert.assertEquals(codegen.apiPackage(), "Xinvoker\\Xapi");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "Xinvoker\\Xapi");
-        Assert.assertEquals(codegen.getInvokerPackage(), "Xinvoker");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "Xinvoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.modelPackage(), "Xinvoker\\Xmodel");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "Xinvoker\\Xmodel");
+        assertEquals(codegen.apiPackage(), "Xinvoker\\Xapi");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "Xinvoker\\Xapi");
+        assertEquals(codegen.getInvokerPackage(), "Xinvoker");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), "Xinvoker");
     }
 
     @Test(description = "convert a model with dollar signs")
@@ -86,8 +86,8 @@ public class PhpClientCodegenTest {
 
         codegen.setOpenAPI(openAPI);
         final CodegenModel simpleName = codegen.fromModel("$DollarModel$", openAPI.getComponents().getSchemas().get("$DollarModel$"));
-        Assert.assertEquals(simpleName.name, "$DollarModel$");
-        Assert.assertEquals(simpleName.classname, "DollarModel");
-        Assert.assertEquals(simpleName.classVarName, "dollar_model");
+        assertEquals(simpleName.name, "$DollarModel$");
+        assertEquals(simpleName.classname, "DollarModel");
+        assertEquals(simpleName.classVarName, "dollar_model");
     }
 }

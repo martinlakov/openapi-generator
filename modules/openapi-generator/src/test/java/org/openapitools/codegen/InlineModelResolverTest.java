@@ -29,14 +29,13 @@ import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import org.openapitools.codegen.utils.ModelUtils;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
-import static org.testng.AssertJUnit.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("static-method")
 public class InlineModelResolverTest {

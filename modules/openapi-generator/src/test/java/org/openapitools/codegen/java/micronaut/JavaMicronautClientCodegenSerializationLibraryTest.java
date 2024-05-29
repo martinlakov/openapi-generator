@@ -3,7 +3,7 @@ package org.openapitools.codegen.java.micronaut;
 import org.openapitools.codegen.CodegenConstants;
 import org.openapitools.codegen.languages.JavaMicronautAbstractCodegen;
 import org.openapitools.codegen.languages.JavaMicronautClientCodegen;
-import org.testng.annotations.Test;
+
 
 public class JavaMicronautClientCodegenSerializationLibraryTest extends AbstractMicronautCodegenTest {
 

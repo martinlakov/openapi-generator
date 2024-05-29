@@ -12,7 +12,7 @@ import org.openapitools.codegen.java.assertions.JavaFileAssert;
 import org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen;
 import org.openapitools.codegen.languages.features.CXFServerFeatures;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import com.google.common.collect.ImmutableMap;
 

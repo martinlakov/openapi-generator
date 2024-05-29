@@ -22,8 +22,8 @@ import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.Schema;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.JavascriptClientCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.util.Map;
 
@@ -34,14 +34,14 @@ public class JavascriptClientCodegenTest {
         final JavascriptClientCodegen codegen = new JavascriptClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
-        Assert.assertEquals(codegen.modelPackage(), "model");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), null);
-        Assert.assertEquals(codegen.apiPackage(), "api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), null);
-        Assert.assertEquals(codegen.getInvokerPackage(), null);
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), null);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.modelPackage(), "model");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), null);
+        assertEquals(codegen.apiPackage(), "api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), null);
+        assertEquals(codegen.getInvokerPackage(), null);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.INVOKER_PACKAGE), null);
     }
 
     @Test
@@ -50,8 +50,8 @@ public class JavascriptClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test
@@ -60,8 +60,8 @@ public class JavascriptClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.HIDE_GENERATION_TIMESTAMP, false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test(description = "test defaultValueWithParam for model's properties")
@@ -72,29 +72,29 @@ public class JavascriptClientCodegenTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("Pet", pet);
 
-        Assert.assertEquals(cm.name, "Pet");
-        Assert.assertEquals(cm.classname, "Pet");
-        Assert.assertEquals(cm.description, "A pet for sale in the pet store");
-        Assert.assertEquals(cm.vars.size(), 6);
+        assertEquals(cm.name, "Pet");
+        assertEquals(cm.classname, "Pet");
+        assertEquals(cm.description, "A pet for sale in the pet store");
+        assertEquals(cm.vars.size(), 6);
 
         // category (property)
         final CodegenProperty property1 = cm.vars.get(1);
-        Assert.assertEquals(property1.baseName, "category");
-        Assert.assertEquals(property1.dataType, "Category");
-        Assert.assertEquals(property1.name, "category");
-        Assert.assertEquals(property1.baseType, "Category");
-        Assert.assertEquals(property1.defaultValueWithParam, " = Category.constructFromObject(data['category']);");
+        assertEquals(property1.baseName, "category");
+        assertEquals(property1.dataType, "Category");
+        assertEquals(property1.name, "category");
+        assertEquals(property1.baseType, "Category");
+        assertEquals(property1.defaultValueWithParam, " = Category.constructFromObject(data['category']);");
         Assert.assertFalse(property1.required);
         Assert.assertFalse(property1.isContainer);
 
         // name (property)
         final CodegenProperty property2 = cm.vars.get(2);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "String");
-        Assert.assertEquals(property2.name, "name");
-        Assert.assertEquals(property2.baseType, "String");
-        Assert.assertEquals(property2.defaultValueWithParam, " = ApiClient.convertToType(data['name'], 'String');");
-        Assert.assertTrue(property2.required); // test required
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "String");
+        assertEquals(property2.name, "name");
+        assertEquals(property2.baseType, "String");
+        assertEquals(property2.defaultValueWithParam, " = ApiClient.convertToType(data['name'], 'String');");
+        assertTrue(property2.required); // test required
         Assert.assertFalse(property2.isContainer);
     }
 
@@ -108,10 +108,10 @@ public class JavascriptClientCodegenTest {
         CodegenOperation coText = codegen.fromOperation("/user", "post", textOperation, null);
 
         for (CodegenResponse cr : coText.responses) {
-            Assert.assertTrue(cr.isDefault);
+            assertTrue(cr.isDefault);
         }
 
-        Assert.assertEquals(coText.responses.size(), 1);
+        assertEquals(coText.responses.size(), 1);
 
     }
 
@@ -126,7 +126,7 @@ public class JavascriptClientCodegenTest {
         CodegenOperation operation = codegen.fromOperation(requestPath, "post", textOperation, null);
         CodegenParameter codegenParameter = operation.allParams.get(0);
 
-        Assert.assertEquals(codegenParameter.collectionFormat, "passthrough");
+        assertEquals(codegenParameter.collectionFormat, "passthrough");
     }
 
     @Test(description = "test isJson, isXml")
@@ -140,11 +140,11 @@ public class JavascriptClientCodegenTest {
 
         for (Map<String, String> consume: coText.consumes) {
             if ("application/json".equals(consume.get("mediaType"))) {
-                Assert.assertEquals(consume.get("isJson"), "true");
+                assertEquals(consume.get("isJson"), "true");
             }
 
             if ("application/xml".equals(consume.get("mediaType"))) {
-                Assert.assertEquals(consume.get("isXml"), "true");
+                assertEquals(consume.get("isXml"), "true");
             }
         }
     }
@@ -160,11 +160,11 @@ public class JavascriptClientCodegenTest {
 
         for (Map<String, String> consume: coText.produces) {
             if ("application/json".equals(consume.get("mediaType"))) {
-                Assert.assertEquals(consume.get("isJson"), "true");
+                assertEquals(consume.get("isJson"), "true");
             }
 
             if ("application/xml".equals(consume.get("mediaType"))) {
-                Assert.assertEquals(consume.get("isXml"), "true");
+                assertEquals(consume.get("isXml"), "true");
             }
         }
     }
@@ -175,7 +175,7 @@ public class JavascriptClientCodegenTest {
         codegen.additionalProperties().put("customProperty", "customValue");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get("customProperty"), "customValue");
+        assertEquals(codegen.additionalProperties().get("customProperty"), "customValue");
     }
 
 }

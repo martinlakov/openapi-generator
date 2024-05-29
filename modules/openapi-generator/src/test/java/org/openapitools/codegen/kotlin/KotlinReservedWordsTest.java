@@ -9,7 +9,7 @@ import org.openapitools.codegen.languages.KotlinClientCodegen;
 import org.openapitools.codegen.languages.KotlinSpringServerCodegen;
 import org.openapitools.codegen.utils.StringUtils;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ import java.util.HashSet;
 
 import static org.openapitools.codegen.TestUtils.assertFileContains;
 import static org.openapitools.codegen.TestUtils.assertFileNotContains;
-import static org.testng.Assert.assertEquals;
+import static org.testng.assertEquals;
 
 @SuppressWarnings("rawtypes")
 public class KotlinReservedWordsTest {

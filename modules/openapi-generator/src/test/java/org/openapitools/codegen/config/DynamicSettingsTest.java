@@ -6,14 +6,16 @@ import com.fasterxml.jackson.datatype.guava.GuavaModule;
 import io.swagger.v3.core.util.Yaml;
 import org.openapitools.codegen.api.TemplateDefinition;
 import org.openapitools.codegen.api.TemplateFileType;
-import org.testng.annotations.Test;
+
 
 import java.io.File;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.testng.Assert.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DynamicSettingsTest {
 

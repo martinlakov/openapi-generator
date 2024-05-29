@@ -27,8 +27,8 @@ import org.openapitools.codegen.languages.RubyClientCodegen;
 import org.openapitools.codegen.model.ModelMap;
 import org.openapitools.codegen.model.OperationMap;
 import org.openapitools.codegen.model.OperationsMap;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -36,7 +36,7 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertTrue;
+import static org.testng.assertTrue;
 import static org.testng.Assert.fail;
 
 /**
@@ -77,12 +77,12 @@ public class RubyClientCodegenTest {
         final RubyClientCodegen codegen = new RubyClientCodegen();
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), true);
-        Assert.assertEquals(codegen.modelPackage(), "models");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), null);
-        Assert.assertEquals(codegen.apiPackage(), "api");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), null);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.TRUE);
+        assertEquals(codegen.isHideGenerationTimestamp(), true);
+        assertEquals(codegen.modelPackage(), "models");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), null);
+        assertEquals(codegen.apiPackage(), "api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), null);
     }
 
     @Test
@@ -91,8 +91,8 @@ public class RubyClientCodegenTest {
         codegen.setHideGenerationTimestamp(false);
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
     }
 
     @Test
@@ -103,10 +103,10 @@ public class RubyClientCodegenTest {
         codegen.additionalProperties().put(CodegenConstants.API_PACKAGE, "ruby-api");
         codegen.processOpts();
 
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
-        Assert.assertEquals(codegen.isHideGenerationTimestamp(), false);
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "ruby-models");
-        Assert.assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "ruby-api");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.HIDE_GENERATION_TIMESTAMP), Boolean.FALSE);
+        assertEquals(codegen.isHideGenerationTimestamp(), false);
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.MODEL_PACKAGE), "ruby-models");
+        assertEquals(codegen.additionalProperties().get(CodegenConstants.API_PACKAGE), "ruby-api");
     }
 
     @Test
@@ -144,11 +144,11 @@ public class RubyClientCodegenTest {
         final String path = "/fake";
         final Operation p = openAPI.getPaths().get(path).getGet();
         final CodegenOperation op = codegen.fromOperation(path, "get", p, null);
-        Assert.assertEquals(op.formParams.size(), 2);
+        assertEquals(op.formParams.size(), 2);
         CodegenParameter fp = op.formParams.get(0);
-        Assert.assertEquals(fp.dataType, "Array<String>");
-        Assert.assertEquals(fp.datatypeWithEnum, "Array<ENUM_FORM_STRING_ARRAY>");
-        Assert.assertEquals(fp.enumName, "ENUM_FORM_STRING_ARRAY");
+        assertEquals(fp.dataType, "Array<String>");
+        assertEquals(fp.datatypeWithEnum, "Array<ENUM_FORM_STRING_ARRAY>");
+        assertEquals(fp.enumName, "ENUM_FORM_STRING_ARRAY");
     }
 
     @Test(description = "test example value for body parameter")
@@ -173,9 +173,9 @@ public class RubyClientCodegenTest {
         objs.setImports(new ArrayList<>());
         objs = codegen.postProcessOperationsWithModels(objs, Collections.singletonList(modelMap));
         CodegenOperation postProcessedOp = objs.getOperations().getOperation().get(0);
-        Assert.assertEquals(postProcessedOp.bodyParams.size(), 1);
+        assertEquals(postProcessedOp.bodyParams.size(), 1);
         CodegenParameter bp = postProcessedOp.bodyParams.get(0);
-        Assert.assertEquals(bp.vendorExtensions.get("x-ruby-example"), "OnlinePetstore::Pet.new({name: 'doggie', photo_urls: ['photo_urls_example']})");
+        assertEquals(bp.vendorExtensions.get("x-ruby-example"), "OnlinePetstore::Pet.new({name: 'doggie', photo_urls: ['photo_urls_example']})");
     }
 
 
@@ -190,22 +190,22 @@ public class RubyClientCodegenTest {
         codegen.setOpenAPI(openAPI);
         CodegenModel nullablePet = codegen.fromModel("NullablePet", schema);
         CodegenProperty cp0 = nullablePet.getVars().get(0);
-        Assert.assertTrue(cp0.isNullable);
+        assertTrue(cp0.isNullable);
 
         CodegenProperty cp1 = nullablePet.getVars().get(1);
         Assert.assertFalse(cp1.isNullable);
 
         CodegenProperty cp2 = nullablePet.getVars().get(2);
-        Assert.assertTrue(cp2.isNullable);
+        assertTrue(cp2.isNullable);
 
         CodegenProperty cp3 = nullablePet.getVars().get(3);
-        Assert.assertTrue(cp3.isNullable);
+        assertTrue(cp3.isNullable);
 
         CodegenProperty cp4 = nullablePet.getVars().get(4);
         Assert.assertFalse(cp4.isNullable);
 
         CodegenProperty cp5 = nullablePet.getVars().get(5);
-        Assert.assertTrue(cp5.isNullable);
+        assertTrue(cp5.isNullable);
     }
 
     @Test(description = "test properties without nullable")
@@ -220,78 +220,78 @@ public class RubyClientCodegenTest {
         CodegenModel nullablePet = codegen.fromModel("Pet", schema);
 
         Assert.assertNotNull(nullablePet);
-        Assert.assertEquals(nullablePet.getVars().size(), 6);
+        assertEquals(nullablePet.getVars().size(), 6);
         CodegenProperty cp0 = nullablePet.getVars().get(0);
         Assert.assertFalse(cp0.isNullable);
-        Assert.assertEquals(cp0.name, "id");
+        assertEquals(cp0.name, "id");
 
         CodegenProperty cp1 = nullablePet.getVars().get(1);
         Assert.assertFalse(cp1.isNullable);
-        Assert.assertEquals(cp1.name, "category");
+        assertEquals(cp1.name, "category");
 
         CodegenProperty cp2 = nullablePet.getVars().get(2);
         Assert.assertFalse(cp2.isNullable);
-        Assert.assertEquals(cp2.name, "name");
+        assertEquals(cp2.name, "name");
 
         CodegenProperty cp3 = nullablePet.getVars().get(3);
         Assert.assertFalse(cp3.isNullable);
-        Assert.assertEquals(cp3.name, "photo_urls");
+        assertEquals(cp3.name, "photo_urls");
 
         CodegenProperty cp4 = nullablePet.getVars().get(4);
         Assert.assertFalse(cp4.isNullable);
-        Assert.assertEquals(cp4.name, "tags");
+        assertEquals(cp4.name, "tags");
 
         CodegenProperty cp5 = nullablePet.getVars().get(5);
         Assert.assertFalse(cp5.isNullable);
-        Assert.assertEquals(cp5.name, "status");
+        assertEquals(cp5.name, "status");
 
         // test allVars
-        Assert.assertEquals(nullablePet.getAllVars().size(), 6);
+        assertEquals(nullablePet.getAllVars().size(), 6);
         cp0 = nullablePet.getVars().get(0);
         Assert.assertFalse(cp0.isNullable);
-        Assert.assertEquals(cp0.name, "id");
+        assertEquals(cp0.name, "id");
 
         cp1 = nullablePet.getVars().get(1);
         Assert.assertFalse(cp1.isNullable);
-        Assert.assertEquals(cp1.name, "category");
+        assertEquals(cp1.name, "category");
 
         cp2 = nullablePet.getVars().get(2);
         Assert.assertFalse(cp2.isNullable);
-        Assert.assertEquals(cp2.name, "name");
+        assertEquals(cp2.name, "name");
 
         cp3 = nullablePet.getVars().get(3);
         Assert.assertFalse(cp3.isNullable);
-        Assert.assertEquals(cp3.name, "photo_urls");
+        assertEquals(cp3.name, "photo_urls");
 
         cp4 = nullablePet.getVars().get(4);
         Assert.assertFalse(cp4.isNullable);
-        Assert.assertEquals(cp4.name, "tags");
+        assertEquals(cp4.name, "tags");
 
         cp5 = nullablePet.getVars().get(5);
         Assert.assertFalse(cp5.isNullable);
-        Assert.assertEquals(cp5.name, "status");
+        assertEquals(cp5.name, "status");
 
         // test requiredVars
-        Assert.assertEquals(nullablePet.getRequiredVars().size(), 2);
+        assertEquals(nullablePet.getRequiredVars().size(), 2);
         cp0 = nullablePet.getRequiredVars().get(0);
         Assert.assertFalse(cp0.isNullable);
-        Assert.assertEquals(cp0.name, "name");
+        assertEquals(cp0.name, "name");
 
         cp1 = nullablePet.getRequiredVars().get(1);
         Assert.assertFalse(cp1.isNullable);
-        Assert.assertEquals(cp1.name, "photo_urls");
+        assertEquals(cp1.name, "photo_urls");
 
         // test mandatory
         Set<String> mandatory = new TreeSet<String>();
         mandatory.add("name");
         mandatory.add("photo_urls");
-        Assert.assertEquals(nullablePet.getMandatory(), mandatory);
+        assertEquals(nullablePet.getMandatory(), mandatory);
 
         // test allMandatory
         Set<String> allMandatory = new TreeSet<String>();
         allMandatory.add("name");
         allMandatory.add("photo_urls");
-        Assert.assertEquals(nullablePet.getAllMandatory(), allMandatory);
+        assertEquals(nullablePet.getAllMandatory(), allMandatory);
     }
 
     @Test(description = "test nullable for parameters (OAS3)")
@@ -305,15 +305,15 @@ public class RubyClientCodegenTest {
         final Operation p = openAPI.getPaths().get(path).getPost();
         final CodegenOperation op = codegen.fromOperation(path, "post", p, null);
 
-        Assert.assertEquals(op.pathParams.size(), 1);
+        assertEquals(op.pathParams.size(), 1);
         CodegenParameter pp = op.pathParams.get(0);
-        Assert.assertTrue(pp.isNullable);
+        assertTrue(pp.isNullable);
 
-        Assert.assertEquals(op.formParams.size(), 2);
+        assertEquals(op.formParams.size(), 2);
         CodegenParameter name = op.formParams.get(0);
         Assert.assertFalse(name.isNullable);
         CodegenParameter status = op.formParams.get(1);
-        Assert.assertTrue(status.isNullable);
+        assertTrue(status.isNullable);
     }
 
     @Test(description = "test nullable for parameters (OAS2)")
@@ -328,16 +328,16 @@ public class RubyClientCodegenTest {
         final CodegenOperation op = codegen.fromOperation(path, "post", p, null);
 
         // path parameter x-nullable test
-        Assert.assertEquals(op.pathParams.size(), 1);
+        assertEquals(op.pathParams.size(), 1);
         CodegenParameter pp = op.pathParams.get(0);
-        Assert.assertTrue(pp.isNullable);
+        assertTrue(pp.isNullable);
 
         // form parameter x-nullable test
-        Assert.assertEquals(op.formParams.size(), 2);
+        assertEquals(op.formParams.size(), 2);
         CodegenParameter name = op.formParams.get(0);
         Assert.assertFalse(name.isNullable);
         CodegenParameter status = op.formParams.get(1);
-        Assert.assertTrue(status.isNullable);
+        assertTrue(status.isNullable);
     }
 
     @Test(description = "test anyOf (OAS3)")
@@ -353,7 +353,7 @@ public class RubyClientCodegenTest {
         Set<String> anyOf = new TreeSet<String>();
         anyOf.add("Apple");
         anyOf.add("Banana");
-        Assert.assertEquals(fruit.anyOf, anyOf);
+        assertEquals(fruit.anyOf, anyOf);
     }
 
     @Test(description = "test oneOf (OAS3)")
@@ -369,7 +369,7 @@ public class RubyClientCodegenTest {
         Set<String> oneOf = new TreeSet<String>();
         oneOf.add("Apple");
         oneOf.add("Banana");
-        Assert.assertEquals(fruit.oneOf, oneOf);
+        assertEquals(fruit.oneOf, oneOf);
     }
 
     @Test(description = "test allOf (OAS3)")
@@ -388,7 +388,7 @@ public class RubyClientCodegenTest {
         Set<CodegenDiscriminator.MappedModel> mappedModels = new LinkedHashSet<CodegenDiscriminator.MappedModel>();
         mappedModels.add(new CodegenDiscriminator.MappedModel("a", "Adult", true));
         mappedModels.add(new CodegenDiscriminator.MappedModel("c", "Child", true));
-        Assert.assertEquals(codegenDiscriminator.getMappedModels(), mappedModels);
+        assertEquals(codegenDiscriminator.getMappedModels(), mappedModels);
     }
 
     @Test(description = "test allOf (OAS3)")
@@ -407,7 +407,7 @@ public class RubyClientCodegenTest {
         Set<CodegenDiscriminator.MappedModel> mappedModels = new LinkedHashSet<CodegenDiscriminator.MappedModel>();
         mappedModels.add(new CodegenDiscriminator.MappedModel("a", "Adult", true));
         mappedModels.add(new CodegenDiscriminator.MappedModel("c", "Child", true));
-        Assert.assertEquals(codegenDiscriminator.getMappedModels(), mappedModels);
+        assertEquals(codegenDiscriminator.getMappedModels(), mappedModels);
     }
 
     @Test(description = "test allOf with only allOf and duplicated properties(OAS3)")
@@ -420,22 +420,22 @@ public class RubyClientCodegenTest {
         codegen.setOpenAPI(openAPI);
         CodegenModel modelC = codegen.fromModel("ModelC", schema);
         Assert.assertNotNull(modelC);
-        Assert.assertEquals(modelC.getVars().size(), 5);
+        assertEquals(modelC.getVars().size(), 5);
 
         CodegenProperty cp0 = modelC.getVars().get(0);
-        Assert.assertEquals(cp0.name, "foo");
+        assertEquals(cp0.name, "foo");
 
         CodegenProperty cp1 = modelC.getVars().get(1);
-        Assert.assertEquals(cp1.name, "duplicated_optional");
+        assertEquals(cp1.name, "duplicated_optional");
 
         CodegenProperty cp2 = modelC.getVars().get(2);
-        Assert.assertEquals(cp2.name, "duplicated_required");
+        assertEquals(cp2.name, "duplicated_required");
 
         CodegenProperty cp3 = modelC.getVars().get(3);
-        Assert.assertEquals(cp3.name, "bar");
+        assertEquals(cp3.name, "bar");
 
         CodegenProperty cp4 = modelC.getVars().get(4);
-        Assert.assertEquals(cp4.name, "baz");
+        assertEquals(cp4.name, "baz");
     }
 
 
@@ -464,8 +464,8 @@ public class RubyClientCodegenTest {
                 "duplicated_required",
                 "person_required"
         );
-        Assert.assertEquals(allVars.size(), allVarsExpected.size());
-        Assert.assertTrue(allVars.containsAll(allVarsExpected));
+        assertEquals(allVars.size(), allVarsExpected.size());
+        assertTrue(allVars.containsAll(allVarsExpected));
 
         // to test vars (without parent's properties)
         List<String> vars  =
@@ -476,8 +476,8 @@ public class RubyClientCodegenTest {
                 "age",
                 "first_name"
         );
-        Assert.assertEquals(vars.size(), varsExpected.size());
-        Assert.assertTrue(vars.containsAll(varsExpected));
+        assertEquals(vars.size(), varsExpected.size());
+        assertTrue(vars.containsAll(varsExpected));
 
         // to test requiredVars
         List<String> requiredVars  =
@@ -488,8 +488,8 @@ public class RubyClientCodegenTest {
                 "duplicated_required",
                 "person_required"
                 );
-        Assert.assertEquals(vars.size(), requiredVarsExpected.size());
-        Assert.assertTrue(requiredVars.containsAll(requiredVarsExpected));
+        assertEquals(vars.size(), requiredVarsExpected.size());
+        assertTrue(requiredVars.containsAll(requiredVarsExpected));
     }
 
     @Test(description = "test allOf with discriminator and duplicated properties(OAS3) for Adult model")
@@ -504,52 +504,52 @@ public class RubyClientCodegenTest {
         Assert.assertNotNull(adult);
 
         // to test allVars (without parent's properties)
-        Assert.assertEquals(adult.getAllVars().size(), 8);
+        assertEquals(adult.getAllVars().size(), 8);
 
         CodegenProperty cp0 = adult.getAllVars().get(0);
-        Assert.assertEquals(cp0.name, "_type");
+        assertEquals(cp0.name, "_type");
 
         CodegenProperty cp1 = adult.getAllVars().get(1);
-        Assert.assertEquals(cp1.name, "last_name");
+        assertEquals(cp1.name, "last_name");
 
         CodegenProperty cp2 = adult.getAllVars().get(2);
-        Assert.assertEquals(cp2.name, "first_name");
+        assertEquals(cp2.name, "first_name");
 
         CodegenProperty cp3 = adult.getAllVars().get(3);
-        Assert.assertEquals(cp3.name, "duplicated_optional");
+        assertEquals(cp3.name, "duplicated_optional");
 
         CodegenProperty cp4 = adult.getAllVars().get(4);
-        Assert.assertEquals(cp4.name, "duplicated_required");
+        assertEquals(cp4.name, "duplicated_required");
 
         CodegenProperty cp5 = adult.getAllVars().get(5);
-        Assert.assertEquals(cp5.name, "person_required");
+        assertEquals(cp5.name, "person_required");
 
         CodegenProperty cp6 = adult.getAllVars().get(6);
-        Assert.assertEquals(cp6.name, "children");
+        assertEquals(cp6.name, "children");
 
         CodegenProperty cp7 = adult.getAllVars().get(7);
-        Assert.assertEquals(cp7.name, "adult_required");
+        assertEquals(cp7.name, "adult_required");
 
         // to test vars (without parent's properties)
-        Assert.assertEquals(adult.getVars().size(), 4);
+        assertEquals(adult.getVars().size(), 4);
 
         cp0 = adult.getVars().get(0);
-        Assert.assertEquals(cp0.name, "duplicated_optional");
+        assertEquals(cp0.name, "duplicated_optional");
 
         cp1 = adult.getVars().get(1);
-        Assert.assertEquals(cp1.name, "duplicated_required");
+        assertEquals(cp1.name, "duplicated_required");
 
         cp2 = adult.getVars().get(2);
-        Assert.assertEquals(cp2.name, "children");
+        assertEquals(cp2.name, "children");
 
         // to test requiredVars
-        Assert.assertEquals(adult.getRequiredVars().size(), 2);
+        assertEquals(adult.getRequiredVars().size(), 2);
 
         cp0 = adult.getRequiredVars().get(0);
-        Assert.assertEquals(cp0.name, "duplicated_required");
+        assertEquals(cp0.name, "duplicated_required");
 
         cp1 = adult.getRequiredVars().get(1);
-        Assert.assertEquals(cp1.name, "person_required");
+        assertEquals(cp1.name, "person_required");
     }
 
     @Test(description = "test allOf composition")
@@ -564,58 +564,58 @@ public class RubyClientCodegenTest {
         Assert.assertNotNull(superMan);
 
         // to test all properties
-        Assert.assertEquals(superMan.getVars().size(), 6);
-        Assert.assertEquals(superMan.getAllVars().size(), 6);
-        Assert.assertEquals(superMan.getMandatory().size(), 3);
-        Assert.assertEquals(superMan.getAllMandatory().size(), 3);
+        assertEquals(superMan.getVars().size(), 6);
+        assertEquals(superMan.getAllVars().size(), 6);
+        assertEquals(superMan.getMandatory().size(), 3);
+        assertEquals(superMan.getAllMandatory().size(), 3);
 
         CodegenProperty cp0 = superMan.getVars().get(0);
-        Assert.assertEquals(cp0.name, "id");
-        Assert.assertTrue(cp0.required);
+        assertEquals(cp0.name, "id");
+        assertTrue(cp0.required);
 
         CodegenProperty cp1 = superMan.getVars().get(1);
-        Assert.assertEquals(cp1.name, "name");
+        assertEquals(cp1.name, "name");
         Assert.assertFalse(cp1.required);
 
         CodegenProperty cp2 = superMan.getVars().get(2);
-        Assert.assertEquals(cp2.name, "reward");
+        assertEquals(cp2.name, "reward");
         Assert.assertFalse(cp2.required);
 
         CodegenProperty cp3 = superMan.getVars().get(3);
-        Assert.assertEquals(cp3.name, "origin");
-        Assert.assertTrue(cp3.required);
+        assertEquals(cp3.name, "origin");
+        assertTrue(cp3.required);
 
         CodegenProperty cp4 = superMan.getVars().get(4);
-        Assert.assertEquals(cp4.name, "category");
+        assertEquals(cp4.name, "category");
         Assert.assertFalse(cp4.required);
 
         CodegenProperty cp5 = superMan.getVars().get(5);
-        Assert.assertEquals(cp5.name, "level");
-        Assert.assertTrue(cp5.required);
+        assertEquals(cp5.name, "level");
+        assertTrue(cp5.required);
 
         CodegenProperty cp6 = superMan.getAllVars().get(0);
-        Assert.assertEquals(cp6.name, "id");
-        Assert.assertTrue(cp6.required);
+        assertEquals(cp6.name, "id");
+        assertTrue(cp6.required);
 
         CodegenProperty cp7 = superMan.getAllVars().get(1);
-        Assert.assertEquals(cp7.name, "name");
+        assertEquals(cp7.name, "name");
         Assert.assertFalse(cp7.required);
 
         CodegenProperty cp8 = superMan.getAllVars().get(2);
-        Assert.assertEquals(cp8.name, "reward");
+        assertEquals(cp8.name, "reward");
         Assert.assertFalse(cp8.required);
 
         CodegenProperty cp9 = superMan.getAllVars().get(3);
-        Assert.assertEquals(cp9.name, "origin");
-        Assert.assertTrue(cp9.required);
+        assertEquals(cp9.name, "origin");
+        assertTrue(cp9.required);
 
         CodegenProperty cp10 = superMan.getAllVars().get(4);
-        Assert.assertEquals(cp10.name, "category");
+        assertEquals(cp10.name, "category");
         Assert.assertFalse(cp10.required);
 
         CodegenProperty cp11 = superMan.getAllVars().get(5);
-        Assert.assertEquals(cp11.name, "level");
-        Assert.assertTrue(cp11.required);
+        assertEquals(cp11.name, "level");
+        assertTrue(cp11.required);
 
     }
 
@@ -640,7 +640,7 @@ public class RubyClientCodegenTest {
         CodegenOperation postProcessedOp = objs.getOperations().getOperation().get(0);
 
         CodegenParameter pp = postProcessedOp.pathParams.get(0);
-        Assert.assertEquals(pp.vendorExtensions.get("x-ruby-example"), "'orderid123'");
+        assertEquals(pp.vendorExtensions.get("x-ruby-example"), "'orderid123'");
     }
 
     @Test(description = "test example string imported from example in schema (OAS3)")
@@ -663,7 +663,7 @@ public class RubyClientCodegenTest {
         CodegenOperation postProcessedOp = objs.getOperations().getOperation().get(0);
 
         CodegenParameter pp = postProcessedOp.pathParams.get(0);
-        Assert.assertEquals(pp.vendorExtensions.get("x-ruby-example"), "'orderid123'");
+        assertEquals(pp.vendorExtensions.get("x-ruby-example"), "'orderid123'");
     }
 
     /**
@@ -681,11 +681,11 @@ public class RubyClientCodegenTest {
         final Operation p = openAPI.getPaths().get(path).getGet();
         final CodegenOperation op = codegen.fromOperation(path, "get", p, null);
         // pattern_no_forward_slashes '^pattern$'
-        Assert.assertEquals(op.allParams.get(0).pattern, "/^pattern$/");
+        assertEquals(op.allParams.get(0).pattern, "/^pattern$/");
         // pattern_two_slashes '/^pattern$/i'
-        Assert.assertEquals(op.allParams.get(1).pattern, "/^pattern$/i");
+        assertEquals(op.allParams.get(1).pattern, "/^pattern$/i");
         // pattern_dont_escape_backslash '/^pattern\d{3}$/i' NOTE: the double \ is to escape \ in string but is read as single \
-        Assert.assertEquals(op.allParams.get(2).pattern, "/^pattern\\d{3}$/i");
+        assertEquals(op.allParams.get(2).pattern, "/^pattern\\d{3}$/i");
     }
 
     /**
@@ -701,16 +701,16 @@ public class RubyClientCodegenTest {
         final String path = "/animals";
         final Operation p = openAPI.getPaths().get(path).getGet();
         final CodegenOperation op = codegen.fromOperation(path, "get", p, null);
-        Assert.assertEquals(op.allParams.get(0).dataType, "VerySpecialStringInRuby");
+        assertEquals(op.allParams.get(0).dataType, "VerySpecialStringInRuby");
 
         final Schema schema = openAPI.getComponents().getSchemas().get("Animal");
         codegen.setOpenAPI(openAPI);
         CodegenModel animal = codegen.fromModel("Animal", schema);
         Assert.assertNotNull(animal);
         CodegenProperty cp2 = animal.getVars().get(2);
-        Assert.assertEquals(cp2.name, "mapping_test");
+        assertEquals(cp2.name, "mapping_test");
         Assert.assertFalse(cp2.required);
-        Assert.assertEquals(cp2.dataType, "VerySpecialStringInRuby");
+        assertEquals(cp2.dataType, "VerySpecialStringInRuby");
     }
 
     @Test(description = "test regex patterns")
@@ -722,23 +722,23 @@ public class RubyClientCodegenTest {
         final Operation p = openAPI.getPaths().get(path).getGet();
         final CodegenOperation op = codegen.fromOperation(path, "get", p, null);
         // pattern_no_forward_slashes '^pattern$'
-        Assert.assertEquals(op.allParams.get(0).pattern, "/^pattern$/");
+        assertEquals(op.allParams.get(0).pattern, "/^pattern$/");
         // pattern_two_slashes '/^pattern$/'
-        Assert.assertEquals(op.allParams.get(1).pattern, "/^pattern$/");
+        assertEquals(op.allParams.get(1).pattern, "/^pattern$/");
         // pattern_dont_escape_backslash '/^pattern\d{3}$/'
-        Assert.assertEquals(op.allParams.get(2).pattern, "/^pattern\\d{3}$/");
+        assertEquals(op.allParams.get(2).pattern, "/^pattern\\d{3}$/");
         // pattern_dont_escape_escaped_forward_slash '/^pattern\/\d{3}$/'
-        Assert.assertEquals(op.allParams.get(3).pattern, "/^pattern\\/\\d{3}$/");
+        assertEquals(op.allParams.get(3).pattern, "/^pattern\\/\\d{3}$/");
         // pattern_escape_unescaped_forward_slash '^pattern/\d{3}$'
-        Assert.assertEquals(op.allParams.get(4).pattern, "/^pattern\\/\\d{3}$/");
+        assertEquals(op.allParams.get(4).pattern, "/^pattern\\/\\d{3}$/");
         // pattern_with_modifiers '/^pattern\d{3}$/i
-        Assert.assertEquals(op.allParams.get(5).pattern, "/^pattern\\d{3}$/i");
+        assertEquals(op.allParams.get(5).pattern, "/^pattern\\d{3}$/i");
         // not testing pattern_with_backslash_after_bracket '/^[\pattern\d{3}$/i'
         // as "/^[\\pattern\\d{3}$/i" is invalid regex because [ is not escaped and there is no closing ]
-        // Assert.assertEquals(op.allParams.get(6).pattern, "/^[\\pattern\\d{3}$/i");
+        // assertEquals(op.allParams.get(6).pattern, "/^[\\pattern\\d{3}$/i");
         // alternation_with_forward_slash '/ax$|/bx$'
-        Assert.assertEquals(op.allParams.get(7).pattern, "/ax$|/bx$");
+        assertEquals(op.allParams.get(7).pattern, "/ax$|/bx$");
         // patten_starts_ends_with_slash '/root/'
-        Assert.assertEquals(op.allParams.get(8).pattern, "/root/");
+        assertEquals(op.allParams.get(8).pattern, "/root/");
     }
 }

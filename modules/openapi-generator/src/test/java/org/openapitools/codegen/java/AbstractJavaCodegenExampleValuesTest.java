@@ -22,9 +22,9 @@ import org.mockito.Mockito;
 import org.openapitools.codegen.CodegenParameter;
 import org.openapitools.codegen.CodegenProperty;
 import org.openapitools.codegen.languages.AbstractJavaCodegen;
-import org.testng.Assert;
+
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,7 +50,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.dataType = "WrappedEnum";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "WrappedEnum.fromValue(\"first\")");
+        assertEquals(p.example, "WrappedEnum.fromValue(\"first\")");
     }
 
     @Test
@@ -61,7 +61,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.dataType = "String";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "\"first\"");
+        assertEquals(p.example, "\"first\"");
     }
 
     @Test
@@ -74,7 +74,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.items = new CodegenProperty();
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "Arrays.asList()");
+        assertEquals(p.example, "Arrays.asList()");
     }
 
     @Test
@@ -84,7 +84,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.dataType = "LocalDate";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "LocalDate.now()");
+        assertEquals(p.example, "LocalDate.now()");
     }
 
     @Test
@@ -95,7 +95,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.example = "2017-03-30";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "LocalDate.parse(\"2017-03-30\")");
+        assertEquals(p.example, "LocalDate.parse(\"2017-03-30\")");
     }
 
     @Test
@@ -105,7 +105,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.dataType = "OffsetDateTime";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "OffsetDateTime.now()");
+        assertEquals(p.example, "OffsetDateTime.now()");
     }
 
     @Test
@@ -116,7 +116,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.example = "2007-12-03T10:15:30+01:00";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "OffsetDateTime.parse(\"2007-12-03T10:15:30+01:00\")");
+        assertEquals(p.example, "OffsetDateTime.parse(\"2007-12-03T10:15:30+01:00\")");
     }
 
     @Test
@@ -126,7 +126,7 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.dataType = "UUID";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "UUID.randomUUID()");
+        assertEquals(p.example, "UUID.randomUUID()");
     }
 
     @Test
@@ -137,6 +137,6 @@ public class AbstractJavaCodegenExampleValuesTest {
         p.example = "13b48713-b931-45ea-bd60-b07491245960";
 
         codegen.setParameterExampleValue(p);
-        Assert.assertEquals(p.example, "UUID.fromString(\"13b48713-b931-45ea-bd60-b07491245960\")");
+        assertEquals(p.example, "UUID.fromString(\"13b48713-b931-45ea-bd60-b07491245960\")");
     }
 }

@@ -22,9 +22,9 @@ import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.media.*;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.PhpClientCodegen;
-import org.testng.Assert;
+
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,40 +47,40 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 3);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 3);
         // {{imports}} is not used in template
-        //Assert.assertEquals(cm.imports.size(), 1);
+        //assertEquals(cm.imports.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
-        Assert.assertEquals(property1.defaultValue, null);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
+        assertEquals(property1.defaultValue, null);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "name");
-        Assert.assertEquals(property2.dataType, "string");
-        Assert.assertEquals(property2.name, "name");
-        Assert.assertEquals(property2.defaultValue, null);
-        Assert.assertEquals(property2.baseType, "string");
-        Assert.assertTrue(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertEquals(property2.baseName, "name");
+        assertEquals(property2.dataType, "string");
+        assertEquals(property2.name, "name");
+        assertEquals(property2.defaultValue, null);
+        assertEquals(property2.baseType, "string");
+        assertTrue(property2.required);
+        assertTrue(property2.isPrimitiveType);
         Assert.assertFalse(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "createdAt");
-        Assert.assertEquals(property3.complexType, null);
-        Assert.assertEquals(property3.dataType, "\\DateTime");
-        Assert.assertEquals(property3.name, "created_at");
-        Assert.assertEquals(property3.defaultValue, null);
-        Assert.assertEquals(property3.baseType, "\\DateTime");
+        assertEquals(property3.baseName, "createdAt");
+        assertEquals(property3.complexType, null);
+        assertEquals(property3.dataType, "\\DateTime");
+        assertEquals(property3.name, "created_at");
+        assertEquals(property3.defaultValue, null);
+        assertEquals(property3.baseType, "\\DateTime");
         Assert.assertFalse(property3.required);
         Assert.assertFalse(property3.isContainer);
     }
@@ -98,30 +98,30 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 2);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 2);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
-        Assert.assertEquals(property1.defaultValue, null);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
+        assertEquals(property1.defaultValue, null);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "urls");
-        Assert.assertEquals(property2.dataType, "string[]");
-        Assert.assertEquals(property2.name, "urls");
-        Assert.assertEquals(property2.baseType, "array");
-        Assert.assertEquals(property2.containerType, "array");
+        assertEquals(property2.baseName, "urls");
+        assertEquals(property2.dataType, "string[]");
+        assertEquals(property2.name, "urls");
+        assertEquals(property2.baseType, "array");
+        assertEquals(property2.containerType, "array");
         Assert.assertFalse(property2.required);
-        Assert.assertTrue(property2.isPrimitiveType);
-        Assert.assertTrue(property2.isContainer);
+        assertTrue(property2.isPrimitiveType);
+        assertTrue(property2.isContainer);
     }
 
     @Test(description = "convert a model with a map property")
@@ -136,20 +136,20 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "translations");
-        Assert.assertEquals(property1.dataType, "array<string,string>");
-        Assert.assertEquals(property1.name, "translations");
-        Assert.assertEquals(property1.baseType, "array");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "translations");
+        assertEquals(property1.dataType, "array<string,string>");
+        assertEquals(property1.name, "translations");
+        assertEquals(property1.baseType, "array");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertTrue(property1.isContainer);
+        assertTrue(property1.isPrimitiveType);
     }
 
     @Test(description = "convert a model with complex property")
@@ -162,16 +162,16 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "\\OpenAPI\\Client\\Model\\Children");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "Children");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "\\OpenAPI\\Client\\Model\\Children");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "Children");
         Assert.assertFalse(property1.required);
         Assert.assertFalse(property1.isContainer);
     }
@@ -187,19 +187,19 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.dataType, "\\OpenAPI\\Client\\Model\\Children[]");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "array");
-        Assert.assertEquals(property1.containerType, "array");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.dataType, "\\OpenAPI\\Client\\Model\\Children[]");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "array");
+        assertEquals(property1.containerType, "array");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert a model with complex map property")
@@ -213,22 +213,22 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a sample model");
-        Assert.assertEquals(cm.vars.size(), 1);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a sample model");
+        assertEquals(cm.vars.size(), 1);
         // {{imports}} is not used in template
-        //Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        //assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "children");
-        Assert.assertEquals(property1.complexType, "Children");
-        Assert.assertEquals(property1.dataType, "array<string,\\OpenAPI\\Client\\Model\\Children>");
-        Assert.assertEquals(property1.name, "children");
-        Assert.assertEquals(property1.baseType, "array");
-        Assert.assertEquals(property1.containerType, "map");
+        assertEquals(property1.baseName, "children");
+        assertEquals(property1.complexType, "Children");
+        assertEquals(property1.dataType, "array<string,\\OpenAPI\\Client\\Model\\Children>");
+        assertEquals(property1.name, "children");
+        assertEquals(property1.baseType, "array");
+        assertEquals(property1.containerType, "map");
         Assert.assertFalse(property1.required);
-        Assert.assertTrue(property1.isContainer);
+        assertTrue(property1.isContainer);
     }
 
     @Test(description = "convert an array model")
@@ -241,13 +241,13 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(model.getDescription(), "an array model");
+        assertEquals(model.getDescription(), "an array model");
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertTrue(cm.isArray);
-        Assert.assertEquals(cm.description, "an array model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertTrue(cm.isArray);
+        assertEquals(cm.description, "an array model");
+        assertEquals(cm.vars.size(), 0);
         // skip import test as import is not used by PHP codegen
     }
 
@@ -261,13 +261,13 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.name, "sample");
-        Assert.assertEquals(cm.classname, "Sample");
-        Assert.assertEquals(cm.description, "a map model");
-        Assert.assertEquals(cm.vars.size(), 0);
+        assertEquals(cm.name, "sample");
+        assertEquals(cm.classname, "Sample");
+        assertEquals(cm.description, "a map model");
+        assertEquals(cm.vars.size(), 0);
         // {{imports}} is not used in template
-        //Assert.assertEquals(cm.imports.size(), 2);
-        //Assert.assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
+        //assertEquals(cm.imports.size(), 2);
+        //assertEquals(Sets.intersection(cm.imports, Sets.newHashSet("Children")).size(), 1);
     }
 
     @DataProvider(name = "modelNames")
@@ -291,8 +291,8 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel(name, model);
 
-        Assert.assertEquals(cm.name, name);
-        Assert.assertEquals(cm.classname, expectedName);
+        assertEquals(cm.name, name);
+        assertEquals(cm.classname, expectedName);
     }
 
     @Test(description = "test enum array model")
@@ -306,10 +306,10 @@ public class PhpModelTest {
         Schema property =  (Schema) definition.getProperties().get("array_enum");
         CodegenProperty prope = codegen.fromProperty("array_enum", property);
         codegen.updateCodegenPropertyEnum(prope);
-        Assert.assertEquals(prope.datatypeWithEnum, "ARRAY_ENUM[]");
-        Assert.assertEquals(prope.enumName, "ARRAY_ENUM");
-        Assert.assertTrue(prope.isEnum);
-        Assert.assertEquals(prope.allowableValues.get("values"), Arrays.asList("fish", "crab"));
+        assertEquals(prope.datatypeWithEnum, "ARRAY_ENUM[]");
+        assertEquals(prope.enumName, "ARRAY_ENUM");
+        assertTrue(prope.isEnum);
+        assertEquals(prope.allowableValues.get("values"), Arrays.asList("fish", "crab"));
 
         HashMap<String, Object> fish= new HashMap<String, Object>();
         fish.put("name", "FISH");
@@ -319,14 +319,14 @@ public class PhpModelTest {
         crab.put("name", "CRAB");
         crab.put("value", "\'crab\'");
         crab.put("isString", true);
-        Assert.assertEquals(prope.allowableValues.get("enumVars"), Arrays.asList(fish, crab));
+        assertEquals(prope.allowableValues.get("enumVars"), Arrays.asList(fish, crab));
 
         // assert inner items
-        Assert.assertEquals(prope.datatypeWithEnum, "ARRAY_ENUM[]");
-        Assert.assertEquals(prope.enumName, "ARRAY_ENUM");
-        Assert.assertTrue(prope.items.isEnum);
-        Assert.assertEquals(prope.items.allowableValues.get("values"), Arrays.asList("fish", "crab"));
-        Assert.assertEquals(prope.items.allowableValues.get("enumVars"), Arrays.asList(fish, crab));
+        assertEquals(prope.datatypeWithEnum, "ARRAY_ENUM[]");
+        assertEquals(prope.enumName, "ARRAY_ENUM");
+        assertTrue(prope.items.isEnum);
+        assertEquals(prope.items.allowableValues.get("values"), Arrays.asList("fish", "crab"));
+        assertEquals(prope.items.allowableValues.get("enumVars"), Arrays.asList(fish, crab));
 
     }
 
@@ -340,12 +340,12 @@ public class PhpModelTest {
         Schema property =  (Schema) definition.getProperties().get("enum_integer");
         CodegenProperty prope = codegen.fromProperty("enum_integer", property);
         codegen.updateCodegenPropertyEnum(prope);
-        Assert.assertEquals(prope.datatypeWithEnum, "ENUM_INTEGER");
-        Assert.assertEquals(prope.enumName, "ENUM_INTEGER");
-        Assert.assertTrue(prope.isEnum);
+        assertEquals(prope.datatypeWithEnum, "ENUM_INTEGER");
+        assertEquals(prope.enumName, "ENUM_INTEGER");
+        assertTrue(prope.isEnum);
         Assert.assertFalse(prope.isContainer);
         Assert.assertNull(prope.items);
-        Assert.assertEquals(prope.allowableValues.get("values"), Arrays.asList(1, -1));
+        assertEquals(prope.allowableValues.get("values"), Arrays.asList(1, -1));
 
         HashMap<String, Object> one = new HashMap<String, Object>();
         one.put("name", "1");
@@ -355,17 +355,17 @@ public class PhpModelTest {
         minusOne.put("name", "MINUS_1");
         minusOne.put("value", "-1");
         minusOne.put("isString", false);
-        Assert.assertEquals(prope.allowableValues.get("enumVars"), Arrays.asList(one, minusOne));
+        assertEquals(prope.allowableValues.get("enumVars"), Arrays.asList(one, minusOne));
     }
 
     @Test(description = "test enum variable names for reserved words")
     public void testReservedWord() throws Exception {
         final DefaultCodegen codegen = new PhpClientCodegen();
-        Assert.assertEquals(codegen.toEnumVarName("public", null), "_PUBLIC");
-        Assert.assertEquals(codegen.toEnumVarName("Private", null), "_PRIVATE");
-        Assert.assertEquals(codegen.toEnumVarName("IF", null), "_IF");
+        assertEquals(codegen.toEnumVarName("public", null), "_PUBLIC");
+        assertEquals(codegen.toEnumVarName("Private", null), "_PRIVATE");
+        assertEquals(codegen.toEnumVarName("IF", null), "_IF");
         // should not escape non-reserved
-        Assert.assertEquals(codegen.toEnumVarName("hello", null), "HELLO");
+        assertEquals(codegen.toEnumVarName("hello", null), "HELLO");
     }
 
     // datetime (or primitive type) not yet supported in HTTP request body
@@ -380,8 +380,8 @@ public class PhpModelTest {
         final Operation p = openAPI.getPaths().get(path).getPost();
         final CodegenOperation op = codegen.fromOperation(path, "post", p, null);
 
-        Assert.assertEquals(op.returnType, "\\DateTime");
-        Assert.assertEquals(op.bodyParam.dataType, "\\DateTime");
+        assertEquals(op.returnType, "\\DateTime");
+        assertEquals(op.bodyParam.dataType, "\\DateTime");
     }
 
     @Test(description = "test @ character replacements used in Hydra")
@@ -400,62 +400,62 @@ public class PhpModelTest {
         codegen.setOpenAPI(openAPI);
         final CodegenModel cm = codegen.fromModel("sample", model);
 
-        Assert.assertEquals(cm.vars.size(), 6);
+        assertEquals(cm.vars.size(), 6);
 
 
         final CodegenProperty property1 = cm.vars.get(0);
-        Assert.assertEquals(property1.baseName, "id");
-        Assert.assertEquals(property1.dataType, "int");
-        Assert.assertEquals(property1.name, "id");
-        Assert.assertEquals(property1.defaultValue, null);
-        Assert.assertEquals(property1.baseType, "int");
-        Assert.assertTrue(property1.required);
-        Assert.assertTrue(property1.isPrimitiveType);
+        assertEquals(property1.baseName, "id");
+        assertEquals(property1.dataType, "int");
+        assertEquals(property1.name, "id");
+        assertEquals(property1.defaultValue, null);
+        assertEquals(property1.baseType, "int");
+        assertTrue(property1.required);
+        assertTrue(property1.isPrimitiveType);
         Assert.assertFalse(property1.isContainer);
 
         final CodegenProperty property2 = cm.vars.get(1);
-        Assert.assertEquals(property2.baseName, "@id");
-        Assert.assertEquals(property2.dataType, "string");
-        Assert.assertEquals(property2.name, "at_id");
-        Assert.assertEquals(property2.defaultValue, null);
-        Assert.assertEquals(property2.baseType, "string");
-        Assert.assertTrue(property2.isPrimitiveType);
+        assertEquals(property2.baseName, "@id");
+        assertEquals(property2.dataType, "string");
+        assertEquals(property2.name, "at_id");
+        assertEquals(property2.defaultValue, null);
+        assertEquals(property2.baseType, "string");
+        assertTrue(property2.isPrimitiveType);
         Assert.assertFalse(property2.isContainer);
 
         final CodegenProperty property3 = cm.vars.get(2);
-        Assert.assertEquals(property3.baseName, "type");
-        Assert.assertEquals(property3.dataType, "string");
-        Assert.assertEquals(property3.name, "type");
-        Assert.assertEquals(property3.defaultValue, null);
-        Assert.assertEquals(property3.baseType, "string");
-        Assert.assertTrue(property3.isPrimitiveType);
+        assertEquals(property3.baseName, "type");
+        assertEquals(property3.dataType, "string");
+        assertEquals(property3.name, "type");
+        assertEquals(property3.defaultValue, null);
+        assertEquals(property3.baseType, "string");
+        assertTrue(property3.isPrimitiveType);
         Assert.assertFalse(property3.isContainer);
 
         final CodegenProperty property4 = cm.vars.get(3);
-        Assert.assertEquals(property4.baseName, "@type");
-        Assert.assertEquals(property4.dataType, "string");
-        Assert.assertEquals(property4.name, "at_type");
-        Assert.assertEquals(property4.defaultValue, null);
-        Assert.assertEquals(property4.baseType, "string");
-        Assert.assertTrue(property4.isPrimitiveType);
+        assertEquals(property4.baseName, "@type");
+        assertEquals(property4.dataType, "string");
+        assertEquals(property4.name, "at_type");
+        assertEquals(property4.defaultValue, null);
+        assertEquals(property4.baseType, "string");
+        assertTrue(property4.isPrimitiveType);
         Assert.assertFalse(property4.isContainer);
 
         final CodegenProperty property5 = cm.vars.get(4);
-        Assert.assertEquals(property5.baseName, "context");
-        Assert.assertEquals(property5.dataType, "string");
-        Assert.assertEquals(property5.name, "context");
-        Assert.assertEquals(property5.defaultValue, null);
-        Assert.assertEquals(property5.baseType, "string");
-        Assert.assertTrue(property5.isPrimitiveType);
+        assertEquals(property5.baseName, "context");
+        assertEquals(property5.dataType, "string");
+        assertEquals(property5.name, "context");
+        assertEquals(property5.defaultValue, null);
+        assertEquals(property5.baseType, "string");
+        assertTrue(property5.isPrimitiveType);
         Assert.assertFalse(property5.isContainer);
 
         final CodegenProperty property6 = cm.vars.get(5);
-        Assert.assertEquals(property6.baseName, "@context");
-        Assert.assertEquals(property6.dataType, "string");
-        Assert.assertEquals(property6.name, "at_context");
-        Assert.assertEquals(property6.defaultValue, null);
-        Assert.assertEquals(property6.baseType, "string");
-        Assert.assertTrue(property6.isPrimitiveType);
+        assertEquals(property6.baseName, "@context");
+        assertEquals(property6.dataType, "string");
+        assertEquals(property6.name, "at_context");
+        assertEquals(property6.defaultValue, null);
+        assertEquals(property6.baseType, "string");
+        assertTrue(property6.isPrimitiveType);
         Assert.assertFalse(property6.isContainer);
     }
 }

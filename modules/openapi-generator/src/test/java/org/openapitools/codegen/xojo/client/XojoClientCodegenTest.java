@@ -4,81 +4,86 @@ import org.openapitools.codegen.*;
 import org.openapitools.codegen.languages.XojoClientCodegen;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Operation;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class XojoClientCodegenTest {
 
     XojoClientCodegen codegen = new XojoClientCodegen();
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameCapitalizedReservedWord() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("AS", null), "Escapedas");
+        assertEquals(codegen.toEnumVarName("AS", null), "Escapedas");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameReservedWord() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("Public", null), "Escapedpublic");
+        assertEquals(codegen.toEnumVarName("Public", null), "Escapedpublic");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameShouldNotBreakNonReservedWord() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("Error", null), "Error");
+        assertEquals(codegen.toEnumVarName("Error", null), "Error");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameShouldNotBreakCorrectName() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("EntryName", null), "EntryName");
+        assertEquals(codegen.toEnumVarName("EntryName", null), "EntryName");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameSingleWordAllCaps() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("VALUE", null), "Value");
+        assertEquals(codegen.toEnumVarName("VALUE", null), "Value");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameSingleWordLowercase() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("value", null), "Value");
+        assertEquals(codegen.toEnumVarName("value", null), "Value");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameCapitalsWithUnderscore() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("ENTRY_NAME", null), "EntryName");
+        assertEquals(codegen.toEnumVarName("ENTRY_NAME", null), "EntryName");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameCapitalsWithDash() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("ENTRY-NAME", null), "EntryName");
+        assertEquals(codegen.toEnumVarName("ENTRY-NAME", null), "EntryName");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameCapitalsWithSpace() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("ENTRY NAME", null), "EntryName");
+        assertEquals(codegen.toEnumVarName("ENTRY NAME", null), "EntryName");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameLowercaseWithUnderscore() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("entry_name", null), "EntryName");
+        assertEquals(codegen.toEnumVarName("entry_name", null), "EntryName");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameStartingWithNumber() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("123EntryName", null), "Escaped123EntryName");
-        Assert.assertEquals(codegen.toEnumVarName("123Entry_name", null), "Escaped123EntryName");
-        Assert.assertEquals(codegen.toEnumVarName("123EntryName123", null), "Escaped123EntryName123");
+        assertEquals(codegen.toEnumVarName("123EntryName", null), "Escaped123EntryName");
+        assertEquals(codegen.toEnumVarName("123Entry_name", null), "Escaped123EntryName");
+        assertEquals(codegen.toEnumVarName("123EntryName123", null), "Escaped123EntryName123");
     }
 
-    @Test(enabled = true)
+    @Test
     public void testToEnumVarNameSpecialCharacters() throws Exception {
-        Assert.assertEquals(codegen.toEnumVarName("1:1", null), "Escaped1Colon1");
-        Assert.assertEquals(codegen.toEnumVarName("1:One", null), "Escaped1ColonOne");
-        Assert.assertEquals(codegen.toEnumVarName("Apple&Pie", null), "AppleAmpersandPie");
-        Assert.assertEquals(codegen.toEnumVarName("$", null), "Dollar");
-        Assert.assertEquals(codegen.toEnumVarName("+1", null), "EscapedPlus1");
-        Assert.assertEquals(codegen.toEnumVarName(">=", null), "GreaterThanOrEqualTo");
+        assertEquals(codegen.toEnumVarName("1:1", null), "Escaped1Colon1");
+        assertEquals(codegen.toEnumVarName("1:One", null), "Escaped1ColonOne");
+        assertEquals(codegen.toEnumVarName("Apple&Pie", null), "AppleAmpersandPie");
+        assertEquals(codegen.toEnumVarName("$", null), "Dollar");
+        assertEquals(codegen.toEnumVarName("+1", null), "EscapedPlus1");
+        assertEquals(codegen.toEnumVarName(">=", null), "GreaterThanOrEqualTo");
     }
 
-    @Test(description = "returns Data when response format is binary", enabled = true)
+    @Test
+    @DisplayName("returns Data when response format is binary")
     public void binaryDataTest() {
         final OpenAPI openAPI = TestUtils.parseFlattenSpec("src/test/resources/2_0/binaryDataTest.json");
         final DefaultCodegen codegen = new XojoClientCodegen();
@@ -87,13 +92,14 @@ public class XojoClientCodegenTest {
         final Operation p = openAPI.getPaths().get(path).getPost();
         final CodegenOperation op = codegen.fromOperation(path, "post", p, null);
 
-        Assert.assertEquals(op.returnType, "FolderItem");
-        Assert.assertEquals(op.bodyParam.dataType, "FolderItem");
-        Assert.assertTrue(op.bodyParam.isBinary);
-        Assert.assertTrue(op.responses.get(0).isBinary);
+        assertEquals(op.returnType, "FolderItem");
+        assertEquals(op.bodyParam.dataType, "FolderItem");
+        assertTrue(op.bodyParam.isBinary);
+        assertTrue(op.responses.get(0).isBinary);
     }
 
-    @Test(description = "returns Date when response format is date per default", enabled = true)
+    @Test
+    @DisplayName("returns Date when response format is date per default")
     public void dateDefaultTest() {
         final OpenAPI openAPI = TestUtils.parseFlattenSpec("src/test/resources/2_0/datePropertyTest.json");
         final DefaultCodegen codegen = new XojoClientCodegen();
@@ -102,43 +108,47 @@ public class XojoClientCodegenTest {
         final Operation p = openAPI.getPaths().get(path).getPost();
         final CodegenOperation op = codegen.fromOperation(path, "post", p, null);
 
-        Assert.assertEquals(op.returnType, "Date");
-        Assert.assertEquals(op.bodyParam.dataType, "Date");
+        assertEquals(op.returnType, "Date");
+        assertEquals(op.bodyParam.dataType, "Date");
     }
 
-    @Test(description = "type from languageSpecificPrimitives should not be prefixed", enabled = true)
+    @Test
+    @DisplayName("type from languageSpecificPrimitives should not be prefixed")
     public void prefixExceptionTest() {
         final DefaultCodegen codegen = new XojoClientCodegen();
         codegen.setModelNamePrefix("API");
 
         final String result = codegen.toModelName("Currency");
-        Assert.assertEquals(result, "Currency");
+        assertEquals(result, "Currency");
     }
 
-    @Test(description = "type from languageSpecificPrimitives should not be suffixed", enabled = true)
+    @Test
+    @DisplayName("type from languageSpecificPrimitives should not be suffixed")
     public void suffixExceptionTest() {
         final DefaultCodegen codegen = new XojoClientCodegen();
         codegen.setModelNameSuffix("API");
 
         final String result = codegen.toModelName("Currency");
-        Assert.assertEquals(result, "Currency");
+        assertEquals(result, "Currency");
     }
 
-    @Test(description = "Other types should be prefixed", enabled = true)
+    @Test
+    @DisplayName("Other types should be prefixed")
     public void prefixTest() {
         final DefaultCodegen codegen = new XojoClientCodegen();
         codegen.setModelNamePrefix("API");
 
         final String result = codegen.toModelName("MyType");
-        Assert.assertEquals(result, "APIMyType");
+        assertEquals(result, "APIMyType");
     }
 
-    @Test(description = "Other types should be suffixed", enabled = true)
+    @Test
+    @DisplayName("Other types should be suffixed")
     public void suffixTest() {
         final DefaultCodegen codegen = new XojoClientCodegen();
         codegen.setModelNameSuffix("API");
 
         final String result = codegen.toModelName("MyType");
-        Assert.assertEquals(result, "MyTypeAPI");
+        assertEquals(result, "MyTypeAPI");
     }
 }

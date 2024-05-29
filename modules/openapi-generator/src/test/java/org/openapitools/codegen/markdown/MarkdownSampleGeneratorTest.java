@@ -6,8 +6,8 @@ import org.openapitools.codegen.CodegenOperation;
 import org.openapitools.codegen.CodegenParameter;
 import org.openapitools.codegen.TestUtils;
 import org.openapitools.codegen.languages.MarkdownDocumentationCodegen;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+
 
 public class MarkdownSampleGeneratorTest {
 
